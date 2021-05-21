@@ -7,6 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table( name ="user" , schema = "carlook" )
+
 public class Company {
     private int Company_id;
     private int Company_branch_id;
