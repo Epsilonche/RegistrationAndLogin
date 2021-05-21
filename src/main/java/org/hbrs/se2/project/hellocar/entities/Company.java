@@ -32,29 +32,25 @@ public class Company {
     @Id
     @GeneratedValue
 
+    @Basic
     @Column(name = "Company_id")
     public int getCompany_id() {
-        return Company_id;
+        return this.Company_id;
     }
-    public void setCompany_id(int id) {
-        this.Company_id = id;
-    }
+    public void setCompany_id(int id) { this.Company_id = id; }
+
+    @Basic
+    @Column(name = "Company_Name")
+    public String getCompany_Name() { return Company_Name; }
+    public void setCompany_Name(String company_Name) { Company_Name = company_Name; }
 
     @Basic
     @Column(name = "Company_branch_id")
-    public LocalDate getEstablishment_date() {
-        return Establishment_date;
-    }
+    public int getCompany_branch_id() { return this.Company_branch_id;}
+    public void setCompany_branch_id(int company_branch_id) { this.Company_branch_id = company_branch_id; }
 
-    public void setEstablishment_date(LocalDate Establishment_date) {
-        this.Establishment_date = Establishment_date;
-    }
-
-    @Column(name = "Company_id")
-    public void setCompany_branch_id(int company_branch_id) {
-        Company_branch_id = company_branch_id;
-    }
-
+    @Basic
+    @Column(name = "Postal_code")
     public int getPostal_Code() {
         return Postal_Code;
     }
@@ -67,9 +63,6 @@ public class Company {
         return House_Number;
     }
 
-    public String getCompany_Name() {
-        return Company_Name;
-    }
 
     public String getStreet() {
         return Street;
@@ -123,9 +116,6 @@ public class Company {
         House_Number = house_Number;
     }
 
-    public void setCompany_Name(String company_Name) {
-        Company_Name = company_Name;
-    }
 
     public void setStreet(String street) {
         Street = street;
@@ -167,80 +157,6 @@ public class Company {
         Turnover = turnover;
     }
 
-    @Basic
-    @Column(name = "email")
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getCompany_branch_id() {
-        return Company_branch_id;
-    }
-
-    @Basic
-    @Column(name = "first_name")
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    @Basic
-    @Column(name = "last_name")
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    @Basic
-    @Column(name = "occupation")
-    public String getOccupation() {
-        return occupation;
-    }
-
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
-    }
-
-    @Basic
-    @Column(name = "password")
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Basic
-    @Column(name = "phone")
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    @Basic
-    @Column(name = "userid")
-    public String getUserid() {
-        return userid;
-    }
-
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -264,9 +180,10 @@ public class Company {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_to_rolle", catalog = "demouser",
-            schema = "carlook",
+            schema = "53Programming",
             joinColumns = @JoinColumn(name = "userid", referencedColumnName = "id", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "bezeichnung", referencedColumnName = "bezeichhnung", nullable = false))
+
     public List<Rolle> getRoles() {
         return roles;
     }
