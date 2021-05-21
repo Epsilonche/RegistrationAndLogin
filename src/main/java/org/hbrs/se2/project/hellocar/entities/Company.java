@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table( name ="user" , schema = "carlook" )
+@Table( name ="Company" , schema = "53Programming" )
 
 public class Company {
     private int Company_id;
@@ -31,13 +31,13 @@ public class Company {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "Company_id")
     public int getId() {
-        return id;
+        return Company_id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.Company_id = id;
     }
 
     @Basic
