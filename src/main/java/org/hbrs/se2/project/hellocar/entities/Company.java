@@ -8,15 +8,24 @@ import java.util.Objects;
 @Entity
 @Table( name ="user" , schema = "carlook" )
 public class Company {
-    private int id;
-    private LocalDate dateOfBirth;
-    private String email;
-    private String firstName;
-    private String lastName;
-    private String occupation;
-    private String password;
-    private String phone;
-    private String userid;
+    private int Company_id;
+    private int Company_branch_id;
+    private int Postal_Code;
+    private int VAT_identification_number;
+    private String House_Number;
+    private LocalDate Establishment_date;
+    private String Company_Name;
+    private String Street;
+    private String City;
+    private String Country;
+    private String Security_answer;
+    private String Homepage;
+    private String Headquarters;
+    private int Amount_of_employees;
+    private int security_answer_id;
+    private String Company_description;
+    private int Turnover;
+
     private List<Rolle> roles;
 
     @Id
