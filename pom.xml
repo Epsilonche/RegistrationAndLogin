@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>org.hbrs.se2.project</groupId>
-    <artifactId>53 Programming</artifactId> <!-- Place your team name here! -->
+    <artifactId>53Programming</artifactId> <!-- Place your team name here! -->
     <version>0.0.1</version>
     <name>53 Programming</name>
     <description>SE2-Project</description>

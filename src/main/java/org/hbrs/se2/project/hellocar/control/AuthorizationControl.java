@@ -29,6 +29,7 @@ public class AuthorizationControl {
      * Feature (hier: ein Web-Seite bzw. eine View) zu einem bestimmten Kontext (Bsp: ein Tageszeit, mit
      * einem bestimmten Device etc.) angezeigt bekommt
      */
+
     public boolean isUserisAllowedToAccessThisFeature(UserDTO user , String role , String feature , String[] context  ) {
         List<RolleDTO> rolleList = user.getRoles();
         // Check, ob ein Benutzer eine Rolle besitzt:
