@@ -9,6 +9,8 @@ import org.hbrs.se2.project.hellocar.util.Globals;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+// Von Micha überarbeitet
+// Login mit JDBC
 
 @Component
 public class LoginControl {
@@ -19,14 +21,12 @@ public class LoginControl {
     private UserDTO userDTO = null;
 
         public boolean authentificate(String username, String password ) throws DatabaseUserException {
-        // Standard: User wird mit Spring JPA ausgelesen (Was sind die Vorteile?)
-        UserDTO tmpUser = this.getUserWithJPA( username , password );
+        //UserDTO tmpUser = this.getUserWithJPA( username , password );
 
-        // Alternative: Auslesen des Users mit JDBC (Was sind die Vorteile bzw. Nachteile?)
-        // UserDTO tmpUser = this.getUserWithJDBC( username , password );
+        UserDTO tmpUser = this.getUserWithJDBC( username , password );
 
         if ( tmpUser == null ) {
-            // ggf. hier ein Loggin einfügen
+            System.out.println("User = NULL");
             return false;
         }
         this.userDTO = tmpUser;
@@ -46,30 +46,31 @@ public class LoginControl {
         }
         catch ( DatabaseLayerException e) {
 
-            // Analyse und Umwandlung der technischen Errors in 'lesbaren' Darstellungen
-            // Durchreichung und Behandlung der Fehler (Chain Of Responsibility Pattern (SE-1))
             String reason = e.getReason();
 
+            // Nutzer nicht gefunden
             if (reason.equals(Globals.Errors.NOUSERFOUND)) {
-                return userTmp;
-                // throw new DatabaseUserException("No User could be found! Please check your credentials!");
+                throw new DatabaseUserException("Es wurde kein Nutzer unter diesen Daten gefunden!");
+                //return userTmp;
             }
+            // SQL Fehler
             else if ( reason.equals((Globals.Errors.SQLERROR))) {
-                throw new DatabaseUserException("There were problems with the SQL code. Please contact the developer!");
+                throw new DatabaseUserException("Ein SQL-Fehler ist aufgetreten. Bitte den Admin kontaktieren!");
             }
+            // DB Connection fehlgeschlagen
             else if ( reason.equals((Globals.Errors.DATABASE ) )) {
-                throw new DatabaseUserException("A failure occured while trying to connect to database with JDBC. " +
-                        "Please contact the admin");
+                throw new DatabaseUserException("Es konnte keine Verbindung zur Datenbank hergestellt werden!");
             }
+            // Anderer/unbekannter Fehler
             else {
-                throw new DatabaseUserException("A failure occured while");
+                throw new DatabaseUserException("Unbekannter Fehler aufgetreten. Bitte den Admin kontaktieren!");
             }
 
         }
         return userDTO;
     }
 
-    private UserDTO getUserWithJPA( String username , String password ) throws DatabaseUserException {
+    /*private UserDTO getUserWithJPA( String username , String password ) throws DatabaseUserException {
         UserDTO userTmp;
         try {
             userTmp = repository.findUserByUseridAndPassword(username, password);
@@ -78,6 +79,6 @@ public class LoginControl {
            throw new DatabaseUserException("A failure occured while trying to connect to database with JPA");
         }
         return userTmp;
-    }
+    }*/
 
 }
