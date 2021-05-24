@@ -1,6 +1,5 @@
 package org.hbrs.se2.project.hellocar.control.factories;
 
-import org.hbrs.se2.project.hellocar.dtos.CarDTO;
 import org.hbrs.se2.project.hellocar.dtos.UserDTO;
 
 public class CarFactory {

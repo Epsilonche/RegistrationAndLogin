@@ -1,11 +1,9 @@
 package org.hbrs.se2.project.hellocar.test;
 
 import org.hbrs.se2.project.hellocar.dao.UserDAO;
-import org.hbrs.se2.project.hellocar.dtos.CarDTO;
 import org.hbrs.se2.project.hellocar.dtos.RolleDTO;
 import org.hbrs.se2.project.hellocar.dtos.UserDTO;
 import org.hbrs.se2.project.hellocar.entities.User;
-import org.hbrs.se2.project.hellocar.repository.CarRepository;
 import org.hbrs.se2.project.hellocar.repository.RolleRepository;
 import org.hbrs.se2.project.hellocar.repository.UserRepository;
 import org.hbrs.se2.project.hellocar.services.db.exceptions.DatabaseLayerException;

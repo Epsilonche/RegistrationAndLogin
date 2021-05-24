@@ -34,7 +34,7 @@ import java.util.Optional;
  */
 @CssImport("./styles/views/main/main-view.css")
 @Route("main")
-@PWA(name = "HelloCar", shortName = "HelloCar", enableInstallPrompt = false)
+@PWA(name = "53Programming", shortName = "53prog", enableInstallPrompt = false)
 @JsModule("./styles/shared-styles.js")
 public class AppView extends AppLayout implements BeforeEnterObserver {
 
@@ -139,8 +139,8 @@ public class AppView extends AppLayout implements BeforeEnterObserver {
         // Hinzufügen des Logos
         logoLayout.setId("logo");
         logoLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-        logoLayout.add(new Image("images/logo.png", "HelloCar logo"));
-        logoLayout.add(new H1("HelloCar"));
+        logoLayout.add(new Image("images/logo.png", "53prog logo"));
+        logoLayout.add(new H1("53Programming"));
 
         // Hinzufügen des Menus inklusive der Tabs
         layout.add(logoLayout, menu);
