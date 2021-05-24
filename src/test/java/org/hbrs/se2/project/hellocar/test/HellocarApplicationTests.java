@@ -4,7 +4,6 @@ import org.hbrs.se2.project.hellocar.dao.UserDAO;
 import org.hbrs.se2.project.hellocar.dtos.CarDTO;
 import org.hbrs.se2.project.hellocar.dtos.RolleDTO;
 import org.hbrs.se2.project.hellocar.dtos.UserDTO;
-import org.hbrs.se2.project.hellocar.entities.Rolle;
 import org.hbrs.se2.project.hellocar.entities.User;
 import org.hbrs.se2.project.hellocar.repository.CarRepository;
 import org.hbrs.se2.project.hellocar.repository.RolleRepository;
@@ -15,7 +14,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 

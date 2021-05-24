@@ -1,13 +1,7 @@
 package org.hbrs.se2.project.hellocar.repository;
 
-import org.hbrs.se2.project.hellocar.dtos.UserDTO;
-import org.hbrs.se2.project.hellocar.entities.Rolle;
-import org.hbrs.se2.project.hellocar.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 /**

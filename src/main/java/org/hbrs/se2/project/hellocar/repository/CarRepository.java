@@ -1,13 +1,10 @@
 package org.hbrs.se2.project.hellocar.repository;
 
 import org.hbrs.se2.project.hellocar.dtos.CarDTO;
-import org.hbrs.se2.project.hellocar.entities.Car;
-import org.hbrs.se2.project.hellocar.entities.Rolle;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Component
