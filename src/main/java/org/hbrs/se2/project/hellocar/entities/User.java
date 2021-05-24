@@ -39,141 +39,141 @@ public class User {
 
     @Basic
     @Column(name = "user_type_id")
-    public int getuser_type_id() {
+    public int getUser_type_id() {
         return user_type_id;
     }
 
-    public void setuser_type_id(int user_type_id) {
+    public void setUser_type_id(int user_type_id) {
         this.user_type_id = user_type_id;
     }
 
     @Basic
     @Column(name = "company_branch_id")
-    public int getcompany_branch_id() {
+    public int getCompany_branch_id() {
         return company_branch_id;
     }
 
-    public void setcompany_branch_id(int company_branch_id) {
+    public void setCompany_branch_id(int company_branch_id) {
         this.company_branch_id = company_branch_id;
     }
 
     @Basic
     @Column(name = "street")
-    public String getstreet() {
+    public String getStreet() {
         return street;
     }
 
-    public void setstreet(String street) {
+    public void setStreet(String street) {
         this.street = street;
     }
 
     @Basic
     @Column(name = "house_number")
-    public String gethouse_number() {
+    public String getHouse_number() {
         return house_number;
     }
 
-    public void sethouse_number(String house_number) {
+    public void setHouse_number(String house_number) {
         this.house_number = house_number;
     }
 
     @Basic
     @Column(name = "postal_code")
-    public String getpostal_code() {
+    public String getPostal_code() {
         return postal_code;
     }
 
-    public void setpostal_code(String postal_code) {
+    public void setPostal_code(String postal_code) {
         this.postal_code = postal_code;
     }
 
     @Basic
     @Column(name = "city")
-    public String getcity() {
+    public String getCity() {
         return city;
     }
 
-    public void setcity(String city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
     @Basic
     @Column(name = "country")
-    public String getcountry() {
+    public String getCountry() {
         return country;
     }
 
-    public void setcountry(String country) {
+    public void setCountry(String country) {
         this.country = country;
     }
 
     @Basic
     @Column(name = "password")
-    public String getpassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void password(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
     @Basic
     @Column(name = "security_answer")
-    public String getsecurity_answer() {
+    public String getSecurity_answer() {
         return security_answer;
     }
 
-    public void setsecurity_answer(String security_answer) {
+    public void setSecurity_answer(String security_answer) {
         this.security_answer = security_answer;
     }
 
     @Basic
     @Column(name = "e_mail")
-    public String getemail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setemail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
     @Basic
     @Column(name = "date_of_birth")
-    public Date getdate_of_birth() {
+    public Date getDate_of_birth() {
         return date_of_birth;
     }
 
-    public void setdate_of_birth(Date date_of_birth) {
+    public void setDate_of_birth(Date date_of_birth) {
         this.date_of_birth = date_of_birth;
     }
 
 
     @Basic
     @Column(name = "security_question_id")
-    public int getsecurity_question_id() {
+    public int getSecurity_question_id() {
         return security_question_id;
     }
 
-    public void setsecurity_question_id(int security_question_id) {
+    public void setSecurity_question_id(int security_question_id) {
         this.security_question_id = security_question_id;
     }
 
     @Basic
     @Column(name = "first_name")
-    public String getfirst_name() {
+    public String getFirst_name() {
         return first_name;
     }
 
-    public void setfirst_name(String first_name) {
+    public void setFirst_name(String first_name) {
         this.first_name = first_name;
     }
 
     @Basic
     @Column(name = "last_name")
-    public String getlast_name() {
+    public String getLast_name() {
         return last_name;
     }
 
-    public void setlast_name(String last_name) {
+    public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
 

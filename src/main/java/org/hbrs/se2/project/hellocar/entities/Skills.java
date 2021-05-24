@@ -26,21 +26,21 @@ public class Skills {
 
     @Basic
     @Column(name = "skill_name")
-    public String getskill_name() {
+    public String getSkill_name() {
         return skill_name;
     }
 
-    public void setskill_name(String skill_name) {
+    public void setSkill_name(String skill_name) {
         this.skill_name = skill_name;
     }
 
     @Basic
     @Column(name = "skill_description")
-    public String getskill_description() {
+    public String getSkill_description() {
         return skill_name;
     }
 
-    public void setskill_description(String skill_description) {
+    public void setSkill_description(String skill_description) {
         this.skill_description = skill_description;
     }
 

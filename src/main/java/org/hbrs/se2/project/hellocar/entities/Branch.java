@@ -25,11 +25,11 @@ public class Branch {
 
     @Basic
     @Column(name = "branch_name")
-    public String getbranch_name() {
+    public String getBranch_name() {
         return branch_name;
     }
 
-    public void setbranch_name(String branch_name) {
+    public void setBranch_name(String branch_name) {
         this.branch_name = branch_name;
     }
 

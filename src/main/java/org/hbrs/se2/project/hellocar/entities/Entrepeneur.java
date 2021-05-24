@@ -30,52 +30,52 @@ public class Entrepeneur {
 
     @Basic
     @Column(name = "branch_id")
-    public int getbranch_id() {
+    public int getBranch_id() {
         return branch_id;
     }
 
-    public void setbranch_id(int branch_id) {
+    public void setBranch_id(int branch_id) {
         this.branch_id = branch_id;
     }
 
     @Basic
     @Column(name = "title")
-    public String gettitle() {
+    public String getTitle() {
         return title;
     }
 
-    public void settitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
     @Basic
     @Column(name = "roles")
-    public String getroles() {
+    public String getRoles() {
         return roles;
     }
 
-    public void setroles(String roles) {
+    public void setRoles(String roles) {
         this.roles = roles;
     }
 
 
     @Basic
     @Column(name = "company")
-    public String getcompany() {
+    public String getCompany() {
         return company;
     }
 
-    public void setcompany(String company) {
+    public void setCompany(String company) {
         this.company = company;
     }
 
     @Basic
     @Column(name = "description")
-    public String getdescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setdescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

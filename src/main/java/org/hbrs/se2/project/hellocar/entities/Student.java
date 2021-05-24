@@ -30,52 +30,52 @@ public class Student {
 
     @Basic
     @Column(name = "matrikel_nr")
-    public int getmatrikel_nr() {
+    public int getMatrikel_nr() {
         return matrikel_nr;
     }
 
-    public void setmatrikel_nr(int matrikel_nr) {
+    public void setMatrikel_nr(int matrikel_nr) {
         this.matrikel_nr = matrikel_nr;
     }
 
     @Basic
     @Column(name = "application_id")
-    public int getapplication_id() {
+    public int getApplication_id() {
         return application_id;
     }
 
-    public void setapplication_id(int application_id) {
+    public void setApplication_id(int application_id) {
         this.application_id = application_id;
     }
 
 
     @Basic
     @Column(name = "skills")
-    public String getskills() {
+    public String getSkills() {
         return skills;
     }
 
-    public void setskills(String skills) {
+    public void setSkills(String skills) {
         this.skills = skills;
     }
 
     @Basic
     @Column(name = "university")
-    public String getuniversity() {
+    public String getUniversity() {
         return university;
     }
 
-    public void setuniversity(String university) {
+    public void setUniversity(String university) {
         this.university = university;
     }
 
     @Basic
     @Column(name = "degree_course")
-    public String getdegree_course() {
+    public String getDegree_course() {
         return degree_course;
     }
 
-    public void setdegree_course(String degree_course) {
+    public void setDegree_course(String degree_course) {
         this.degree_course = degree_course;
     }
 

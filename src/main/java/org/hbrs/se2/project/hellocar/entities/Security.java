@@ -26,11 +26,11 @@ public class Security {
 
     @Basic
     @Column(name = "security_question")
-    public String getsecurity_question() {
+    public String getSecurity_question() {
         return security_question;
     }
 
-    public void setsecurity_question(String security_question) {
+    public void setSecurity_question(String security_question) {
         this.security_question = security_question;
     }
 

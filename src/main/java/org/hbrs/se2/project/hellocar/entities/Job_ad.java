@@ -36,32 +36,32 @@ public class Job_ad {
 
     @Basic
     @Column(name = "entrepeneur_id")
-    public int getentrepeneur_id() {
+    public int getEntrepeneur_id() {
         return entrepeneur_id;
     }
 
-    public void setentrepeneur_id(int entrepeneur_id) {
+    public void setEntrepeneur_id(int entrepeneur_id) {
         this.entrepeneur_id = entrepeneur_id;
     }
 
     @Basic
     @Column(name = "application_id")
-    public int getapplication_id() {
+    public int getApplication_id() {
         return application_id;
     }
 
-    public void setapplication_id(int application_id) {
+    public void setApplication_id(int application_id) {
         this.application_id = application_id;
     }
 
 
     @Basic
     @Column(name = "skills")
-    public String getskills() {
+    public String getSkills() {
         return skills;
     }
 
-    public void setskills(String skills) {
+    public void setSkills(String skills) {
         this.skills = skills;
     }
 
@@ -77,72 +77,72 @@ public class Job_ad {
 
     @Basic
     @Column(name = "title")
-    public String gettitle() {
+    public String getTitle() {
         return title;
     }
 
-    public void settitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
     @Basic
     @Column(name = "salary")
-    public int getsalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void salary(int salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 
     @Basic
     @Column(name = "end_date")
-    public Date getend_date() {
+    public Date getEnd_date() {
         return end_date;
     }
 
-    public void setend_date(Date end_date) {
+    public void setEnd_date(Date end_date) {
         this.end_date = end_date;
     }
 
     @Basic
     @Column(name = "start_date")
-    public Date getstart_date() {
+    public Date getStart_date() {
         return start_date;
     }
 
-    public void setstart_date(Date start_date) {
+    public void setStart_date(Date start_date) {
         this.start_date = start_date;
     }
 
     @Basic
     @Column(name = "homeoffice")
-    public String gethomeoffice() {
+    public String getHomeoffice() {
         return homeoffice;
     }
 
-    public void sethomeoffice(String homeoffice) {
+    public void setHomeoffice(String homeoffice) {
         this.homeoffice = homeoffice;
     }
 
 
     @Basic
     @Column(name = "workplace")
-    public String getworkplace() {
+    public String getWorkplace() {
         return workplace;
     }
 
-    public void setworkplace(String workplace) {
+    public void setWorkplace(String workplace) {
         this.workplace = workplace;
     }
 
     @Basic
     @Column(name = "status")
-    public String getstatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setstatus(String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
