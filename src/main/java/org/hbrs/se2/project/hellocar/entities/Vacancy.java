@@ -7,8 +7,8 @@ import java.util.Objects;
 import javax.persistence.GeneratedValue;
 
 @Entity
-@Table( name ="Job_ad" , schema = "53Programming" )
-public class Job_ad {
+@Table( name ="Vacancy" , schema = "53Programming" )
+public class Vacancy {
     private int     job_id;
     private int     entrepeneur_id;
     private int     application_id;
@@ -150,8 +150,8 @@ public class Job_ad {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Job_ad j = (Job_ad) o;
-        return job_id == j.job_id &&
+        Vacancy j = (Vacancy) o;
+        return job_id== j.job_id &&
                 Objects.equals(entrepeneur_id, j.entrepeneur_id) &&
                 Objects.equals(application_id, j.application_id) &&
                 Objects.equals(skills, j.skills) &&
