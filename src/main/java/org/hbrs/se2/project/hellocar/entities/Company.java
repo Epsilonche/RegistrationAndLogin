@@ -7,25 +7,25 @@ import java.util.Objects;
 import javax.persistence.GeneratedValue;
 
 @Entity
-@Table( name ="Entrepeneur" , schema = "53Programming" )
-public class Entrepeneur {
-    private int entrepeneur_id;
+@Table( name ="Company" , schema = "53Programming" )
+public class Company {
+    private int company_id;
     private int branch_id;
     private String title;
     private String roles;
-    private String company;
+    // private String company;
     private String description;
 
 
     @Id
     @GeneratedValue
-    @Column(name = "entrepeneur_id")
+    @Column(name = "company_id")
     public int getId() {
-        return entrepeneur_id;
+        return company_id;
     }
 
-    public void setId(int entrepeneur_id) {
-        this.entrepeneur_id = entrepeneur_id;
+    public void setId(int company_id) {
+        this.company_id = company_id;
     }
 
     @Basic
@@ -58,7 +58,7 @@ public class Entrepeneur {
         this.roles = roles;
     }
 
-
+/* ausgeklammert wegen Entrepeneur
     @Basic
     @Column(name = "company")
     public String getCompany() {
@@ -68,7 +68,7 @@ public class Entrepeneur {
     public void setCompany(String company) {
         this.company = company;
     }
-
+*/
     @Basic
     @Column(name = "description")
     public String getDescription() {
@@ -85,17 +85,17 @@ public class Entrepeneur {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Entrepeneur entrepeneur = (Entrepeneur) o;
-        return entrepeneur_id == entrepeneur.entrepeneur_id &&
-                Objects.equals(branch_id, entrepeneur.branch_id) &&
-                Objects.equals(title, entrepeneur.title) &&
-                Objects.equals(roles, entrepeneur.roles) &&
-                Objects.equals(company, entrepeneur.company) &&
-                Objects.equals(description, entrepeneur.description) ;
+        Company company = (Company) o;
+        return company_id == company.company_id &&
+                Objects.equals(branch_id, company.branch_id) &&
+                Objects.equals(title, company.title) &&
+                Objects.equals(roles, company.roles) &&
+                //Objects.equals(company, company.company) &&
+                Objects.equals(description, company.description) ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(entrepeneur_id, branch_id, title,roles, company, description);
+        return Objects.hash(company_id, branch_id, title,roles, /*company, */description);
     }
 }
