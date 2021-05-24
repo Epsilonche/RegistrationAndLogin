@@ -11,18 +11,19 @@ import java.util.logging.Logger;
 /**
  *
  * @author sascha
+ * updated by Lukas Witschel and Khalil
  */
 public class JDBCConnection {
 
     private static JDBCConnection connection = null;
 
-    private String url = "jdbc:postgresql://dumbo.inf.h-brs.de/demouser";
+    private String url = "jdbc:postgresql://dumbo.inf.h-brs.de/rdiehl2s"; // angepasst zu rdiehl2s
 
     private Connection conn;
 
-    private String login = "demouser";
+    private String login = "rdiehl2s"; // demouser zu rdiehl2s geändert
 
-    private String password = "demouser";
+    private String password = "rdiehl2s "; // demouser zu rdiehl2s geändert
 
     public static JDBCConnection getInstance() throws DatabaseLayerException {
 
@@ -41,7 +42,7 @@ public class JDBCConnection {
 
     public void initConnection() throws DatabaseLayerException {
         try {
-            DriverManager.registerDriver( new org.postgresql.Driver() ); 
+            DriverManager.registerDriver( new org.postgresql.Driver() );
         } catch (SQLException ex) {
             Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -53,8 +54,8 @@ public class JDBCConnection {
 
         try {
             Properties props = new Properties();
-            props.setProperty("user", "demouser" );
-            props.setProperty("password", "demouser" );
+            props.setProperty("user", "rdiehl2s" ); // demouser zu rdiehl2s geändert
+            props.setProperty("password", "rdiehl2s" ); // demouser zu rdiehl2s geändert
 
 
             this.conn = DriverManager.getConnection(this.url, props);
