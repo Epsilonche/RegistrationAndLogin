@@ -10,7 +10,7 @@ public class Globals {
         public static final String ENTER_CAR = "enter";
 
         public static final String LOGIN_VIEW = "login";
-        public static final String MAIN_VIEW = "";
+        public static final String PROFILE_VIEW = "profile";
     }
 
     public static class Roles {
