@@ -1,11 +1,9 @@
 package org.hbrs.se2.project.collHbrs.views;
 
-import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
-import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
-//import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -57,6 +55,9 @@ public class MainView extends VerticalLayout {
 
         add(component);
         add(new RouterLink("Registrieren",RegistrationView.class));
+
+        Image image = new Image("frontend/image/53logo.png", "53");
+        add(image);
 
         this.setAlignItems( Alignment.CENTER );
     }
