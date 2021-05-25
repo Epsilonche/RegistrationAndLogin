@@ -1,4 +1,4 @@
-ackage org.hbrs.se2.project.hellocar.views;
+package org.hbrs.se2.project.hellocar.views;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -13,8 +13,10 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.apache.commons.lang3.StringUtils;
 import org.hbrs.se2.project.hellocar.util.Globals;
-
+import org.hbrs.se2.project.hellocar.dtos.CarDTO;
 import java.util.List;
+import org.hbrs.se2.project.hellocar.control.ManageCarControl;
+
 
 /**
  * Darstellung einer Tabelle (bei Vaadin: ein Grid) zur Anzeige von Autos.
@@ -26,11 +28,11 @@ import java.util.List;
 @Route(value = Globals.Pages.SHOW_CARS, layout = AppView.class)
 @PageTitle("Show Cars")
 @CssImport("./styles/views/showcars/show-cars-view.css")
-public class ShowVacView extends Div  {
+public class ShowCarsView extends Div  {
 
     private List<CarDTO> personList;
 
-    public ShowVacView(ManageCarControl carControl ) {
+    public ShowCarsView(ManageCarControl carControl ) {
             addClassName("show-cars-view");
 
             // Auslesen alle abgespeicherten Autos aus der DB (über das Control)

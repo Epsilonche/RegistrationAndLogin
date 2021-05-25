@@ -1,5 +1,5 @@
 package org.hbrs.se2.project.hellocar.control;
-
+/*
 import org.hbrs.se2.project.hellocar.control.factories.VacFactory;
 import org.hbrs.se2.project.hellocar.dtos.UserDTO;
 import org.hbrs.se2.project.hellocar.dtos.VacDTO;
@@ -31,3 +31,4 @@ public class ManageVacControl {
     }
 
 }
+*/
