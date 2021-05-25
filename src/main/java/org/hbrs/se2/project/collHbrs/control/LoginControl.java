@@ -1,11 +1,11 @@
-package org.hbrs.se2.project.hellocar.control;
+package org.hbrs.se2.project.collHbrs.control;
 
-import org.hbrs.se2.project.hellocar.control.exception.DatabaseUserException;
-import org.hbrs.se2.project.hellocar.dao.UserDAO;
-import org.hbrs.se2.project.hellocar.dtos.UserDTO;
-import org.hbrs.se2.project.hellocar.repository.UserRepository;
-import org.hbrs.se2.project.hellocar.services.db.exceptions.DatabaseLayerException;
-import org.hbrs.se2.project.hellocar.util.Globals;
+import org.hbrs.se2.project.collHbrs.control.exception.DatabaseUserException;
+import org.hbrs.se2.project.collHbrs.dao.UserDAO;
+import org.hbrs.se2.project.collHbrs.dtos.UserDTO;
+import org.hbrs.se2.project.collHbrs.repository.UserRepository;
+import org.hbrs.se2.project.collHbrs.services.db.exceptions.DatabaseLayerException;
+import org.hbrs.se2.project.collHbrs.util.Globals;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package org.hbrs.se2.project.hellocar.views;
+package org.hbrs.se2.project.collHbrs.views;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -12,10 +12,10 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.apache.commons.lang3.StringUtils;
-import org.hbrs.se2.project.hellocar.util.Globals;
-import org.hbrs.se2.project.hellocar.dtos.CarDTO;
+import org.hbrs.se2.project.collHbrs.util.Globals;
+import org.hbrs.se2.project.collHbrs.dtos.CarDTO;
 import java.util.List;
-import org.hbrs.se2.project.hellocar.control.ManageCarControl;
+import org.hbrs.se2.project.collHbrs.control.ManageCarControl;
 
 
 /**

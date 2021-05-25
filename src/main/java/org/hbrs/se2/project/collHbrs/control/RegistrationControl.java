@@ -1,12 +1,11 @@
-package org.hbrs.se2.project.hellocar.control;
+package org.hbrs.se2.project.collHbrs.control;
 
-import org.hbrs.se2.project.hellocar.control.factories.UserFactory;
-import org.hbrs.se2.project.hellocar.dtos.impl.UserDTO;
-import org.hbrs.se2.project.hellocar.services.db.UserDB;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.hbrs.se2.project.collHbrs.control.factories.UserFactory;
+import org.hbrs.se2.project.collHbrs.dtos.impl.UserDTO;
+import org.hbrs.se2.project.collHbrs.services.db.UserDB;
 import org.springframework.stereotype.Component;
-import org.hbrs.se2.project.hellocar.dtos.RegistrationResult;
-import org.hbrs.se2.project.hellocar.entities.User;
+import org.hbrs.se2.project.collHbrs.dtos.RegistrationResult;
+import org.hbrs.se2.project.collHbrs.entities.User;
 
 
 @Component

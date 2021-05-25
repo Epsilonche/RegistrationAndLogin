@@ -1,12 +1,10 @@
-package org.hbrs.se2.project.hellocar.control;
+package org.hbrs.se2.project.collHbrs.control;
 
-import org.hbrs.se2.project.hellocar.control.factories.CarFactory;
-import org.hbrs.se2.project.hellocar.dtos.CarDTO;
-import org.hbrs.se2.project.hellocar.dtos.UserDTO;
-import org.hbrs.se2.project.hellocar.entities.Car;
-import org.hbrs.se2.project.hellocar.entities.User;
-import org.hbrs.se2.project.hellocar.repository.CarRepository;
-import org.hbrs.se2.project.hellocar.repository.UserRepository;
+import org.hbrs.se2.project.collHbrs.control.factories.CarFactory;
+import org.hbrs.se2.project.collHbrs.dtos.CarDTO;
+import org.hbrs.se2.project.collHbrs.dtos.UserDTO;
+import org.hbrs.se2.project.collHbrs.entities.Car;
+import org.hbrs.se2.project.collHbrs.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

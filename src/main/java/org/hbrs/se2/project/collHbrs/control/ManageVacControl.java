@@ -1,4 +1,4 @@
-package org.hbrs.se2.project.hellocar.control;
+package org.hbrs.se2.project.collHbrs.control;
 /*
 import org.hbrs.se2.project.hellocar.control.factories.VacFactory;
 import org.hbrs.se2.project.hellocar.dtos.UserDTO;

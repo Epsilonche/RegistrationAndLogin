@@ -1,10 +1,7 @@
-package org.hbrs.se2.project.hellocar.views;
+package org.hbrs.se2.project.collHbrs.views;
 
-import com.vaadin.flow.component.UI;
-import org.hbrs.se2.project.hellocar.control.ManageCarControl;
-import org.hbrs.se2.project.hellocar.dtos.impl.CarDTOImpl;
-import org.hbrs.se2.project.hellocar.dtos.UserDTO;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -20,12 +17,15 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import org.hbrs.se2.project.hellocar.util.Globals;
+import org.hbrs.se2.project.collHbrs.dtos.UserDTO;
+import org.hbrs.se2.project.collHbrs.util.Globals;
+import org.hbrs.se2.project.collHbrs.dtos.impl.CarDTOImpl;
+import org.hbrs.se2.project.collHbrs.control.ManageCarControl;
 
 @Route(value = Globals.Pages.ENTER_CAR, layout = AppView.class)
-@PageTitle("Enter Car")
+@PageTitle("Enter Vacancy")
 @CssImport("./styles/views/entercar/enter-car-view.css")
-public class EnterCarView extends Div {
+public class EnterVacView extends Div {
 
     private TextField brand = new TextField("Brand of car");
     private TextField model = new TextField("Model");
@@ -39,7 +39,7 @@ public class EnterCarView extends Div {
 
     private Binder<CarDTOImpl> binder = new Binder(CarDTOImpl.class);
 
-    public EnterCarView(ManageCarControl carService) {
+    public EnterVacView(ManageCarControl carService) {
         addClassName("enter-car-view");
 
         add(createTitle());

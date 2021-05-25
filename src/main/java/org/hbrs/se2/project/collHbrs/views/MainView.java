@@ -1,21 +1,24 @@
-package org.hbrs.se2.project.hellocar.views;
+package org.hbrs.se2.project.collHbrs.views;
 
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.dialog.Dialog;
+import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
-import org.hbrs.se2.project.hellocar.control.LoginControl;
-import org.hbrs.se2.project.hellocar.control.exception.DatabaseUserException;
-import org.hbrs.se2.project.hellocar.dtos.UserDTO;
-import org.hbrs.se2.project.hellocar.util.Globals;
+import com.vaadin.flow.router.RouterLink;
+import org.hbrs.se2.project.collHbrs.control.LoginControl;
+import org.hbrs.se2.project.collHbrs.control.exception.DatabaseUserException;
+import org.hbrs.se2.project.collHbrs.dtos.UserDTO;
+import org.hbrs.se2.project.collHbrs.util.Globals;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * View zur Darstellung der Startseite. Diese zeigt dem Benutzer ein Login-Formular an.
- * ToDo: Integration einer Seite zur Registrierung von Benutzern
+ *
  */
 @Route(value = "" )
 @RouteAlias(value = "login")
@@ -46,14 +49,19 @@ public class MainView extends VerticalLayout {
                 navigateToMainPage();
 
             } else {
-                // Kann noch optimiert werden
                 component.setError(true);
             }
         });
 
         add(component);
+        add(new RouterLink("Registrieren",RegistrationView.class));
+
+        Image image = new Image("frontend/image/53logo.png", "53");
+        add(image);
+
         this.setAlignItems( Alignment.CENTER );
     }
+
 
     private void grabAndSetUserIntoSession() {
         UserDTO userDTO = loginControl.getCurrentUser();
@@ -62,10 +70,11 @@ public class MainView extends VerticalLayout {
 
 
     private void navigateToMainPage() {
-        // Navigation zur Startseite, hier auf die Teil-Komponente Show-Cars.
-        // Die anzuzeigende Teil-Komponente kann man noch individualisieren, je nach Rolle,
-        // die ein Benutzer besitzt
-        UI.getCurrent().navigate(Globals.Pages.SHOW_CARS);
+        // Navigation zur Startseite, hier auf die Profilseite.
+        // Profilseite erstellen mit Route /profile
+        UI.getCurrent().navigate(Globals.Pages.PROFILE_VIEW);
 
     }
+
+
 }
