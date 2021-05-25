@@ -19,11 +19,11 @@ public class RoundTripTest {
     private UserRepository userRepository;
 
     @Test
-    /**
-     * Round Triping Test mit einer einfachen Strecke (C-R-Ass-D).
-     * Dieses Muster für Unit-Tests wird in der Vorlesung SE-2 eingeführt (Kapitel 6).
-     *
-     */
+
+     //Round Triping Test mit einer einfachen Strecke (C-R-Ass-D).
+     //Dieses Muster für Unit-Tests wird in der Vorlesung SE-2 eingeführt (Kapitel 6).
+
+
     void createReadAndDeleteAUser() {
 
         // Schritt 1: C = Create (hier: Erzeugung und Abspeicherung mit der Method save()
