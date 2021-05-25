@@ -1,8 +1,8 @@
-package org.hbrs.se2.project.hellocar.control.factories;
+package org.hbrs.se2.project.collHbrs.control.factories;
 
-import org.hbrs.se2.project.hellocar.dtos.UserDTO;
-import org.hbrs.se2.project.hellocar.dtos.CarDTO;
-import org.hbrs.se2.project.hellocar.entities.Car;
+import org.hbrs.se2.project.collHbrs.dtos.UserDTO;
+import org.hbrs.se2.project.collHbrs.dtos.CarDTO;
+import org.hbrs.se2.project.collHbrs.entities.Car;
 public class CarFactory {
     public static Car createCar(CarDTO carDTO, UserDTO userDTO) {
         // Erzeuge ein Car-Entity; die ID wird intern hochgezählt (@GeneratedValue auf ID)

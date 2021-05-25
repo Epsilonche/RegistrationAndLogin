@@ -1,8 +1,8 @@
-package org.hbrs.se2.project.hellocar.control;
+package org.hbrs.se2.project.collHbrs.control;
 
-import org.hbrs.se2.project.hellocar.dtos.RolleDTO;
-import org.hbrs.se2.project.hellocar.dtos.UserDTO;
-import org.hbrs.se2.project.hellocar.util.Globals;
+import org.hbrs.se2.project.collHbrs.dtos.RolleDTO;
+import org.hbrs.se2.project.collHbrs.dtos.UserDTO;
+import org.hbrs.se2.project.collHbrs.util.Globals;
 
 import java.util.Arrays;
 import java.util.List;

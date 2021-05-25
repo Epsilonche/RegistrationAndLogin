@@ -1,4 +1,4 @@
-package org.hbrs.se2.project.hellocar.control.exception;
+package org.hbrs.se2.project.collHbrs.control.exception;
 
 public class DatabaseUserException extends Exception {
     private String reason = null;
