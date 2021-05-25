@@ -1,13 +1,17 @@
 package org.hbrs.se2.project.collHbrs.views;
 
+import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 //import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
+import com.vaadin.flow.router.RouterLink;
 import org.hbrs.se2.project.collHbrs.control.LoginControl;
 import org.hbrs.se2.project.collHbrs.control.exception.DatabaseUserException;
 import org.hbrs.se2.project.collHbrs.dtos.UserDTO;
@@ -52,10 +56,11 @@ public class MainView extends VerticalLayout {
         });
 
         add(component);
-
+        add(new RouterLink("Registrieren",RegistrationView.class));
 
         this.setAlignItems( Alignment.CENTER );
     }
+
 
     private void grabAndSetUserIntoSession() {
         UserDTO userDTO = loginControl.getCurrentUser();
@@ -64,9 +69,8 @@ public class MainView extends VerticalLayout {
 
 
     private void navigateToMainPage() {
-        // Navigation zur Startseite, hier auf die Teil-Komponente Show-Cars.
-        // Die anzuzeigende Teil-Komponente kann man noch individualisieren, je nach Rolle,
-        // die ein Benutzer besitzt
+        // Navigation zur Startseite, hier auf die Profilseite.
+        // Profilseite erstellen mit Route /profile
         UI.getCurrent().navigate(Globals.Pages.PROFILE_VIEW);
 
     }
