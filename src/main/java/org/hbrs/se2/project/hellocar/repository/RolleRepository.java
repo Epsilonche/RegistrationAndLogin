@@ -2,7 +2,7 @@ package org.hbrs.se2.project.hellocar.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
-
+import org.hbrs.se2.project.hellocar.entities.Rolle;
 @Component
 /**
  * JPA-Repository für die Abfrage der Rollen von registrierten User. Die Bezeichnung einer Methode

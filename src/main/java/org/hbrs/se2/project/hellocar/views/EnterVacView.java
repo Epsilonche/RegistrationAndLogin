@@ -19,6 +19,8 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.hbrs.se2.project.hellocar.dtos.UserDTO;
 import org.hbrs.se2.project.hellocar.util.Globals;
+import org.hbrs.se2.project.hellocar.dtos.impl.CarDTOImpl;
+import org.hbrs.se2.project.hellocar.control.ManageCarControl;
 
 @Route(value = Globals.Pages.ENTER_CAR, layout = AppView.class)
 @PageTitle("Enter Vacancy")

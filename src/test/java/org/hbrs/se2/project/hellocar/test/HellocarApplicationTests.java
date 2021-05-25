@@ -3,7 +3,9 @@ package org.hbrs.se2.project.hellocar.test;
 import org.hbrs.se2.project.hellocar.dao.UserDAO;
 import org.hbrs.se2.project.hellocar.dtos.RolleDTO;
 import org.hbrs.se2.project.hellocar.dtos.UserDTO;
+import org.hbrs.se2.project.hellocar.entities.Rolle;
 import org.hbrs.se2.project.hellocar.entities.User;
+import org.hbrs.se2.project.hellocar.repository.CarRepository;
 import org.hbrs.se2.project.hellocar.repository.RolleRepository;
 import org.hbrs.se2.project.hellocar.repository.UserRepository;
 import org.hbrs.se2.project.hellocar.services.db.exceptions.DatabaseLayerException;
@@ -36,7 +38,7 @@ class HellocarApplicationTests {
         Optional<User> wrapper = userRepository.findById(1);
         if ( wrapper.isPresent() ) {
             User user = wrapper.get();
-            System.out.println("User: " + user.getLastName());
+            System.out.println("User: " + user.getLast_name());
             List<Rolle> list = user.getRoles();
             assertEquals(2 , list.size() , "Anzahl der Rollen");
             Rolle rolle1 = list.get(0);
@@ -74,7 +76,7 @@ class HellocarApplicationTests {
         Optional<User> wrapper = userRepository.findById(1);
         if ( wrapper.isPresent() ) {
             User user = wrapper.get();
-            assertEquals("Alda" , user.getLastName());
+            assertEquals("Alda" , user.getLast_name());
         }
     }
 
