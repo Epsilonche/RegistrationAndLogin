@@ -4,9 +4,7 @@ import org.hbrs.se2.project.hellocar.control.factories.CarFactory;
 import org.hbrs.se2.project.hellocar.dtos.CarDTO;
 import org.hbrs.se2.project.hellocar.dtos.UserDTO;
 import org.hbrs.se2.project.hellocar.entities.Car;
-import org.hbrs.se2.project.hellocar.entities.User;
 import org.hbrs.se2.project.hellocar.repository.CarRepository;
-import org.hbrs.se2.project.hellocar.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
