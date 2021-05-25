@@ -19,7 +19,7 @@ public class RegistrationControl {
         if(dataCheck.isResult()){
             UserFactory userFactory = new UserFactory();
             User newUser = userFactory.createUser(userDTO);
-            UserDB.saveUser(newUser);
+            UserDB.saveUser(newUser);//todo implement method saveUser
             dataCheck.setSaved(true);
         }
         return dataCheck;

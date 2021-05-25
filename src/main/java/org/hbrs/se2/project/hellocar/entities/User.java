@@ -25,6 +25,15 @@ public class User {
     private int     security_question_id;
     private int     company_branch_id;
 
+    //username für das Login und Registrierung von Othman erstellt
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     @Id
     @GeneratedValue

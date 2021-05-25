@@ -23,7 +23,6 @@ public class Company {
     public int getId() {
         return company_id;
     }
-
     public void setId(int company_id) {
         this.company_id = company_id;
     }
@@ -43,7 +42,6 @@ public class Company {
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -53,7 +51,6 @@ public class Company {
     public String getRoles() {
         return roles;
     }
-
     public void setRoles(String roles) {
         this.roles = roles;
     }

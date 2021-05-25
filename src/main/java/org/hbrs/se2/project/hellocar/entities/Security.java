@@ -12,7 +12,6 @@ public class Security {
     private int security_question_id;
     private String security_question;
 
-
     @Id
     @GeneratedValue
     @Column(name = "security_question_id")

@@ -9,6 +9,10 @@ public class UserFactory {
         newUser.setId(++current_id);
         newUser.setUsername(userDTO.getUsername());
         newUser.setPassword(userDTO.getPassword());
+        newUser.setFirst_name(userDTO.getFirst_name());
+        newUser.setLast_name(userDTO.getLast_name());
+        newUser.setEmail(userDTO.getEmail());
+
 
         return newUser;
     }

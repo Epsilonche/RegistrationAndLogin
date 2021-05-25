@@ -23,9 +23,12 @@ import org.hbrs.se2.project.hellocar.control.RegistrationControl;
 @Route(value = "register")
 @PageTitle("Registration")
 public class RegistrationView extends Div{
-    private TextField username = new TextField("Username");
-    private TextField password = new TextField("Password");
-
+    private TextField username = new TextField("Username*");
+    private TextField password = new TextField("Password*");
+    private TextField first_name = new TextField("First name");
+    private TextField last_name = new TextField("Last name");
+    private TextField email = new TextField("email address");
+    private TextField date_of_birth = new TextField("Date of birth");//todo change type of date_of_birth
     private Button signUp = new Button("Sign up");
     private Binder<UserDTO> binder = new Binder(UserDTO.class);
 
@@ -66,7 +69,7 @@ public class RegistrationView extends Div{
 
     private Component createFormLayout() {
         FormLayout formLayout = new FormLayout();
-        formLayout.add(username, password);
+        formLayout.add(first_name,last_name,date_of_birth,username,email,password);
         return formLayout;
     }
 
