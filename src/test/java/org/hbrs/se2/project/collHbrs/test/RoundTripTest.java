@@ -1,7 +1,7 @@
-package org.hbrs.se2.project.hellocar.test;
+package org.hbrs.se2.project.collHbrs.test;
 
-import org.hbrs.se2.project.hellocar.entities.User;
-import org.hbrs.se2.project.hellocar.repository.UserRepository;
+import org.hbrs.se2.project.collHbrs.entities.User;
+import org.hbrs.se2.project.collHbrs.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

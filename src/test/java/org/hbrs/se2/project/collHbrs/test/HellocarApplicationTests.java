@@ -1,15 +1,15 @@
-package org.hbrs.se2.project.hellocar.test;
+package org.hbrs.se2.project.collHbrs.test;
 
-import org.hbrs.se2.project.hellocar.dao.UserDAO;
-import org.hbrs.se2.project.hellocar.dtos.RolleDTO;
-import org.hbrs.se2.project.hellocar.dtos.UserDTO;
-import org.hbrs.se2.project.hellocar.entities.Rolle;
-import org.hbrs.se2.project.hellocar.entities.User;
-import org.hbrs.se2.project.hellocar.repository.CarRepository;
-import org.hbrs.se2.project.hellocar.repository.RolleRepository;
-import org.hbrs.se2.project.hellocar.repository.UserRepository;
-import org.hbrs.se2.project.hellocar.services.db.exceptions.DatabaseLayerException;
-import org.hbrs.se2.project.hellocar.util.Utils;
+import org.hbrs.se2.project.collHbrs.dao.UserDAO;
+import org.hbrs.se2.project.collHbrs.dtos.RolleDTO;
+import org.hbrs.se2.project.collHbrs.dtos.UserDTO;
+import org.hbrs.se2.project.collHbrs.entities.Rolle;
+import org.hbrs.se2.project.collHbrs.entities.User;
+import org.hbrs.se2.project.collHbrs.repository.CarRepository;
+import org.hbrs.se2.project.collHbrs.repository.RolleRepository;
+import org.hbrs.se2.project.collHbrs.repository.UserRepository;
+import org.hbrs.se2.project.collHbrs.services.db.exceptions.DatabaseLayerException;
+import org.hbrs.se2.project.collHbrs.util.Utils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
