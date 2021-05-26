@@ -12,10 +12,10 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.apache.commons.lang3.StringUtils;
-import org.hbrs.se2.project.hellocar.util.Globals;
-import org.hbrs.se2.project.hellocar.dtos.CarDTO;
-import java.util.List;
-import org.hbrs.se2.project.hellocar.control.ManageCarControl;
+//import org.hbrs.se2.project.hellocar.util.Globals;
+//import org.hbrs.se2.project.hellocar.dtos.CarDTO;
+//import java.util.List;
+//import org.hbrs.se2.project.hellocar.control.ManageCarControl;
 
 
 /**
@@ -25,11 +25,11 @@ import org.hbrs.se2.project.hellocar.control.ManageCarControl;
  * https://vaadin.com/components/vaadin-grid/java-examples/header-and-footer
  *
  */
-@Route(value = Globals.Pages.SHOW_CARS, layout = AppView.class)
-@PageTitle("Show Cars")
-@CssImport("./styles/views/showcars/show-cars-view.css")
+//@Route(value = Globals.Pages.SHOW_CARS, layout = AppView.class)
+//@PageTitle("Show Cars")
+//@CssImport("./styles/views/showcars/show-cars-view.css")
 public class ShowCarsView extends Div  {
-
+/*
     private List<CarDTO> personList;
 
     public ShowCarsView(ManageCarControl carControl ) {
@@ -97,5 +97,5 @@ public class ShowCarsView extends Div  {
         return new H3("Search for Cars");
     }
 
-
+*/
 };

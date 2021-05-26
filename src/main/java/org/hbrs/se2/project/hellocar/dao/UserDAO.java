@@ -1,11 +1,10 @@
 package org.hbrs.se2.project.hellocar.dao;
 
-import org.hbrs.se2.project.hellocar.dtos.RolleDTO;
-import org.hbrs.se2.project.hellocar.dtos.UserDTO;
-import org.hbrs.se2.project.hellocar.dtos.impl.UserDTOImpl;
-import org.hbrs.se2.project.hellocar.services.db.JDBCConnection;
-import org.hbrs.se2.project.hellocar.services.db.exceptions.DatabaseLayerException;
-import org.hbrs.se2.project.hellocar.util.Globals;
+// import org.hbrs.se2.project.hellocar.dtos.RolleDTO;
+// import org.hbrs.se2.project.hellocar.dtos.UserDTO;
+// import org.hbrs.se2.project.hellocar.services.db.JDBCConnection;
+// import org.hbrs.se2.project.hellocar.services.db.exceptions.DatabaseLayerException;
+// import org.hbrs.se2.project.hellocar.util.Globals;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +12,7 @@ import java.sql.Statement;
 import java.util.List;
 
 public class UserDAO {
-
+/*
     public UserDTO findUserByUseridAndPassword(String id, String password) throws DatabaseLayerException {
         ResultSet set = null;
 
@@ -27,9 +26,9 @@ public class UserDAO {
 
             set = statement.executeQuery(
                     "SELECT * "
-                       + "FROM carlook.user "
-                       + "WHERE carlook.user.userid = \'" + id + "\'"
-                         + " AND carlook.user.password = \'" + password + "\'");
+                       + "FROM 53Programming.user "
+                       + "WHERE 53Programming.user.username = \'" + id + "\'"
+                         + " AND 53Programming.user.password = \'" + password + "\'");
 
         } catch (SQLException ex) {
             DatabaseLayerException e = new DatabaseLayerException("Fehler im SQL-Befehl!");
@@ -78,5 +77,5 @@ public class UserDAO {
         }
     }
 
-
+*/
 }

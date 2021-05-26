@@ -7,10 +7,11 @@ import java.util.Objects;
 import javax.persistence.GeneratedValue;
 
 @Entity
-@Table( name ="User" , schema = "53Programming" )
+@Table( name ="user" , schema = "53Programming" )
 public class User {
     private int     user_id;
     private int     user_type_id;
+    private String  username;
     private Date    date_of_birth;
     private String  street;
     private String  house_number;
@@ -45,6 +46,16 @@ public class User {
 
     public void setUser_type_id(int user_type_id) {
         this.user_type_id = user_type_id;
+    }
+
+    @Basic
+    @Column(name = "username")
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Basic
@@ -185,6 +196,7 @@ public class User {
         User user = (User) o;
         return user_id == user.user_id &&
                 Objects.equals(user_type_id, user.user_type_id) &&
+                Objects.equals(username, user.username) &&
                 Objects.equals(street, user.street) &&
                 Objects.equals(house_number, user.house_number) &&
                 Objects.equals(postal_code, user.postal_code) &&
@@ -201,7 +213,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(user_id, user_type_id, street, house_number, postal_code, city, country,security_question_id,security_answer,email,
+        return Objects.hash(user_id, username, user_type_id, street, house_number, postal_code, city, country,security_question_id,security_answer,email,
                 date_of_birth,password,first_name,last_name);
     }
 }

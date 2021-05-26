@@ -6,7 +6,7 @@ import java.util.Objects;
 import javax.persistence.GeneratedValue;
 
 @Entity
-@Table( name ="Student" , schema = "53Programming" )
+@Table( name ="student" , schema = "53Programming" )
 public class Student {
     private int     student_id;
     private int     matrikel_nr;
