@@ -1,19 +1,35 @@
 package org.hbrs.se2.project.hellocar.control;
 import org.hbrs.se2.project.hellocar.control.factories.UserFactory;
 import org.hbrs.se2.project.hellocar.dtos.impl.UserDTO;
+import org.hbrs.se2.project.hellocar.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 @Component
 public class RegistrationControl {
+
+    @Autowired
+    private UserRepository repository;
+
     public RegistrationControl() {
     }
+
+
+
+
     public RegistrationResult createUser(UserDTO userDTO){
 
         RegistrationResult dataCheck = checkRegistrationData(userDTO);
         if(dataCheck.isResult()){
             UserFactory userFactory = new UserFactory();
             User newUser = userFactory.createUser(userDTO);
-            UserDB.saveUser(newUser);
+
+
+            try{
+                this.repository.save(newUser);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
             dataCheck.setSaved(true);
         }
         return dataCheck;
@@ -35,5 +51,6 @@ public class RegistrationControl {
         result.setResult(true);
         return result;
     }
+
 
 }

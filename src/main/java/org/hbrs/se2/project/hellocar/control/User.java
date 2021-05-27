@@ -2,10 +2,21 @@ package org.hbrs.se2.project.hellocar.control;
 
 import javax.persistence.*;
 
+@Entity
+@Table( name ="user" , schema = "test_schema" )
 
 public class User {
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     private int id;
+
+    @Basic
+    @Column(name = "username")
     private String username;
+
+    @Basic
+    @Column(name = "password")
     private String password;
 
     public User() {
