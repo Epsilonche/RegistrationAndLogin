@@ -3,15 +3,20 @@ package org.hbrs.se2.project.hellocar.views;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.provider.ListDataProvider;
+import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import org.apache.commons.lang3.StringUtils;
 import org.hbrs.se2.project.hellocar.control.RegistrationControl;
 import org.hbrs.se2.project.hellocar.control.RegistrationResult;
 import org.hbrs.se2.project.hellocar.control.ShowUserControl;
-import org.hbrs.se2.project.hellocar.dtos.impl.UserDTO;
+import org.hbrs.se2.project.hellocar.entities.User;
+import org.hbrs.se2.project.hellocar.dtos.UserDTO;
 import org.hbrs.se2.project.hellocar.util.Globals;
 
 import java.util.List;
@@ -25,11 +30,9 @@ public class ShowUsersView extends Div {
         addClassName("show-users-view");
 
         // Auslesen alle abgespeicherten Autos aus der DB (über das Control)
-        try {
-            personList = userControl.readAllUsers();
-        }catch(Exception e ){
-            e.printStackTrace();
-        }
+
+        personList = userControl.readAllUsers();
+
         // Titel überhalb der Tabelle
         add(this.createTitle());
 
@@ -48,8 +51,33 @@ public class ShowUsersView extends Div {
         Grid.Column<UserDTO> brandColumn = grid
                 .addColumn(UserDTO::getUsername).setHeader("Username");
         Grid.Column<UserDTO> modelColumn = grid.addColumn(UserDTO::getPassword)
-                .setHeader("Password");
+                .setHeader("Model");
 
+        HeaderRow filterRow = grid.appendHeaderRow();
+
+        // First filter
+        TextField modelField = new TextField();
+        modelField.addValueChangeListener(event -> dataProvider.addFilter(
+                user -> StringUtils.containsIgnoreCase(user.getUsername(),
+                        modelField.getValue())));
+
+        modelField.setValueChangeMode(ValueChangeMode.EAGER);
+
+        filterRow.getCell(modelColumn).setComponent(modelField);
+        modelField.setSizeFull();
+        modelField.setPlaceholder("Filter");
+
+        // Second filter
+        TextField brandField = new TextField();
+        brandField.addValueChangeListener(event -> dataProvider
+                .addFilter(user -> StringUtils.containsIgnoreCase(
+                        String.valueOf(user.getPassword()), brandField.getValue())));
+
+        brandField.setValueChangeMode(ValueChangeMode.EAGER);
+
+        filterRow.getCell(brandColumn).setComponent(brandField);
+        brandField.setSizeFull();
+        brandField.setPlaceholder("Filter");
 
         return grid;
     }

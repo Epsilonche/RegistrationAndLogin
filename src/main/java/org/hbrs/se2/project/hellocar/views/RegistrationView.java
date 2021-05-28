@@ -18,16 +18,23 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.hbrs.se2.project.hellocar.control.RegistrationResult;
-import org.hbrs.se2.project.hellocar.dtos.impl.UserDTO;
+import org.hbrs.se2.project.hellocar.dtos.UserDTO;
 import org.hbrs.se2.project.hellocar.control.RegistrationControl;
+import org.hbrs.se2.project.hellocar.dtos.impl.UserDTOImpl;
+
 @Route(value = "register")
 @PageTitle("Registration")
 public class RegistrationView extends Div{
+
+    private TextField first_name = new TextField("First Name");
+    private TextField last_name = new TextField("Last Name");
+    private TextField email= new TextField("E-Mail");
     private TextField username = new TextField("Username");
     private TextField password = new TextField("Password");
 
+
     private Button signUp = new Button("Sign up");
-    private Binder<UserDTO> binder = new Binder(UserDTO.class);
+    private Binder<UserDTOImpl> binder = new Binder(UserDTOImpl.class);
 
     public RegistrationView(RegistrationControl registrationService){
         addClassName("registration");
@@ -47,7 +54,7 @@ public class RegistrationView extends Div{
 
             if (result.isSaved() == true) {
                 Notification.show("registration successful.");
-                clearForm();
+                //clearForm();
             }
             else{
                 Notification.show(result.getResultDescription());
@@ -58,7 +65,7 @@ public class RegistrationView extends Div{
 
     }
     private void clearForm() {
-        binder.setBean(new UserDTO());
+        binder.setBean(new UserDTOImpl());
     }
     private Component createTitle() {
         return new H3("Registration form");
@@ -66,7 +73,7 @@ public class RegistrationView extends Div{
 
     private Component createFormLayout() {
         FormLayout formLayout = new FormLayout();
-        formLayout.add(username, password);
+        formLayout.add(first_name,last_name,email,username, password);
         return formLayout;
     }
 

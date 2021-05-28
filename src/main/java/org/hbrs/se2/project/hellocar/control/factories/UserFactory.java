@@ -1,14 +1,19 @@
 package org.hbrs.se2.project.hellocar.control.factories;
-import org.hbrs.se2.project.hellocar.dtos.impl.UserDTO;
-import org.hbrs.se2.project.hellocar.control.User;
+import org.hbrs.se2.project.hellocar.dtos.UserDTO;
+import org.hbrs.se2.project.hellocar.entities.User;
 
 public class UserFactory {
-    static int current_id=0;
+
     public User createUser(UserDTO userDTO){
         User newUser = new User();
-        newUser.setId(++current_id);
+
+        newUser.setFirstName(userDTO.getFirstName());
+        newUser.setLastName(userDTO.getLastName());
+        newUser.seteMail(userDTO.geteMail());
         newUser.setUsername(userDTO.getUsername());
         newUser.setPassword(userDTO.getPassword());
+
+        newUser.setUserTypeId(1);//TODO: set User Type Id to the appropriate type id ( What is UsertypeId?)
 
         return newUser;
     }

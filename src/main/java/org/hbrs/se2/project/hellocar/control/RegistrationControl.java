@@ -1,9 +1,10 @@
 package org.hbrs.se2.project.hellocar.control;
 import org.hbrs.se2.project.hellocar.control.factories.UserFactory;
-import org.hbrs.se2.project.hellocar.dtos.impl.UserDTO;
+import org.hbrs.se2.project.hellocar.dtos.UserDTO;
 import org.hbrs.se2.project.hellocar.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.hbrs.se2.project.hellocar.entities.User;
 
 @Component
 public class RegistrationControl {
@@ -23,8 +24,6 @@ public class RegistrationControl {
         if(dataCheck.isResult()){
             UserFactory userFactory = new UserFactory();
             User newUser = userFactory.createUser(userDTO);
-
-
             try{
                 this.repository.save(newUser);
             }catch(Exception e){
@@ -35,6 +34,7 @@ public class RegistrationControl {
         return dataCheck;
     }
     private RegistrationResult checkRegistrationData(UserDTO userDTO){
+        //TODO muss erweitert werden
         RegistrationResult result = new RegistrationResult();
         if(userDTO.getUsername().isEmpty() || userDTO.getPassword().isEmpty() ){
             result.setResultDescription("a mandatory field is empty");
