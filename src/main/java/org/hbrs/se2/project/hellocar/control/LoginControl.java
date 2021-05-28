@@ -1,4 +1,4 @@
-/*package org.hbrs.se2.project.hellocar.control;
+package org.hbrs.se2.project.hellocar.control;
 
 import org.hbrs.se2.project.hellocar.control.exception.DatabaseUserException;
 import org.hbrs.se2.project.hellocar.dtos.UserDTO;
@@ -36,7 +36,7 @@ public class LoginControl {
     private UserDTO getUserWithJPA( String username , String password ) throws DatabaseUserException {
         UserDTO userTmp;
         try {
-            userTmp = repository.findUserByIdAndPassword(username, password);
+            userTmp = repository.findUserByUsernameAndPassword(username, password);
         } catch ( org.springframework.dao.DataAccessResourceFailureException e ) {
 
             // Analyse und Umwandlung der technischen Errors in 'lesbaren' Darstellungen
@@ -47,4 +47,4 @@ public class LoginControl {
     }
 
 }
-*/
+
