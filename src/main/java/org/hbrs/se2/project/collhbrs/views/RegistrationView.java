@@ -8,6 +8,7 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
@@ -24,7 +25,7 @@ public class RegistrationView extends Div{
     private TextField last_name = new TextField("Last Name");
     private TextField email= new TextField("E-Mail");
     private TextField username = new TextField("Username");
-    private TextField password = new TextField("Password");
+    private PasswordField password = new PasswordField("Password");
 
 
     private Button signUp = new Button("Sign up");
