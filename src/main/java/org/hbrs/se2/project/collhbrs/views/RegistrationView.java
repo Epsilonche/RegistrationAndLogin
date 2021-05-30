@@ -25,7 +25,7 @@ public class RegistrationView extends Div{
     private TextField last_name = new TextField("Last Name");
     private TextField email= new TextField("E-Mail");
     private TextField username = new TextField("Username");
-    private PasswordField password = new PasswordField("Password");
+    private PasswordField password = new PasswordField("Password"); //hidden password
 
 
     private Button signUp = new Button("Sign up");
