@@ -12,7 +12,7 @@ public class RegistrationControl {
 
     @Autowired
     private UserRepository repository;
-
+    private UserFactory userFactory = new UserFactory();
     public RegistrationControl() {
     }
 
@@ -23,7 +23,6 @@ public class RegistrationControl {
 
         RegistrationResult dataCheck = checkRegistrationData(userDTO);
         if(dataCheck.isResult()){
-            UserFactory userFactory = new UserFactory();
             User newUser = userFactory.createUser(userDTO);
             try{
                 this.repository.save(newUser);
