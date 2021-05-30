@@ -48,7 +48,7 @@ public class RegistrationView extends Div{
 
             if (result.isSaved() == true) {
                 Notification.show("registration successful.");
-                //clearForm();
+                clearForm();
             }
             else{
                 Notification.show(result.getResultDescription());

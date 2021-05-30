@@ -46,7 +46,7 @@ public class MainView extends VerticalLayout {
             }
             if (isAuthenticated) {
                 grabAndSetUserIntoSession();
-                Notification.show("registration successful.");//To test if the Login works without a MainPage
+                Notification.show("login successful.");//To test if the Login works without a MainPage
                 //navigateToMainPage(); //Use when MainPage is implemented
 
             } else {
