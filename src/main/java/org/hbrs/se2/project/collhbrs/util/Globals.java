@@ -4,13 +4,13 @@ public class Globals {
     public static String CURRENT_USER = "current_User";
 
     public static class Pages {
-        public static final String SHOW_CARS = "show";
-        public static final String ENTER_CAR = "enter";
 
-        public static final String PROFILE_VIEW = "enter";
+        public static final String PROFILE_VIEW = "profilview";
         public static final String LOGIN_VIEW = "login";
         public static final String MAIN_VIEW = "";
         public static final String REGISTRATION_VIEW = "register";
+        public static final String PROFILE_EDIT = "profiledit";
+        public static final String PROFILE_DELETE = "delete";
     }
 
     public static class Roles {
