@@ -46,7 +46,7 @@ public class ShowUsersView extends Div {
         Grid.Column<UserDTO> brandColumn = grid
                 .addColumn(UserDTO::getUsername).setHeader("Username");
         Grid.Column<UserDTO> modelColumn = grid.addColumn(UserDTO::getPassword)
-                .setHeader("Model");
+                .setHeader("Password");
 
         HeaderRow filterRow = grid.appendHeaderRow();
 
