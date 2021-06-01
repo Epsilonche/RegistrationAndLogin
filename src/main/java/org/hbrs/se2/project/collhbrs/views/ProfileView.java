@@ -19,11 +19,10 @@ import com.vaadin.flow.router.RouteAlias;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 import org.hbrs.se2.project.collhbrs.util.Globals;
 
-@Route(value = "" )
-@RouteAlias(value = "profilview")
+@Route(value = "profile" )
 @PageTitle("Mein Profil")
 
-public class ProfilView extends Div {
+public class ProfileView extends Div {
 
     private TextField first_name = new TextField("Vorname");
     private TextField last_name = new TextField("Name");
@@ -45,7 +44,7 @@ public class ProfilView extends Div {
     private Button edit = new Button("Profil bearbeiten");
     private Button delete = new Button ("Profil löschen");
 
-    public ProfilView() {
+    public ProfileView() {
         addClassName("person-form-view");
         add(createTitle());
         add(createFormLayout());

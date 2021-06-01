@@ -6,9 +6,12 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dialog.Dialog;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.login.LoginForm;
 //import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
@@ -79,8 +82,19 @@ public class MainView extends VerticalLayout {
     }
 
     private Component createTitle() {
-        return new H3(" Willkommen auf der Kollaborationsplattform Coll@HBRS!");
+        VerticalLayout layout = new VerticalLayout();
+        HorizontalLayout logoLayout = new HorizontalLayout();
+        // Hinzufügen des Logos
+        logoLayout.setId("logo");
+        logoLayout.setAlignItems(FlexComponent.Alignment.CENTER);
+        logoLayout.add(new Image("images/logo.png", "53Programming logo"));
+        logoLayout.add(new H1("53 Programming"));
+        // Hinzufügen des Menus inklusive der Tabs
+
+        return logoLayout;
+
     }
+
     private void grabAndSetUserIntoSession() {
         UserDTO userDTO = loginControl.getCurrentUser();
         UI.getCurrent().getSession().setAttribute( Globals.CURRENT_USER , userDTO );
