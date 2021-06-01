@@ -1,27 +1,20 @@
 package org.hbrs.se2.project.collhbrs.entities;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class Student {
+    private Integer matrikelNr;
+    private String university;
+    private String degreeCourse;
+    private Integer applicationId;
     private int studentId;
 
-    @Id
-    @javax.persistence.Column(name = "student_id")
-    public int getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
-    }
-
-    private Integer matrikelNr;
-
     @Basic
-    @javax.persistence.Column(name = "matrikel_nr")
+    @Column(name = "matrikel_nr")
     public Integer getMatrikelNr() {
         return matrikelNr;
     }
@@ -30,10 +23,8 @@ public class Student {
         this.matrikelNr = matrikelNr;
     }
 
-    private String university;
-
     @Basic
-    @javax.persistence.Column(name = "university")
+    @Column(name = "university")
     public String getUniversity() {
         return university;
     }
@@ -42,10 +33,8 @@ public class Student {
         this.university = university;
     }
 
-    private String degreeCourse;
-
     @Basic
-    @javax.persistence.Column(name = "degree_course")
+    @Column(name = "degree_course")
     public String getDegreeCourse() {
         return degreeCourse;
     }
@@ -54,16 +43,24 @@ public class Student {
         this.degreeCourse = degreeCourse;
     }
 
-    private String skills;
-
     @Basic
-    @javax.persistence.Column(name = "skills")
-    public String getSkills() {
-        return skills;
+    @Column(name = "application_id")
+    public Integer getApplicationId() {
+        return applicationId;
     }
 
-    public void setSkills(String skills) {
-        this.skills = skills;
+    public void setApplicationId(Integer applicationId) {
+        this.applicationId = applicationId;
+    }
+
+    @Id
+    @Column(name = "student_id")
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
     @Override
@@ -78,18 +75,19 @@ public class Student {
         if (university != null ? !university.equals(student.university) : student.university != null) return false;
         if (degreeCourse != null ? !degreeCourse.equals(student.degreeCourse) : student.degreeCourse != null)
             return false;
-        if (skills != null ? !skills.equals(student.skills) : student.skills != null) return false;
+        if (applicationId != null ? !applicationId.equals(student.applicationId) : student.applicationId != null)
+            return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = studentId;
-        result = 31 * result + (matrikelNr != null ? matrikelNr.hashCode() : 0);
+        int result = matrikelNr != null ? matrikelNr.hashCode() : 0;
         result = 31 * result + (university != null ? university.hashCode() : 0);
         result = 31 * result + (degreeCourse != null ? degreeCourse.hashCode() : 0);
-        result = 31 * result + (skills != null ? skills.hashCode() : 0);
+        result = 31 * result + (applicationId != null ? applicationId.hashCode() : 0);
+        result = 31 * result + studentId;
         return result;
     }
 }

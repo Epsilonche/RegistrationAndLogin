@@ -7,8 +7,6 @@ import static javax.persistence.GenerationType.*;
 @Entity
 @Table( name ="user" , schema = "collhbrs" )
 public class User {
-    private int userId;
-    private int userTypeId;
     private String securityAnswer;
     private String country;
     private String firstName;
@@ -16,6 +14,8 @@ public class User {
     private String eMail;
     private String password;
     private String username;
+    private String userTyp;
+    private int userId;
 
     @Id
     @GeneratedValue(
@@ -29,16 +29,6 @@ public class User {
 
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    @Basic
-    @Column(name = "user_type_id")
-    public int getUserTypeId() {
-        return userTypeId;
-    }
-
-    public void setUserTypeId(int userTypeId) {
-        this.userTypeId = userTypeId;
     }
 
     @Basic
@@ -119,7 +109,6 @@ public class User {
         User user = (User) o;
 
         if (userId != user.userId) return false;
-        if (userTypeId != user.userTypeId) return false;
         if (securityAnswer != null ? !securityAnswer.equals(user.securityAnswer) : user.securityAnswer != null)
             return false;
         if (country != null ? !country.equals(user.country) : user.country != null) return false;
@@ -128,21 +117,33 @@ public class User {
         if (eMail != null ? !eMail.equals(user.eMail) : user.eMail != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (username != null ? !username.equals(user.username) : user.username != null) return false;
+        if (userTyp != null ? !userTyp.equals(user.userTyp) : user.userTyp != null) return false;
 
         return true;
     }
 
+
     @Override
     public int hashCode() {
-        int result = userId;
-        result = 31 * result + userTypeId;
-        result = 31 * result + (securityAnswer != null ? securityAnswer.hashCode() : 0);
+        int result = securityAnswer != null ? securityAnswer.hashCode() : 0;
         result = 31 * result + (country != null ? country.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (eMail != null ? eMail.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (userTyp != null ? userTyp.hashCode() : 0);
+        result = 31 * result + userId;
         return result;
+    }
+
+    @Basic
+    @Column(name = "user_typ")
+    public String getUserTyp() {
+        return userTyp;
+    }
+
+    public void setUserTyp(String userTyp) {
+        this.userTyp = userTyp;
     }
 }

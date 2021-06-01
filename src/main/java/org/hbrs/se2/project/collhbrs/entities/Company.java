@@ -1,27 +1,20 @@
 package org.hbrs.se2.project.collhbrs.entities;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class Company {
-    private int entrepeneurId;
-
-    @Id
-    @javax.persistence.Column(name = "entrepeneur_id")
-    public int getEntrepeneurId() {
-        return entrepeneurId;
-    }
-
-    public void setEntrepeneurId(int entrepeneurId) {
-        this.entrepeneurId = entrepeneurId;
-    }
-
     private String title;
+    private String roles;
+    private String company;
+    private String description;
+    private int companyId;
 
     @Basic
-    @javax.persistence.Column(name = "title")
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -30,10 +23,8 @@ public class Company {
         this.title = title;
     }
 
-    private String roles;
-
     @Basic
-    @javax.persistence.Column(name = "roles")
+    @Column(name = "roles")
     public String getRoles() {
         return roles;
     }
@@ -42,10 +33,8 @@ public class Company {
         this.roles = roles;
     }
 
-    private String company;
-
     @Basic
-    @javax.persistence.Column(name = "company")
+    @Column(name = "company")
     public String getCompany() {
         return company;
     }
@@ -54,16 +43,24 @@ public class Company {
         this.company = company;
     }
 
-    private String description;
-
     @Basic
-    @javax.persistence.Column(name = "description")
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Id
+    @Column(name = "company_id")
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
     }
 
     @Override
@@ -73,7 +70,7 @@ public class Company {
 
         Company company1 = (Company) o;
 
-        if (entrepeneurId != company1.entrepeneurId) return false;
+        if (companyId != company1.companyId) return false;
         if (title != null ? !title.equals(company1.title) : company1.title != null) return false;
         if (roles != null ? !roles.equals(company1.roles) : company1.roles != null) return false;
         if (company != null ? !company.equals(company1.company) : company1.company != null) return false;
@@ -85,11 +82,11 @@ public class Company {
 
     @Override
     public int hashCode() {
-        int result = entrepeneurId;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
+        int result = title != null ? title.hashCode() : 0;
         result = 31 * result + (roles != null ? roles.hashCode() : 0);
         result = 31 * result + (company != null ? company.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + companyId;
         return result;
     }
 }
