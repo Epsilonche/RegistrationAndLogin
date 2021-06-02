@@ -87,8 +87,8 @@ public class MainView extends VerticalLayout {
         // Hinzufügen des Logos
         logoLayout.setId("logo");
         logoLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-        logoLayout.add(new Image("images/logo.png", "53Programming logo"));
-        logoLayout.add(new H1("53 Programming"));
+        logoLayout.add(new Image("images/logo_53Prog_100px.png", "53Programming logo"));
+        logoLayout.add(new H1("Coll@Hbrs Platform"));
         // Hinzufügen des Menus inklusive der Tabs
 
         return logoLayout;

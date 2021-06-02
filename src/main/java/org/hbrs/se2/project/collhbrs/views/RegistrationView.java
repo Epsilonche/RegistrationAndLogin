@@ -18,17 +18,17 @@ import org.hbrs.se2.project.collhbrs.control.RegistrationControl;
 import org.hbrs.se2.project.collhbrs.dtos.impl.UserDTOImpl;
 
 @Route(value = "register")
-@PageTitle("Registration")
+@PageTitle("Registrierung")
 public class RegistrationView extends Div{
 
-    private TextField first_name = new TextField("First Name");
-    private TextField last_name = new TextField("Last Name");
+    private TextField first_name = new TextField("Vorname");
+    private TextField last_name = new TextField("Nachname");
     private TextField email= new TextField("E-Mail");
-    private TextField username = new TextField("Username");
-    private PasswordField password = new PasswordField("Password"); //hidden password
+    private TextField username = new TextField("Benutzername");
+    private PasswordField password = new PasswordField("Passwort"); //hidden password
 
 
-    private Button signUp = new Button("Sign up");
+    private Button signUp = new Button("registrieren");
     private Binder<UserDTOImpl> binder = new Binder(UserDTOImpl.class);
 
     public RegistrationView(RegistrationControl registrationService){
@@ -48,7 +48,7 @@ public class RegistrationView extends Div{
             RegistrationResult result =  registrationService.createUser(binder.getBean());
 
             if (result.isSaved() == true) {
-                Notification.show("registration successful.");
+                Notification.show("Erfolgreich registriert");
                 clearForm();
             }
             else{
@@ -63,7 +63,7 @@ public class RegistrationView extends Div{
         binder.setBean(new UserDTOImpl());
     }
     private Component createTitle() {
-        return new H3("Registration form");
+        return new H3("Registrierung:");
     }
 
     private Component createFormLayout() {
