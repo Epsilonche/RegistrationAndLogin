@@ -13,7 +13,7 @@
     <artifactId>programming</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>53Programming</name>
-    <description>Demo project for SE-2</description>
+    <description>53 Programming: CollHbrs Plattform </description>
     <packaging>war</packaging>
     
     <properties>

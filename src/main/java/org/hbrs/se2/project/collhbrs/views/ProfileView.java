@@ -16,6 +16,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouteAlias;
+import org.hbrs.se2.project.collhbrs.control.ProfileManager;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 import org.hbrs.se2.project.collhbrs.util.Globals;
 
@@ -52,15 +53,21 @@ public class ProfileView extends Div {
     private Button edit = new Button("Profil bearbeiten");
     private Button delete = new Button ("Profil löschen");
 
-    public ProfileView() {
+    private Button create_profile = new Button("Profil erstellen");
+
+    public ProfileView(ProfileManager profileManager) {
 
         addClassName("person-form-view");
         add(createTitle());
         //based on profilManager show StudentView or UnternehmerView
-        if("student".equals("student")) {
-            add(createStudentFormLayout());
+        if(profileManager.checkIfProfileIsCreated()) {
+            if (profileManager.isStudent()) {
+                add(createStudentFormLayout());
+            } else if (profileManager.isCompany()) {
+                add(createCompanyFormLayout());
+            }
         }else{
-            add(createCompanyFormLayout());
+            add(create_profile);
         }
         add(createButtonLayout());
         fillwithdata();
@@ -75,6 +82,10 @@ public class ProfileView extends Div {
         //löschen weitergeleitet
         delete.addClickListener(e-> {
             UI.getCurrent().navigate(Globals.Pages.PROFILE_DELETE);
+        });
+
+        create_profile.addClickListener(e-> {
+            profileManager.createStudentProfile(null);
         });
     }
     //Füllen der Felder mit den Daten des aktuellen Users
