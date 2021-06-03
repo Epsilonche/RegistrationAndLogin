@@ -23,7 +23,7 @@ import org.hbrs.se2.project.collhbrs.util.Globals;
 @PageTitle("Mein Profil")
 
 public class ProfileView extends Div {
-
+    //Student Form Attribute
     private TextField first_name = new TextField("Vorname");
     private TextField last_name = new TextField("Name");
     private EmailField email = new EmailField("E-Mail");
@@ -40,14 +40,28 @@ public class ProfileView extends Div {
     private ComboBox<String> security_question_id = new ComboBox<>("Sicherheitsfrage");
     private TextField security_answer = new TextField("Antwort Sicherheitsfrage");
 
+    //company attributes
+    private TextField branch = new TextField("branch");
+    private TextField title = new TextField("title");
+    private TextField role = new TextField("role");
+    private TextField company = new TextField("company");
+    private TextField description= new TextField("description");
+
+
 
     private Button edit = new Button("Profil bearbeiten");
     private Button delete = new Button ("Profil löschen");
 
     public ProfileView() {
+
         addClassName("person-form-view");
         add(createTitle());
-        add(createFormLayout());
+        //based on profilManager show StudentView or UnternehmerView
+        if("student".equals("student")) {
+            add(createStudentFormLayout());
+        }else{
+            add(createCompanyFormLayout());
+        }
         add(createButtonLayout());
         fillwithdata();
 
@@ -91,7 +105,7 @@ public class ProfileView extends Div {
         return new H3("Mein Profil");
     }
     //Hinzufügen der Felder auf der Seite
-    private Component createFormLayout() {
+    private Component createStudentFormLayout() {
         FormLayout formLayout = new FormLayout();
 //        binder.bindInstanceFields(this);
         email.setErrorMessage("Bitte geben Sie eine gültige E-Mail ein");
@@ -100,7 +114,14 @@ public class ProfileView extends Div {
                 security_question_id,security_answer);
         return formLayout;
     }
+    private Component createCompanyFormLayout() {
+        FormLayout formLayout = new FormLayout();
+//        binder.bindInstanceFields(this);
 
+        email.setErrorMessage("Bitte geben Sie eine gültige E-Mail ein");
+        formLayout.add(title,role,company,description,branch);
+        return formLayout;
+    }
 
 
     private Component createButtonLayout() {
