@@ -49,9 +49,7 @@ public class ProfileManager {
     // Achtung mögliche Exception ergänzen
     // Vergleich zwischen currentUser und dem Binder-element
     public boolean deleteUser(UserDTO userDTO) {
-        //User cuUser = userRepository.findUserByPasswordAndUsername(userDTO.getUsername(),userDTO.getPassword());
         User current_user  = (User) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
-
         //Eingabe nicht erfolgreich
         //Eingabe erfolgreich
         // -> Löschen des Users aus der Datenbank

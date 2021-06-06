@@ -13,11 +13,15 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouteAlias;
 import org.hbrs.se2.project.collhbrs.control.ProfileManager;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
+import org.hbrs.se2.project.collhbrs.dtos.impl.CompanyDTOImpl;
+import org.hbrs.se2.project.collhbrs.dtos.impl.StudentDTOImpl;
+import org.hbrs.se2.project.collhbrs.entities.User;
 import org.hbrs.se2.project.collhbrs.util.Globals;
 
 @Route(value = "profile" )
@@ -28,18 +32,9 @@ public class ProfileView extends Div {
     private TextField first_name = new TextField("Vorname");
     private TextField last_name = new TextField("Name");
     private EmailField email = new EmailField("E-Mail");
-    private DatePicker date_of_birth = new DatePicker("Geburstdatum");
-    private TextField skills = new TextField("Fähigkeiten");
     private IntegerField matrikel_nr = new IntegerField("Matikelnummer");
-    private IntegerField phone = new IntegerField("Telefonnummer");
-    private TextField street = new TextField("Straße");
-    private IntegerField house_number = new IntegerField("Hausnummer");
-    private IntegerField postal_code = new IntegerField("PLZ");
-    private TextField city = new TextField("Ort");
     private TextField university = new TextField("Universität");
     private TextField degree_course = new TextField("Studiengang");
-    private ComboBox<String> security_question_id = new ComboBox<>("Sicherheitsfrage");
-    private TextField security_answer = new TextField("Antwort Sicherheitsfrage");
 
     //company attributes
     private TextField branch = new TextField("branch");
@@ -50,10 +45,12 @@ public class ProfileView extends Div {
 
 
 
-    private Button edit = new Button("Profil bearbeiten");
+    private Button save = new Button("Profil erstellen");
     private Button delete = new Button ("Profil löschen");
 
     private Button create_profile = new Button("Profil erstellen");
+    private Binder<StudentDTOImpl> studentBinder = new Binder(StudentDTOImpl.class);
+    private Binder<CompanyDTOImpl> companyBinder = new Binder(CompanyDTOImpl.class);
 
     public ProfileView(ProfileManager profileManager) {
 
@@ -72,11 +69,15 @@ public class ProfileView extends Div {
         add(createButtonLayout());
         fillwithdata();
 
-        security_question_id.setItems("In welcher Stadt bzw. an welchem Ort wurden Sie geboren?","Welches war Ihr erstes Konzert, das Sie besucht haben?","Geben Sie Marke und Modell Ihres ersten Autos an.");
-        //Durch betätigen des Buttons edit wird der Benutzer auf Profil
-        //bearbeiten weitergeleitet
-        edit.addClickListener(e-> {
-            UI.getCurrent().navigate(Globals.Pages.PROFILE_EDIT);});
+        save.addClickListener(e-> {
+            if(profileManager.isStudent()) {
+                studentBinder.bindInstanceFields(this);
+                profileManager.createStudentProfile(studentBinder.getBean());
+            }else if(profileManager.isCompany()){
+                companyBinder.bindInstanceFields(this);
+                profileManager.createCompanyProfile(companyBinder.getBean());
+            }
+        });
 
         //Durch betätigen des Buttons edit wird der Benutzer auf Profil
         //löschen weitergeleitet
@@ -84,8 +85,9 @@ public class ProfileView extends Div {
             UI.getCurrent().navigate(Globals.Pages.PROFILE_DELETE);
         });
 
+
         create_profile.addClickListener(e-> {
-            profileManager.createStudentProfile(null);
+            //TODO : routes to page with form to create a profile
         });
     }
     //Füllen der Felder mit den Daten des aktuellen Users
@@ -93,22 +95,8 @@ public class ProfileView extends Div {
 
     private void fillwithdata(){
         UserDTO userDTO = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
-        first_name.setValue(userDTO.getFirstName()); first_name.setReadOnly(true);
-        last_name.setValue(userDTO.getLastName());last_name.setReadOnly(true);
-        university.setReadOnly(false);
-        security_answer.setReadOnly(false);
-        skills.setReadOnly(true);
-        security_question_id.setReadOnly(true);
-        street.setReadOnly(true);
-        house_number.setReadOnly(true);
-        date_of_birth.setReadOnly(true);
-        postal_code.setReadOnly(true);
-        phone.setReadOnly(true);
-        email.setReadOnly(true);
-        city.setReadOnly(true);
-        degree_course.setReadOnly(true);
-        matrikel_nr.setReadOnly(true);
-
+        first_name.setValue(userDTO.getFirstName());
+        last_name.setValue(userDTO.getLastName());
     }
 
     private Component createTitle() {
@@ -120,15 +108,12 @@ public class ProfileView extends Div {
         FormLayout formLayout = new FormLayout();
 //        binder.bindInstanceFields(this);
         email.setErrorMessage("Bitte geben Sie eine gültige E-Mail ein");
-        formLayout.add(first_name, last_name, date_of_birth, email,skills,street,
-                house_number,postal_code,city,phone,matrikel_nr,university,degree_course,
-                security_question_id,security_answer);
+        formLayout.add(matrikel_nr,university,degree_course);
         return formLayout;
     }
     private Component createCompanyFormLayout() {
         FormLayout formLayout = new FormLayout();
 //        binder.bindInstanceFields(this);
-
         email.setErrorMessage("Bitte geben Sie eine gültige E-Mail ein");
         formLayout.add(title,role,company,description,branch);
         return formLayout;
@@ -138,9 +123,9 @@ public class ProfileView extends Div {
     private Component createButtonLayout() {
         HorizontalLayout buttonLayout = new HorizontalLayout();
         buttonLayout.addClassName("button-layout");
-        edit.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
-        buttonLayout.add(edit);
+        buttonLayout.add(save);
         buttonLayout.add(delete);
 
         return buttonLayout;
