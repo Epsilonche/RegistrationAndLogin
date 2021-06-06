@@ -41,7 +41,6 @@ public class UserFactory {
         newStudent.setUniversity(studentDTO.getUniversity());
         newStudent.setDegreeCourse(studentDTO.getDegreeCourse());
 
-
         return newStudent;
     }
 
