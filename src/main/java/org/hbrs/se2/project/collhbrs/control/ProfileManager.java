@@ -44,26 +44,24 @@ public class ProfileManager {
         companyRepository.save(newCompany);
         profile_created = true;
     }
+
     // Methode zum löschen eines Users
     // Achtung mögliche Exception ergänzen
     // Vergleich zwischen currentUser und dem Binder-element
-    public boolean deleteUser(UserDTO userDTO, UserDTO current_user) {
-
+    public boolean deleteUser(UserDTO userDTO) {
+        User current_user  = (User) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
         //Eingabe nicht erfolgreich
         //Eingabe erfolgreich
         // -> Löschen des Users aus der Datenbank
         if(userDTO.getUsername().equals(current_user.getUsername())
                 && userDTO.getPassword().equals(current_user.getPassword())) {
-            userRepository.deleteById(current_user.getUserId());
+            userRepository.delete(current_user);
             // delete in Student/Company tables too ? what about related tables? Skills, Branches, Vacancies...
 
             return true;
         }
         else return false;
     }
-
-
-
 
 
 
