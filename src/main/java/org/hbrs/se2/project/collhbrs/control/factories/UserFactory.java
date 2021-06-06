@@ -23,11 +23,26 @@ public class UserFactory {
     }
 
     public Company createCompany(CompanyDTO companyDTO){
-        return null;//TODO must create a Company entity
+
+        Company newCompany = new Company();
+
+        newCompany.setCompany(companyDTO.getCompany());
+        newCompany.setDescription(companyDTO.getDescription());
+        newCompany.setTitle(companyDTO.getTitle());
+        newCompany.setRoles(companyDTO.getRoles());
+
+        return newCompany;
     }
 
     public Student createStudent(StudentDTO studentDTO){
-        return null;//TODO must create a Student entity
+        Student newStudent = new Student();
+
+        newStudent.setMatrikelNr(studentDTO.getMatrikelNr());
+        newStudent.setUniversity(studentDTO.getUniversity());
+        newStudent.setDegreeCourse(studentDTO.getDegreeCourse());
+
+
+        return newStudent;
     }
 
 }
