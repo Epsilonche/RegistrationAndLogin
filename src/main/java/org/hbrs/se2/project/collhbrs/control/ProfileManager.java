@@ -4,6 +4,8 @@ import com.vaadin.flow.component.UI;
 import org.hbrs.se2.project.collhbrs.control.factories.UserFactory;
 import org.hbrs.se2.project.collhbrs.dtos.CompanyDTO;
 import org.hbrs.se2.project.collhbrs.dtos.StudentDTO;
+import org.hbrs.se2.project.collhbrs.entities.Student;
+import org.hbrs.se2.project.collhbrs.repository.StudentRepository;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 
 import org.hbrs.se2.project.collhbrs.entities.Company;
@@ -18,6 +20,7 @@ public class ProfileManager {
     private boolean profile_created = true;//TODO: variable not needed when method checkProfileIsCreated is implemented
 
     UserFactory userFactory = new UserFactory();
+    StudentRepository studentRepository;
     private UserRepository userRepository;
     private CompanyRepository companyRepository;
 
@@ -33,9 +36,8 @@ public class ProfileManager {
 
 
     public void createStudentProfile(StudentDTO studentDTO){
-        userFactory.createStudent(studentDTO);
-
-        //TODO : use repository to save the entity
+        Student newStudent= userFactory.createStudent(studentDTO);
+        this.studentRepository.save(newStudent);
         profile_created = true;
     }
 
