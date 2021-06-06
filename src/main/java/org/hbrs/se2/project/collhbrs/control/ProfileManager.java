@@ -1,20 +1,25 @@
 package org.hbrs.se2.project.collhbrs.control;
 
+import com.vaadin.flow.component.UI;
 import org.hbrs.se2.project.collhbrs.control.factories.UserFactory;
 import org.hbrs.se2.project.collhbrs.dtos.CompanyDTO;
 import org.hbrs.se2.project.collhbrs.dtos.StudentDTO;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
+
+import org.hbrs.se2.project.collhbrs.entities.Company;
+import org.hbrs.se2.project.collhbrs.entities.User;
+import org.hbrs.se2.project.collhbrs.repository.CompanyRepository;
 import org.hbrs.se2.project.collhbrs.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.hbrs.se2.project.collhbrs.util.Globals;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ProfileManager {
-    private boolean profile_created = true;
+    private boolean profile_created = true;//TODO: variable not needed when method checkProfileIsCreated is implemented
 
     UserFactory userFactory = new UserFactory();
-    @Autowired
     private UserRepository userRepository;
+    private CompanyRepository companyRepository;
 
     public boolean checkIfProfileIsCreated(){
         return profile_created;// TODO : must check if database contains a Student or Company profile assigned to a User ID instead of using the variable
@@ -29,13 +34,14 @@ public class ProfileManager {
 
     public void createStudentProfile(StudentDTO studentDTO){
         userFactory.createStudent(studentDTO);
+
         //TODO : use repository to save the entity
         profile_created = true;
     }
 
-    public void createdCompanyProfile(CompanyDTO companyDTO){
-        userFactory.createCompany(companyDTO);
-        //TODO : use the repository to save the entity
+    public void createCompanyProfile(CompanyDTO companyDTO){
+        Company newCompany = userFactory.createCompany(companyDTO);
+        companyRepository.save(newCompany);
         profile_created = true;
     }
     // Methode zum löschen eines Users
