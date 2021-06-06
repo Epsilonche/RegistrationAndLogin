@@ -95,8 +95,8 @@ public class ProfileView extends Div {
         UserDTO userDTO = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
         first_name.setValue(userDTO.getFirstName()); first_name.setReadOnly(true);
         last_name.setValue(userDTO.getLastName());last_name.setReadOnly(true);
-        university.setReadOnly(true);
-        security_answer.setReadOnly(true);
+        university.setReadOnly(false);
+        security_answer.setReadOnly(false);
         skills.setReadOnly(true);
         security_question_id.setReadOnly(true);
         street.setReadOnly(true);
