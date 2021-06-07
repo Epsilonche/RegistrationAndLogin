@@ -30,6 +30,7 @@ import java.time.LocalDate;
 @PageTitle("Stellenausschreibung hinzufügen")
 public class EnterVacView extends Div{
 
+    //Erstellung Eingabefelder
     private TextField workplace = new TextField("Standort");
     private TextField homeoffice = new TextField("Homeoffice");
     //private DatePicker startdate= new DatePicker("Beginn");
@@ -49,12 +50,13 @@ public class EnterVacView extends Div{
         add(createFormLayout());
         add(createButtonLayout());
 
+        // Default Mapping of Vacancys attributes and the names of this View based on names
         binder.bindInstanceFields(this);
         clearForm();
 
         add.addClickListener(e -> {
             // Speicherung der Daten über das zuhörige Control-Object.
-            // Daten des Autos werden aus Formular erfasst und als DTO übergeben.
+            // Daten der Stellenanzeige werden aus Formular erfasst und als DTO übergeben.
             // Zusätzlich wird das aktuelle UserDTO übergeben.
             UserDTO userDTO = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
             vacMan.createVac(binder.getBean(),userDTO);
@@ -70,12 +72,13 @@ public class EnterVacView extends Div{
         return new H3("Stellenausschreibung hinzufügen:");
     }
 
+    //Layoutvorgabe für Eingabeformular
     private Component createFormLayout() {
         FormLayout formLayout = new FormLayout();
         formLayout.add(workplace,homeoffice, salary,title,description);
         return formLayout;
     }
-
+    //Layoutvorgabe für Button
     private Component createButtonLayout() {
         HorizontalLayout buttonLayout = new HorizontalLayout();
         buttonLayout.addClassName("button-layout");

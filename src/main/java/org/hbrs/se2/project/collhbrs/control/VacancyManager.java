@@ -13,9 +13,13 @@ import java.util.List;
 @Component
 public class VacancyManager {
     @Autowired
+    //Erstellung vacancy repository
     private VacancyRepository repository;
     public void createVac(VacDTO vacDTO, UserDTO userDTO){
+
+        //Erzeuge new Vacancy-Entity konsistent über eine Factory
         Vacancy vacEntity = VacFactory.createVac(vacDTO, userDTO);
+        //Abspeichern in DB
         this.repository.save(vacEntity);
     }
 
