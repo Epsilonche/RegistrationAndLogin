@@ -21,7 +21,6 @@ public class ProfileManager {
         return true;//TODO has to be implemented
     }
 
-
     public void createStudentProfile(StudentDTO studentDTO){
         userFactory.createStudent(studentDTO);
         //TODO : use repository to save the entity

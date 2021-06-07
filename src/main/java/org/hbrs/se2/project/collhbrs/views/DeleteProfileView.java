@@ -57,4 +57,5 @@ public class DeleteProfileView extends Div {
 
     // need DialogField -> "your account was deleted"
     // Exception for wrong input
+
 }
