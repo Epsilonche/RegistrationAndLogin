@@ -34,13 +34,13 @@ public class ProfileManager {
         return false;//TODO has to be implemented
     }
 
-
+    //TODO : needs to be tested
     public void createStudentProfile(StudentDTO studentDTO){
         Student newStudent= userFactory.createStudent(studentDTO);
         this.studentRepository.save(newStudent);
         profile_created = true;
     }
-
+    //TODO : needs to be tested
     public void createCompanyProfile(CompanyDTO companyDTO){
         Company newCompany = userFactory.createCompany(companyDTO);
         companyRepository.save(newCompany);
