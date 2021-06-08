@@ -5,7 +5,6 @@ import org.hbrs.se2.project.collhbrs.control.factories.UserFactory;
 import org.hbrs.se2.project.collhbrs.dtos.CompanyDTO;
 import org.hbrs.se2.project.collhbrs.dtos.StudentDTO;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
-import org.hbrs.se2.project.collhbrs.dtos.impl.ProfDTOImpl;
 import org.hbrs.se2.project.collhbrs.entities.User;
 import org.hbrs.se2.project.collhbrs.repository.UserRepository;
 import org.hbrs.se2.project.collhbrs.util.Globals;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ProfileManager {
-    private boolean profile_created = false;
+    private boolean profile_created = true;
 
     UserFactory userFactory = new UserFactory();
     @Autowired
@@ -24,10 +23,10 @@ public class ProfileManager {
         return profile_created;// TODO : must check if database contains a Student or Company profile assigned to a User ID instead of using the variable
     }
     public boolean isStudent(){
-        return false;//TODO to be implemented
+        return true;//TODO to be implemented
     }
     public boolean isCompany(){
-        return true;//TODO has to be implemented
+        return false;//TODO has to be implemented
     }
 
 
@@ -58,15 +57,6 @@ public class ProfileManager {
             return true;
         }
         else return false;
-    }
-    public void updateUser(ProfDTOImpl neu, UserDTO akt) {
-
-        User usertoupdate = userRepository.findUserByUserId(akt.getUserId());
-        usertoupdate.setFirstName(neu.getFirstName());
-        usertoupdate.setLastName(neu.getLastName());
-        usertoupdate.seteMail(neu.geteMail());
-
-        this.userRepository.save(usertoupdate);
     }
 
 

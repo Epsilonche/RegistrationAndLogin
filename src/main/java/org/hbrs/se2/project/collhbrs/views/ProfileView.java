@@ -60,6 +60,7 @@ public class ProfileView extends Div {
         addClassName("person-form-view");
         add(createTitle());
         //based on profilManager show StudentView or UnternehmerView
+
         if(profileManager.checkIfProfileIsCreated()) {
             if (profileManager.isStudent()) {
                 add(createStudentFormLayout());

@@ -1,6 +1,7 @@
 package org.hbrs.se2.project.collhbrs.dtos;
 
 public interface UserDTO {
+    public int getUserId();
     public String getUsername();
 
     public void setUsername(String username);
