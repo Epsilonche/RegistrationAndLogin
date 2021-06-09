@@ -1,11 +1,11 @@
 package org.hbrs.se2.project.collhbrs.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
+@Table(name = "company", schema = "collhbrs", catalog = "rdiehl2s")
 public class Company {
     private String title;
     private String roles;
@@ -54,6 +54,10 @@ public class Company {
     }
 
     @Id
+    @GeneratedValue(
+            strategy = SEQUENCE,
+            generator = "collhbrs.company_id_sequence"
+    )
     @Column(name = "company_id")
     public int getCompanyId() {
         return companyId;
