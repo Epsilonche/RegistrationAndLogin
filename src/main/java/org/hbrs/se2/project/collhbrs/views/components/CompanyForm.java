@@ -47,5 +47,9 @@ public class CompanyForm extends FormLayout {
         System.out.print("COMPANY CREATED ");
     }
 
+    public CompanyDTOImpl getCompanyForm(){
+        return companyBinder.getBean();
+    }
+
 
 }
