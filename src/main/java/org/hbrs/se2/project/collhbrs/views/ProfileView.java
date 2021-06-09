@@ -4,8 +4,6 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.combobox.ComboBox;
-import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H3;
@@ -16,13 +14,13 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.PageTitle;
-import com.vaadin.flow.router.RouteAlias;
 import org.hbrs.se2.project.collhbrs.control.ProfileManager;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 import org.hbrs.se2.project.collhbrs.dtos.impl.CompanyDTOImpl;
 import org.hbrs.se2.project.collhbrs.dtos.impl.StudentDTOImpl;
-import org.hbrs.se2.project.collhbrs.entities.User;
 import org.hbrs.se2.project.collhbrs.util.Globals;
+import org.hbrs.se2.project.collhbrs.views.components.CompanyForm;
+import org.hbrs.se2.project.collhbrs.views.components.StudentForm;
 
 @Route(value = "profile" )
 @PageTitle("Mein Profil")
@@ -52,8 +50,13 @@ public class ProfileView extends Div {
     private Binder<StudentDTOImpl> studentBinder = new Binder(StudentDTOImpl.class);
     private Binder<CompanyDTOImpl> companyBinder = new Binder(CompanyDTOImpl.class);
 
-    public ProfileView(ProfileManager profileManager) {
 
+    private final CompanyForm companyForm;
+    private final StudentForm studentForm;
+
+
+    public ProfileView(ProfileManager profileManager) {
+        /*
         addClassName("person-form-view");
         add(createTitle());
         //based on profilManager show StudentView or UnternehmerView
@@ -88,7 +91,19 @@ public class ProfileView extends Div {
 
         create_profile.addClickListener(e-> {
             //TODO : routes to page with form to create a profile
-        });
+        });*/
+        companyForm = new CompanyForm();
+        Div companyDiv = new Div(companyForm);
+        companyDiv.addClassName("company-div");
+
+        studentForm = new StudentForm();
+        Div studentDiv = new Div(studentForm);
+        studentDiv.addClassName("student-div");
+
+
+        add(companyDiv,studentDiv);
+
+
     }
     //Füllen der Felder mit den Daten des aktuellen Users
     //Felder vor der Bearbeitung schützen
