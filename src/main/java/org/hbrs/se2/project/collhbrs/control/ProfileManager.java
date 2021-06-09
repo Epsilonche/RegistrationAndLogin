@@ -13,16 +13,20 @@ import org.hbrs.se2.project.collhbrs.entities.User;
 import org.hbrs.se2.project.collhbrs.repository.CompanyRepository;
 import org.hbrs.se2.project.collhbrs.repository.UserRepository;
 import org.hbrs.se2.project.collhbrs.util.Globals;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ProfileManager {
-    private boolean profile_created = true;//TODO: variable not needed when method checkProfileIsCreated is implemented
+    @Autowired
+    private CompanyRepository companyRepository;
+    @Autowired
+    StudentRepository studentRepository;
 
     UserFactory userFactory = new UserFactory();
-    StudentRepository studentRepository;
     private UserRepository userRepository;
-    private CompanyRepository companyRepository;
+
+    private boolean profile_created = true;//TODO: variable not needed when method checkProfileIsCreated is implemented
 
     public boolean checkIfProfileIsCreated(){
         return profile_created;// TODO : must check if database contains a Student or Company profile assigned to a User ID instead of using the variable
