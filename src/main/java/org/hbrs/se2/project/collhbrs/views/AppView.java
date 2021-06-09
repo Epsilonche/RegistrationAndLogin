@@ -193,7 +193,7 @@ public class AppView extends AppLayout implements BeforeEnterObserver {
             tabs = Utils.append( tabs , createTab("Enter Car", EnterCarView.class)  );
         }
         */
-        // ToDo für die Teams: Weitere Tabs aus ihrem Projekt hier einfügen!
+
 
         return tabs;
     }
