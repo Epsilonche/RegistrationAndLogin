@@ -1,6 +1,9 @@
 package org.hbrs.se2.project.collhbrs.views;
 
+
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.html.Div;
@@ -8,16 +11,20 @@ import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import com.vaadin.flow.data.value.ValueChangeMode;
+import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.hbrs.se2.project.collhbrs.control.ShowUserControl;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 
 import java.util.List;
-@Route(value = "users")
-@PageTitle("ShowUsers")
 
+@Route(value = "users", layout = AppView.class)
+@PageTitle("Benutzer anzeigen")
+//@CssImport("./frontend/styles/views/showusers/show-users-view.css")
 public class ShowUsersView extends Div {
     private List<UserDTO> personList;
     public ShowUsersView( ShowUserControl userControl ) {
@@ -77,7 +84,7 @@ public class ShowUsersView extends Div {
     }
 
     private Component createTitle() {
-        return new H3("Search for Users");
+        return new H3("Nach Usern suchen");
     }
 
 

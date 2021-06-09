@@ -20,8 +20,8 @@ import org.hbrs.se2.project.collhbrs.control.ProfileManager;
 import org.hbrs.se2.project.collhbrs.dtos.impl.UserDTOImpl;
 
 
-@Route(value = "delete")
-@PageTitle("Delete Profile")
+@Route(value = "delete", layout = AppView.class)
+@PageTitle("Profil löschen")
 @CssImport("./styles/views/entercar/enter-car-view.css")
 public class DeleteProfileView extends Div {
 

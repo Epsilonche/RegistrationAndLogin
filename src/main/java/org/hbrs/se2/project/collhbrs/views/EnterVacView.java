@@ -26,7 +26,7 @@ import com.vaadin.flow.component.datepicker.DatePicker;
 import java.time.LocalDate;
 
 
-@Route(value = "entervacview")
+@Route(value = "entervacview", layout = AppView.class)
 @PageTitle("Stellenausschreibung hinzufügen")
 public class EnterVacView extends Div{
 

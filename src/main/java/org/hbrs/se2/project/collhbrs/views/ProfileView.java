@@ -20,7 +20,7 @@ import org.hbrs.se2.project.collhbrs.control.ProfileManager;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 import org.hbrs.se2.project.collhbrs.util.Globals;
 
-@Route(value = "profile" )
+@Route(value = "profile" , layout = AppView.class)
 @PageTitle("Mein Profil")
 
 public class ProfileView extends Div {

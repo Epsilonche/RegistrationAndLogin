@@ -17,7 +17,7 @@ import org.hbrs.se2.project.collhbrs.datatypes.RegistrationResult;
 import org.hbrs.se2.project.collhbrs.control.RegistrationControl;
 import org.hbrs.se2.project.collhbrs.dtos.impl.UserDTOImpl;
 
-@Route(value = "register")
+@Route(value = "register", layout = AppView.class)
 @PageTitle("Registrierung")
 public class RegistrationView extends Div{
 

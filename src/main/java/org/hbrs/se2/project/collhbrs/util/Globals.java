@@ -6,6 +6,7 @@ public class Globals {
     public static class Pages {
 
         public static final String LOGIN_VIEW = "login";
+        public static final String APP_VIEW = "main";
         public static final String MAIN_VIEW = "";
         public static final String REGISTRATION_VIEW = "register";
         public static final String PROFILE_EDIT = "profiledit";
