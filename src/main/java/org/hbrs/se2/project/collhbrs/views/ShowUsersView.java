@@ -20,7 +20,6 @@ import java.util.List;
 
 public class ShowUsersView extends Div {
     private List<UserDTO> personList;
-
     public ShowUsersView( ShowUserControl userControl ) {
         addClassName("show-users-view");
 
