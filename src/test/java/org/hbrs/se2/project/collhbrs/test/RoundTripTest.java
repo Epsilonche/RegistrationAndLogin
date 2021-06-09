@@ -58,7 +58,7 @@ public class RoundTripTest {
         assertEquals(true,result.isResult());
 
     }
-    /*
+    @Test
     public void registerUserWithoutUsername(){
         UserDTOImpl testuser = new UserDTOImpl();
         testuser.setFirstName("Jörgen");
@@ -88,7 +88,6 @@ public class RoundTripTest {
     }
     //Es wird nicht erkannt das eine E-Mail falsch ist und der User wird erzeugt
     @Test
-
     public void registerWithFalseEmail(){
         UserDTOImpl testuser = new UserDTOImpl();
         testuser.setFirstName("Jörgen");
@@ -102,7 +101,7 @@ public class RoundTripTest {
         }catch(Exception e){
         }
     }
-    */
+
 
     @Test
     public void registerWithoutPassword(){
@@ -133,8 +132,7 @@ public class RoundTripTest {
         testUser=createUserDTO("Jörgen","Baum","jörgen.baum@gmx.de","jbaum","56456456");
         assertEquals("the password you chose is not secure (weak)",registrationService.createUser(testUser).getResultDescription());
     }
-
-    /*
+    @Test
     public void createStudentProfileTest(){
         StudentDTOImpl testStudent = new StudentDTOImpl();
         testStudent = createStudentDTO(123456,"HBRS","Master");
@@ -149,6 +147,10 @@ public class RoundTripTest {
         profileManagerservice.createCompanyProfile(testComapny);
         assertEquals(true,profileManagerservice.checkIfProfileIsCreated());
 
-    }*/
+    }
+
+
+
+
 
 }
