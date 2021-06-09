@@ -47,8 +47,8 @@ public class ProfileView extends Div {
     private Button delete = new Button ("Profil löschen");
 
     private Button create_profile = new Button("Profil erstellen");
-    private Binder<StudentDTOImpl> studentBinder = new Binder(StudentDTOImpl.class);
-    private Binder<CompanyDTOImpl> companyBinder = new Binder(CompanyDTOImpl.class);
+    //private Binder<StudentDTOImpl> studentBinder = new Binder(StudentDTOImpl.class);
+    //private Binder<CompanyDTOImpl> companyBinder = new Binder(CompanyDTOImpl.class);
 
 
     private final CompanyForm companyForm;
@@ -100,9 +100,12 @@ public class ProfileView extends Div {
         Div studentDiv = new Div(studentForm);
         studentDiv.addClassName("student-div");
 
-
         add(companyDiv,studentDiv);
+        add(createButtonLayout());
 
+        save.addClickListener( click -> {
+            profileManager.createCompanyProfile(companyForm.getCompanyForm());
+        });
 
     }
     //Füllen der Felder mit den Daten des aktuellen Users
@@ -140,6 +143,7 @@ public class ProfileView extends Div {
         buttonLayout.addClassName("button-layout");
         save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
+
         buttonLayout.add(save);
         buttonLayout.add(delete);
 
