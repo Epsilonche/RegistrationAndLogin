@@ -3,7 +3,11 @@ package org.hbrs.se2.project.collhbrs.test;
 import org.hbrs.se2.project.collhbrs.control.RegistrationControl;
 import org.hbrs.se2.project.collhbrs.datatypes.RegistrationResult;
 import static org.junit.Assert.*;
-
+import org.hbrs.se2.project.collhbrs.control.ProfileManager;
+import org.hbrs.se2.project.collhbrs.dtos.CompanyDTO;
+import org.hbrs.se2.project.collhbrs.dtos.StudentDTO;
+import org.hbrs.se2.project.collhbrs.dtos.impl.CompanyDTOImpl;
+import org.hbrs.se2.project.collhbrs.dtos.impl.StudentDTOImpl;
 import org.hbrs.se2.project.collhbrs.dtos.impl.UserDTOImpl;
 import org.hbrs.se2.project.collhbrs.repository.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -18,6 +22,8 @@ public class RoundTripTest {
 
     @Autowired
     private RegistrationControl registrationService;
+    @Autowired
+    private ProfileManager profileManagerservice;
 
     private  static UserDTOImpl createUserDTO(String firstName, String lastName,String eMail,String userName,String password ){
         UserDTOImpl userDTOTest = new UserDTOImpl();
@@ -27,6 +33,21 @@ public class RoundTripTest {
         userDTOTest.setUsername(userName);
         userDTOTest.setPassword(password);
         return userDTOTest;
+    }
+    public static StudentDTOImpl createStudentDTO(Integer matrikelNr, String university, String degreeCourse){
+        StudentDTOImpl newStudent = new StudentDTOImpl();
+        newStudent.setMatrikelNr(matrikelNr);
+        newStudent.setUniversity( university);
+        newStudent.setDegreeCourse(degreeCourse);
+        return newStudent;
+    }
+    public static CompanyDTOImpl createCompanyDTO(String company,String title,String roles,String description ){
+        CompanyDTOImpl newCompany= new CompanyDTOImpl();
+        newCompany.setCompany(company);
+        newCompany.setTitle(title);
+        newCompany.setRoles(roles);
+        newCompany.setDescription(description);
+        return newCompany;
     }
     // SUCCESSFUL User Registration
     @Test
@@ -111,7 +132,22 @@ public class RoundTripTest {
         testUser=createUserDTO("Jörgen","Baum","jörgen.baum@gmx.de","jbaum","56456456");
         assertEquals("the password you chose is not secure (weak)",registrationService.createUser(testUser).getResultDescription());
     }
+    @Test
+    public void createStudentProfileTest(){
+        StudentDTOImpl testStudent = new StudentDTOImpl();
+        testStudent = createStudentDTO(123456,"HBRS","Master");
+        profileManagerservice.createStudentProfile(testStudent);
+        assertEquals(true,profileManagerservice.checkIfProfileIsCreated());
 
+    }
+    @Test
+    public void createCompanyProfileTest(){
+        CompanyDTOImpl testComapny = new CompanyDTOImpl();
+        testComapny = createCompanyDTO("Adesso","KG","Dienstleistungen","innovative solutions!");
+        profileManagerservice.createCompanyProfile(testComapny);
+        assertEquals(true,profileManagerservice.checkIfProfileIsCreated());
+
+    }
 
 
 
