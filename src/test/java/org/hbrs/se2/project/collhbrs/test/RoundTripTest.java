@@ -140,14 +140,6 @@ public class RoundTripTest {
         assertEquals(true,profileManagerservice.checkIfProfileIsCreated());
 
     }
-    @Test
-    public void createCompanyProfileTest(){
-        CompanyDTOImpl testComapny = new CompanyDTOImpl();
-        testComapny = createCompanyDTO("Adesso","KG","Dienstleistungen","innovative solutions!");
-        profileManagerservice.createCompanyProfile(testComapny);
-        assertEquals(true,profileManagerservice.checkIfProfileIsCreated());
-
-    }
 
 
 
