@@ -1,6 +1,7 @@
 package org.hbrs.se2.project.collhbrs.views;
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -16,8 +17,9 @@ import com.vaadin.flow.router.Route;
 import org.hbrs.se2.project.collhbrs.datatypes.RegistrationResult;
 import org.hbrs.se2.project.collhbrs.control.RegistrationControl;
 import org.hbrs.se2.project.collhbrs.dtos.impl.UserDTOImpl;
+import org.hbrs.se2.project.collhbrs.util.Globals;
 
-@Route(value = "register", layout = AppView.class)
+@Route(value = "register" /*, layout = AppView.class*/)
 @PageTitle("Registrierung")
 public class RegistrationView extends Div{
 
@@ -28,7 +30,7 @@ public class RegistrationView extends Div{
     private PasswordField password = new PasswordField("Passwort"); //hidden password
 
 
-    private Button signUp = new Button("registrieren");
+    private Button signUp = new Button("Registrieren");
     private Binder<UserDTOImpl> binder = new Binder(UserDTOImpl.class);
 
     public RegistrationView(RegistrationControl registrationService){
@@ -49,6 +51,7 @@ public class RegistrationView extends Div{
 
             if (result.isSaved() == true) {
                 Notification.show("Erfolgreich registriert");
+                navigateToLoginPage();
                 clearForm();
             }
             else{
@@ -78,6 +81,11 @@ public class RegistrationView extends Div{
         signUp.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         buttonLayout.add(signUp);
         return buttonLayout;
+    }
+
+    private void navigateToLoginPage() {
+        // Navigation zur Startseite, hier die jeweilige Profilseite, die noch eingebunden werden muss
+        UI.getCurrent().navigate(Globals.Pages.MAIN_VIEW);
     }
 
 

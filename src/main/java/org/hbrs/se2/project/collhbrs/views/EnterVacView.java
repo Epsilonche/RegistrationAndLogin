@@ -60,8 +60,9 @@ public class EnterVacView extends Div{
             // Zusätzlich wird das aktuelle UserDTO übergeben.
             UserDTO userDTO = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
             vacMan.createVac(binder.getBean(),userDTO);
-
-
+            Notification.show("Stellenanzeige erfolgreich hinzugefügt");
+            navigateToVacPage();
+            clearForm();
         });
 
     }
@@ -87,6 +88,10 @@ public class EnterVacView extends Div{
         return buttonLayout;
     }
 
+    private void navigateToVacPage()  {
+        // Navigation zur Startseite, hier die jeweilige Profilseite, die noch eingebunden werden muss
+        UI.getCurrent().navigate(Globals.Pages.VACANCY_VIEW);
+    }
 
 
 }

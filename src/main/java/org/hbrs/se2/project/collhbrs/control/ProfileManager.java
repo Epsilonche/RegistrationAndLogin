@@ -44,8 +44,8 @@ public class ProfileManager {
     // Methode zum löschen eines Users
     // Achtung mögliche Exception ergänzen
     // Vergleich zwischen currentUser und dem Binder-element
-    public boolean deleteUser(UserDTO userDTO) {
-        UserDTO current_user  = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
+    public boolean deleteUser(UserDTO userDTO, UserDTO current_user) {
+
         //Eingabe nicht erfolgreich
         //Eingabe erfolgreich
         // -> Löschen des Users aus der Datenbank

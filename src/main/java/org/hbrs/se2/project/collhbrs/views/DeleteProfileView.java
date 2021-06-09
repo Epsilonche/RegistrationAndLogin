@@ -17,7 +17,9 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
 import org.hbrs.se2.project.collhbrs.control.ProfileManager;
+import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 import org.hbrs.se2.project.collhbrs.dtos.impl.UserDTOImpl;
+import org.hbrs.se2.project.collhbrs.util.Globals;
 
 
 @Route(value = "delete", layout = AppView.class)
@@ -45,10 +47,10 @@ public class DeleteProfileView extends Div {
 
 
         delete.addClickListener(e -> {
-
-            profileManager.deleteUser(binder.getBean());
+            UserDTO current_user  = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
+            profileManager.deleteUser(binder.getBean(),current_user);
             Notification.show("Profil gelöscht");
-            UI.getCurrent().navigate(RegistrationView.class);
+            navigateToLoginPage();
         });
         back.addClickListener(e ->{
             UI.getCurrent().navigate(ProfileView.class);
@@ -81,7 +83,10 @@ public class DeleteProfileView extends Div {
         buttonLayout.add(back);
         return buttonLayout;
     }
-
+    private void navigateToLoginPage() {
+        // Navigation zur Startseite, hier die jeweilige Profilseite, die noch eingebunden werden muss
+        UI.getCurrent().navigate(Globals.Pages.MAIN_VIEW);
+    }
     // need DialogField -> "your account was deleted"
     // Exception for wrong input
 }

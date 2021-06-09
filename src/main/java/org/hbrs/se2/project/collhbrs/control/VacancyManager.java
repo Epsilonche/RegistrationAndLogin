@@ -26,4 +26,5 @@ public class VacancyManager {
     public VacDTO readVacByVacId(int jid){
         return repository.findVacancyByVacId(jid);
     }
+
 }

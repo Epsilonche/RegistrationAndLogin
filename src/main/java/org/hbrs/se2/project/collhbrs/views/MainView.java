@@ -43,7 +43,7 @@ public class MainView extends VerticalLayout {
         add(createTitle());
 
         register.addClickListener(e-> {
-            UI.getCurrent().navigate(Globals.Pages.REGISTRATION_VIEW);});
+            navigateToRegistrationPage();});
 
         LoginForm component = new LoginForm();
         component.addLoginListener(e -> {
@@ -104,7 +104,11 @@ public class MainView extends VerticalLayout {
     private void navigateToMainPage() {
         // Navigation zur Startseite, hier die jeweilige Profilseite, die noch eingebunden werden muss
         UI.getCurrent().navigate(Globals.Pages.APP_VIEW);
+    }
 
+    private void navigateToRegistrationPage() {
+        // Navigation zur Registierungsseite
+        UI.getCurrent().navigate(Globals.Pages.REGISTRATION_VIEW);
     }
 }
 

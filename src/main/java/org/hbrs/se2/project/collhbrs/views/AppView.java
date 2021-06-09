@@ -180,9 +180,10 @@ public class AppView extends AppLayout implements BeforeEnterObserver {
         // Value: Die UI-Component, die nach dem Klick auf das Menuitem angezeigt wird.
 
         Tab[] tabs = new Tab[]{ createTab( "User anzeigen", ShowUsersView.class) };
+        tabs = Utils.append( tabs , createTab( "Stellenanzeigen anzeigen", ShowVacancyView.class)  );
         tabs = Utils.append( tabs , createTab( "Profil anzeigen", ProfileView.class)  );
-        tabs = Utils.append( tabs , createTab( "Stellenanzeige aufgeben", EnterVacView.class)  );
-        tabs = Utils.append( tabs , createTab( "User registrieren", RegistrationView.class)  );
+        tabs = Utils.append( tabs , createTab( "Stellenanzeige hinzufügen", EnterVacView.class)  );
+        //tabs = Utils.append( tabs , createTab( "User registrieren", RegistrationView.class)  );
         tabs = Utils.append( tabs , createTab( "Profile löschen", DeleteProfileView.class)  );
 
         // Falls er Admin-Rechte hat, sollte der User auch Autos hinzufügen können
