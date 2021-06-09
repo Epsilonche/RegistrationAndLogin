@@ -5,7 +5,7 @@ import javax.persistence.*;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
-@Table(name = "company", schema = "collhbrs", catalog = "rdiehl2s")
+@Table(name = "company", schema = "collhbrs")
 public class Company {
     private String title;
     private String roles;
