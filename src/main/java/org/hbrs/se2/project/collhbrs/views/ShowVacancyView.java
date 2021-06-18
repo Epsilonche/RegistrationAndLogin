@@ -33,7 +33,7 @@ ON THE FLY SUCHE
  */
 
 @Route(value = Globals.Pages.VACANCY_VIEW, layout = AppView.class)
-@PageTitle("Stellenausschreibungen anzeigen")
+@PageTitle("Stellenausschreibungen suchen")
 @CssImport("./styles/views/showcars/show-cars-view.css")
 public class ShowVacancyView extends Div  {
 
@@ -65,6 +65,21 @@ public class ShowVacancyView extends Div  {
 
         Grid.Column<VacDTO> descColumn = grid.addColumn(VacDTO::getDescription)
                 .setHeader("Beschreibung");
+
+        Grid.Column<VacDTO> wplaceColumn = grid.addColumn(VacDTO::getWorkplace)
+                .setHeader("Arbeitsort");
+
+        Grid.Column<VacDTO> hoColumn = grid.addColumn(VacDTO::getHomeoffice)
+                .setHeader("Homeoffice");
+
+        Grid.Column<VacDTO> salColumn = grid.addColumn(VacDTO::getSalary)
+                .setHeader("Gehalt (€)");
+
+        Grid.Column<VacDTO> startColumn = grid.addColumn(VacDTO::getStartDate)
+                .setHeader("Arbeitsbeginn");
+
+        Grid.Column<VacDTO> endColumn = grid.addColumn(VacDTO::getEndDate)
+                .setHeader("Arbeitsende");
 
         HeaderRow filterRow = grid.appendHeaderRow();
 
