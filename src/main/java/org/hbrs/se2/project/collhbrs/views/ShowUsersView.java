@@ -1,6 +1,5 @@
 package org.hbrs.se2.project.collhbrs.views;
 
-
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -22,6 +21,13 @@ import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 
 import java.util.List;
 
+
+
+// Autor: Michael Klein und Sebastian Holst
+// View um Stellenausschreibungen anzuzeigen und nach Titel und/oder Beschreibung zu filtern
+
+
+
 @Route(value = "users", layout = AppView.class)
 @PageTitle("Benutzer anzeigen")
 //@CssImport("./frontend/styles/views/showusers/show-users-view.css")
@@ -30,7 +36,7 @@ public class ShowUsersView extends Div {
     public ShowUsersView( ShowUserControl userControl ) {
         addClassName("show-users-view");
 
-        // Auslesen alle abgespeicherten Autos aus der DB (über das Control)
+        // Auslesen alle abgespeicherten Stellenausschreibungen aus der DB (über das Control)
 
         personList = userControl.readAllUsers();
 
@@ -44,15 +50,15 @@ public class ShowUsersView extends Div {
     private Component createGridTable() {
         Grid<UserDTO> grid = new Grid<>();
 
-        // Befüllen der Tabelle mit den zuvor ausgelesenen Autos
+        // Befüllen der Tabelle mit den zuvor ausgelesenen Stellenausschreibungen (Vacancies)
         ListDataProvider<UserDTO> dataProvider = new ListDataProvider<>(
                 personList);
         grid.setDataProvider(dataProvider);
 
         Grid.Column<UserDTO> brandColumn = grid
-                .addColumn(UserDTO::getUsername).setHeader("Username");
+                .addColumn(UserDTO::getUsername).setHeader("Titel");
         Grid.Column<UserDTO> modelColumn = grid.addColumn(UserDTO::getPassword)
-                .setHeader("Password");
+                .setHeader("Beschreibung");
 
         HeaderRow filterRow = grid.appendHeaderRow();
 
