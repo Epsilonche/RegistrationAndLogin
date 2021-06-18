@@ -15,27 +15,35 @@ import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.apache.commons.lang3.StringUtils;
-import org.hbrs.se2.project.collhbrs.control.VacancyManager;
 import org.hbrs.se2.project.collhbrs.control.ShowVacancyControl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.hbrs.se2.project.collhbrs.control.ShowUserControl;
-import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 import org.hbrs.se2.project.collhbrs.dtos.VacDTO;
+import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
+import org.hbrs.se2.project.collhbrs.repository.VacancyRepository;
+import org.hbrs.se2.project.collhbrs.util.Globals;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@Route(value = "showvac", layout = AppView.class)
+/*
+Autor: Michael Klein und Sebastian Holst
+View um Stellenausschreibungen anzuzeigen und nach Titel und/oder Beschreibung zu filtern
+ON THE FLY SUCHE
+
+
+ */
+
+@Route(value = Globals.Pages.VACANCY_VIEW, layout = AppView.class)
 @PageTitle("Stellenausschreibungen anzeigen")
-public class ShowVacancyView  extends Div {
-    private List<VacDTO> vacList;
+@CssImport("./styles/views/showcars/show-cars-view.css")
+public class ShowVacancyView extends Div  {
 
-    public ShowVacancyView(ShowVacancyControl  showVacancyControl ) {
+    private List<VacDTO> personList;
 
-        addClassName("show-vacancy-view");
+    public ShowVacancyView( ShowVacancyControl vacancyControl ) {
+        addClassName("show-vac-view");
 
-        // Auslesen alle abgespeicherten Autos aus der DB (über das Control)
-
-       vacList = showVacancyControl.readAllVacancys();
+        // Auslesen alle abgespeicherten Vacancies aus der DB (über das Control)
+        personList = vacancyControl.readAllVacancys();
 
         // Titel überhalb der Tabelle
         add(this.createTitle());
@@ -47,47 +55,51 @@ public class ShowVacancyView  extends Div {
     private Component createGridTable() {
         Grid<VacDTO> grid = new Grid<>();
 
-        // Befüllen der Tabelle mit den zuvor ausgelesenen Autos
+        // Befüllen der Tabelle mit den zuvor ausgelesenen Vacs
         ListDataProvider<VacDTO> dataProvider = new ListDataProvider<>(
-                vacList);
+                personList);
         grid.setDataProvider(dataProvider);
 
-        Grid.Column<VacDTO> brandColumn = grid
+        Grid.Column<VacDTO> titleColumn = grid
                 .addColumn(VacDTO::getTitle).setHeader("Titel");
-        Grid.Column<VacDTO> modelColumn = grid.addColumn(VacDTO::getDescription)
+
+        Grid.Column<VacDTO> descColumn = grid.addColumn(VacDTO::getDescription)
                 .setHeader("Beschreibung");
 
         HeaderRow filterRow = grid.appendHeaderRow();
 
-        // First filter
-        TextField modelField = new TextField();
-        modelField.addValueChangeListener(event -> dataProvider.addFilter(
+        // Filter um Stellenausschreibungen nach Titel zu filtern
+        TextField titleField = new TextField();
+        titleField.addValueChangeListener(event -> dataProvider.addFilter(
                 vac -> StringUtils.containsIgnoreCase(vac.getTitle(),
-                        modelField.getValue())));
+                        titleField.getValue())));
 
-        modelField.setValueChangeMode(ValueChangeMode.EAGER);
+        titleField.setValueChangeMode(ValueChangeMode.EAGER);
 
-        filterRow.getCell(modelColumn).setComponent(modelField);
-        modelField.setSizeFull();
-        modelField.setPlaceholder("Filter");
+        filterRow.getCell(titleColumn).setComponent(titleField);
+        titleField.setSizeFull();
+        titleField.setPlaceholder("Filter");
 
-        // Second filter
-        TextField brandField = new TextField();
-        brandField.addValueChangeListener(event -> dataProvider
+
+
+        // Filter um Stellenausschreibungen nach Beschreibung zu filtern
+        TextField descField = new TextField();
+        descField.addValueChangeListener(event -> dataProvider
                 .addFilter(vac -> StringUtils.containsIgnoreCase(
-                        String.valueOf(vac.getDescription()), modelField.getValue())));
+                        String.valueOf(vac.getDescription()), descField.getValue())));
 
-        brandField.setValueChangeMode(ValueChangeMode.EAGER);
+        descField.setValueChangeMode(ValueChangeMode.EAGER);
 
-        filterRow.getCell(brandColumn).setComponent(brandField);
-        brandField.setSizeFull();
-        brandField.setPlaceholder("Filter");
+        filterRow.getCell(descColumn).setComponent(descField);
+        descField.setSizeFull();
+        descField.setPlaceholder("Filter");
 
         return grid;
     }
 
     private Component createTitle() {
-        return new H3("Nach Stellenanzeigen suchen");
+        return new H3("Stellenausschreibungen suchen");
     }
 
-}
+
+};
