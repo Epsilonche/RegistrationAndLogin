@@ -1,13 +1,10 @@
 package org.hbrs.se2.project.collhbrs.control;
 
-import com.vaadin.flow.component.UI;
 import org.hbrs.se2.project.collhbrs.control.factories.UserFactory;
 import org.hbrs.se2.project.collhbrs.dtos.CompanyDTO;
 import org.hbrs.se2.project.collhbrs.dtos.StudentDTO;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
-import org.hbrs.se2.project.collhbrs.entities.User;
 import org.hbrs.se2.project.collhbrs.repository.UserRepository;
-import org.hbrs.se2.project.collhbrs.util.Globals;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -6,6 +6,7 @@ import org.hbrs.se2.project.collhbrs.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+
 // von Michael Klein abgeändert und kommentiert
 
 @Component
@@ -24,7 +25,6 @@ public class LoginControl {
         UserDTO tmpUser = this.getUserWithJPA( username , password );
         //Login nicht erfolgreich
         if ( tmpUser == null ) {
-            System.out.println("User = NULL");
             return false;
         }
         //Login erfolgreich

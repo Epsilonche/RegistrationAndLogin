@@ -1,4 +1,5 @@
 package org.hbrs.se2.project.collhbrs.control;
+
 import org.hbrs.se2.project.collhbrs.control.factories.UserFactory;
 import org.hbrs.se2.project.collhbrs.datatypes.RegistrationResult;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;

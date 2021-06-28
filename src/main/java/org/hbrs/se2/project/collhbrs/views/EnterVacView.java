@@ -4,7 +4,6 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H3;
@@ -16,15 +15,9 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.hbrs.se2.project.collhbrs.control.VacancyManager;
-import org.hbrs.se2.project.collhbrs.datatypes.RegistrationResult;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
-import org.hbrs.se2.project.collhbrs.dtos.impl.UserDTOImpl;
 import org.hbrs.se2.project.collhbrs.dtos.impl.VacDTOImpl;
 import org.hbrs.se2.project.collhbrs.util.Globals;
-import com.vaadin.flow.component.datepicker.DatePicker;
-
-import java.time.LocalDate;
-
 
 @Route(value = "entervacview", layout = AppView.class)
 @PageTitle("Stellenausschreibung hinzufügen")

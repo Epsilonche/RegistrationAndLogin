@@ -4,7 +4,7 @@ package org.hbrs.se2.project.collhbrs.control;
  *   Autor :
  *   Übergangsweise
  */
-import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
+
 import org.hbrs.se2.project.collhbrs.dtos.VacDTO;
 import org.hbrs.se2.project.collhbrs.repository.VacancyRepository;
 import org.springframework.beans.factory.annotation.Autowired;

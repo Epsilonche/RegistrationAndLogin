@@ -15,7 +15,6 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.PageTitle;
-import com.vaadin.flow.router.RouteAlias;
 import org.hbrs.se2.project.collhbrs.control.ProfileManager;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 import org.hbrs.se2.project.collhbrs.util.Globals;
