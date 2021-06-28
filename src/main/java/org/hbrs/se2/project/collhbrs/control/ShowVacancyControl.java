@@ -17,8 +17,11 @@ public class ShowVacancyControl {
     @Autowired
     private VacancyRepository repository;
 
+    /* Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.
+    unused, because of that commet out
     public ShowVacancyControl() {
     }
+    */
 
     public List<VacDTO> readAllVacancys() {
         return this.repository.findVacancyByVacIdIsNotNull();

@@ -5,9 +5,12 @@ public class RegistrationResult{
     private boolean result;
     private boolean saved=false;
 
+    /*
+    Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.
+    unused, because of that commet out
     public RegistrationResult() {
     }
-
+    */
     public String getResultDescription() {
         return resultDescription;
     }

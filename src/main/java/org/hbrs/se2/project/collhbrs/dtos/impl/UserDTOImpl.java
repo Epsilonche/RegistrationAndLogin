@@ -12,8 +12,12 @@ public class UserDTOImpl implements UserDTO {
     private String password;
     private String username;
 
-    public UserDTOImpl() {
-    }
+
+    /*
+    Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.
+    unused, because of that commet out
+    public UserDTOImpl() { }
+    */
 
     public String getFirstName() {
         return firstName;

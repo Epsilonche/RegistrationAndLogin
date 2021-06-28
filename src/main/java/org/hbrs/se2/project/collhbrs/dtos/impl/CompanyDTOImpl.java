@@ -9,8 +9,11 @@ public class CompanyDTOImpl implements CompanyDTO {
     private String description;
     private int branch_id;
 
+    /*
+    Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.
+    unused, because of that commet out
     public CompanyDTOImpl() { }
-
+    */
     public String getCompany() {
         return company;
     }
