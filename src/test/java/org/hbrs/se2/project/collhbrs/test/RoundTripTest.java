@@ -155,7 +155,7 @@ public class RoundTripTest {
         assertEquals(true,profileManagerservice.checkIfProfileIsCreated());
 
     }
-
+    */
     @Test
     public void testCreate() {
         UserDTO testUser = new UserDTOImpl();
@@ -167,7 +167,7 @@ public class RoundTripTest {
         assertEquals(null,fname);
 
     }
-    */
+
 
     @Test
     public void testUpdate() {
