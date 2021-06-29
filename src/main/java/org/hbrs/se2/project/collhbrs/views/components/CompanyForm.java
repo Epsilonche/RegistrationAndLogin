@@ -7,7 +7,9 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import org.hbrs.se2.project.collhbrs.control.ProfileManager;
 import org.hbrs.se2.project.collhbrs.dtos.impl.CompanyDTOImpl;
+
 
 public class CompanyForm extends FormLayout {
     private TextField branch = new TextField("branch");
@@ -19,10 +21,15 @@ public class CompanyForm extends FormLayout {
     private Button save = new Button("Profil erstellen");
     private Binder<CompanyDTOImpl> companyBinder = new Binder(CompanyDTOImpl.class);
 
+    public CompanyForm(ProfileManager service) {
 
+        companyBinder.bindInstanceFields(this);
+        clearForm();
 
+        save.addClickListener( click -> {
+            service.createCompanyProfile(companyBinder.getBean());
+        });
 
-    public CompanyForm() {
         add(branch,
             title,
             role,
@@ -37,18 +44,15 @@ public class CompanyForm extends FormLayout {
         buttonLayout.addClassName("button-layout");
         save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         buttonLayout.add(save);
-        save.addClickListener( click -> { createCompany(companyBinder.getBean());
-
-        });
         return buttonLayout;
-    }
-
-    private void createCompany(CompanyDTOImpl bean) {
-        System.out.print("COMPANY CREATED ");
     }
 
     public CompanyDTOImpl getCompanyForm(){
         return companyBinder.getBean();
+    }
+
+    private void clearForm() {
+        companyBinder.setBean(new CompanyDTOImpl());
     }
 
 

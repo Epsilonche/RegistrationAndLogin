@@ -92,20 +92,16 @@ public class ProfileView extends Div {
         create_profile.addClickListener(e-> {
             //TODO : routes to page with form to create a profile
         });*/
-        companyForm = new CompanyForm();
+        companyForm = new CompanyForm(profileManager);
         Div companyDiv = new Div(companyForm);
         companyDiv.addClassName("company-div");
 
-        studentForm = new StudentForm();
+        studentForm = new StudentForm(profileManager);
         Div studentDiv = new Div(studentForm);
         studentDiv.addClassName("student-div");
 
         add(companyDiv,studentDiv);
-        add(createButtonLayout());
 
-        save.addClickListener( click -> {
-            profileManager.createCompanyProfile(companyForm.getCompanyForm());
-        });
 
     }
     //Füllen der Felder mit den Daten des aktuellen Users
