@@ -54,10 +54,6 @@ public class Student {
     }
 
     @Id
-    @GeneratedValue(
-            strategy = SEQUENCE,
-            generator = "collhbrs.student_id_seq"
-    )
     @Column(name = "student_id")
     public int getStudentId() {
         return studentId;

@@ -1,5 +1,6 @@
 package org.hbrs.se2.project.collhbrs.views.components;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -8,7 +9,9 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import org.hbrs.se2.project.collhbrs.control.ProfileManager;
+import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 import org.hbrs.se2.project.collhbrs.dtos.impl.CompanyDTOImpl;
+import org.hbrs.se2.project.collhbrs.util.Globals;
 
 
 public class CompanyForm extends FormLayout {
@@ -27,7 +30,8 @@ public class CompanyForm extends FormLayout {
         clearForm();
 
         save.addClickListener( click -> {
-            service.createCompanyProfile(companyBinder.getBean());
+            UserDTO userDTO = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
+            service.createCompanyProfile(companyBinder.getBean(),userDTO);
         });
 
         add(branch,

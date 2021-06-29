@@ -1,5 +1,6 @@
 package org.hbrs.se2.project.collhbrs.views.components;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -10,8 +11,9 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import org.hbrs.se2.project.collhbrs.control.ProfileManager;
-import org.hbrs.se2.project.collhbrs.dtos.impl.CompanyDTOImpl;
+import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 import org.hbrs.se2.project.collhbrs.dtos.impl.StudentDTOImpl;
+import org.hbrs.se2.project.collhbrs.util.Globals;
 
 public class StudentForm extends FormLayout {
     private TextField first_name = new TextField("Vorname");
@@ -30,7 +32,8 @@ public class StudentForm extends FormLayout {
         clearForm();
 
         save.addClickListener( click -> {
-            service.createStudentProfile(studentBinder.getBean());
+            UserDTO userDTO = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
+            service.createStudentProfile(studentBinder.getBean(),userDTO);
         });
 
         add(first_name,

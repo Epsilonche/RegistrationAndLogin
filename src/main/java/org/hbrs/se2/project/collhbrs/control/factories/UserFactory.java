@@ -22,10 +22,11 @@ public class UserFactory {
         return newUser;
     }
 
-    public Company createCompany(CompanyDTO companyDTO){
+    public Company createCompany(CompanyDTO companyDTO,UserDTO userDTO){
 
         Company newCompany = new Company();
 
+        newCompany.setCompanyId(userDTO.getUserId());
         newCompany.setCompany(companyDTO.getCompany());
         newCompany.setDescription(companyDTO.getDescription());
         newCompany.setTitle(companyDTO.getTitle());
@@ -34,9 +35,11 @@ public class UserFactory {
         return newCompany;
     }
 
-    public Student createStudent(StudentDTO studentDTO){
+    public Student createStudent(StudentDTO studentDTO,UserDTO userDTO){
+
         Student newStudent = new Student();
 
+        newStudent.setStudentId(userDTO.getUserId());
         newStudent.setMatrikelNr(studentDTO.getMatrikelNr());
         newStudent.setUniversity(studentDTO.getUniversity());
         newStudent.setDegreeCourse(studentDTO.getDegreeCourse());
