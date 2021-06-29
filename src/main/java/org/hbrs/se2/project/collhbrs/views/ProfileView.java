@@ -4,45 +4,94 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.dialog.Dialog;
+import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H3;
-import com.vaadin.flow.component.html.H5;
-import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.EmailField;
+import com.vaadin.flow.component.textfield.IntegerField;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.PageTitle;
 import org.hbrs.se2.project.collhbrs.control.ProfileManager;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
-import org.hbrs.se2.project.collhbrs.entities.Company;
-import org.hbrs.se2.project.collhbrs.entities.Student;
+import org.hbrs.se2.project.collhbrs.dtos.impl.CompanyDTOImpl;
+import org.hbrs.se2.project.collhbrs.dtos.impl.StudentDTOImpl;
 import org.hbrs.se2.project.collhbrs.util.Globals;
 import org.hbrs.se2.project.collhbrs.views.components.CompanyForm;
 import org.hbrs.se2.project.collhbrs.views.components.StudentForm;
-
-
 
 @Route(value = "profile" , layout = AppView.class)
 @PageTitle("Mein Profil")
 
 public class ProfileView extends Div {
+    //Student Form Attribute
+    private TextField first_name = new TextField("Vorname");
+    private TextField last_name = new TextField("Name");
+    private EmailField email = new EmailField("E-Mail");
+    private IntegerField matrikel_nr = new IntegerField("Matikelnummer");
+    private TextField university = new TextField("Universität");
+    private TextField degree_course = new TextField("Studiengang");
+
+    //company attributes
+    private TextField branch = new TextField("branch");
+    private TextField title = new TextField("title");
+    private TextField role = new TextField("role");
+    private TextField company = new TextField("company");
+    private TextField description= new TextField("description");
+
+
+
+    private Button save = new Button("Profil erstellen");
+    private Button delete = new Button ("Profil löschen");
+
+    private Button create_profile = new Button("Profil erstellen");
+    //private Binder<StudentDTOImpl> studentBinder = new Binder(StudentDTOImpl.class);
+    //private Binder<CompanyDTOImpl> companyBinder = new Binder(CompanyDTOImpl.class);
+
+
     private final CompanyForm companyForm;
     private final StudentForm studentForm;
-    private UserDTO current_user = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
-    private Student current_student;
-    private Company current_company;
-
-    private Button edit = new Button("edit");
-    private Dialog form_dialog = new Dialog();
-
-    private Button delete = new Button("Profil löschen");
 
 
     public ProfileView(ProfileManager profileManager) {
+        /*
+        addClassName("person-form-view");
+        add(createTitle());
+        //based on profilManager show StudentView or UnternehmerView
+        if(profileManager.checkIfProfileIsCreated()) {
+            if (profileManager.isStudent()) {
+                add(createStudentFormLayout());
+            } else if (profileManager.isCompany()) {
+                add(createCompanyFormLayout());
+            }
+        }else{
+            add(create_profile);
+        }
+        add(createButtonLayout());
+        fillwithdata();
 
-        //TODO Edit user data
+        save.addClickListener(e-> {
+            if(profileManager.isStudent()) {
+                studentBinder.bindInstanceFields(this);
+                profileManager.createStudentProfile(studentBinder.getBean());
+            }else if(profileManager.isCompany()){
+                companyBinder.bindInstanceFields(this);
+                profileManager.createCompanyProfile(companyBinder.getBean());
+            }
+        });
 
+        //Durch betätigen des Buttons edit wird der Benutzer auf Profil
+        //löschen weitergeleitet
+        delete.addClickListener(e-> {
+            UI.getCurrent().navigate(Globals.Pages.PROFILE_DELETE);
+        });
+
+
+        create_profile.addClickListener(e-> {
+            //TODO : routes to page with form to create a profile
+        });*/
         companyForm = new CompanyForm(profileManager);
         Div companyDiv = new Div(companyForm);
         companyDiv.addClassName("company-div");
@@ -51,115 +100,52 @@ public class ProfileView extends Div {
         Div studentDiv = new Div(studentForm);
         studentDiv.addClassName("student-div");
 
-
-        if(current_user.getUserTyp().equals("Student")){
-            form_dialog.add(studentDiv);
-        }
-        if(current_user.getUserTyp().equals("Unternehmen")){
-            form_dialog.add(companyDiv);
-        }
-
-        Button save = new Button("Speichern");
-        save.addClickListener(buttonClickEvent -> {
-            if(current_user.getUserTyp().equals("Student")){
-                studentForm.save(profileManager);
-            }
-            if(current_user.getUserTyp().equals("Unternehmen")){
-                companyForm.save(profileManager);
-            }
-            form_dialog.close();
-            UI.getCurrent().getPage().reload();
-        });
-        form_dialog.add(save);
-
-        if(profileManager.checkIfProfileIsCreated(current_user)){
-            if(current_user.getUserTyp().equals("Student")){
-                current_student = profileManager.getStudentById(current_user.getUserId());
-            }
-            if(current_user.getUserTyp().equals("Unternehmen")){
-                current_company = profileManager.getCompanyById(current_user.getUserId());
-            }
-            add(createTitle());
-            add(showProfileLayout());
-            add(createButtonEditLayout());
-
-            delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
-            add(delete);
-
-        }else {
-            add(new H3("Sie müssen erst ein Profil erstellen:"));
-            form_dialog.addComponentAtIndex(0,new H3("Sie müssen erst ein Profil erstellen:"));
-            Button erstellen = new Button("Profil erstellen");
-            erstellen.addClickListener(buttonClickEvent -> {form_dialog.open();});
-            add(erstellen);
-            form_dialog.open();
-        }
+        add(companyDiv,studentDiv);
 
 
-        delete.addClickListener(e-> {
-            Dialog delete_dialog = new Dialog();
-            delete_dialog.add(new DeleteProfileView(profileManager));
-            delete_dialog.open();
-        });
-
-
-
-    }
-
-    private Component showProfileLayout() {
-        VerticalLayout userProfileInformation = new VerticalLayout();
-
-        Span firstNameLine = new Span("Vorname: "+current_user.getFirstName());
-        Span lastNameLine = new Span("Nachname: "+current_user.getLastName());
-        Span emailLine = new Span("Email: "+current_user.geteMail());
-        Span userTypeLine = new Span("Benutzer Typ: "+current_user.getUserTyp());
-
-        userProfileInformation.add(new H5("Benutzerdaten:"),
-                firstNameLine,
-                lastNameLine,
-                emailLine,
-                userTypeLine);
-
-        if(current_user.getUserTyp().equals("Student") ){
-
-            Span matrikelNrLine = new Span("Matrikel Nr: "+current_student.getMatrikelNr());
-            Span degreeCourseLine = new Span("Studiengang: "+current_student.getDegreeCourse());
-            Span universityLine  = new Span("Universität/Hochschule: "+current_student.getUniversity());
-
-            userProfileInformation.add(new H5("Student Profildaten:"),
-                    matrikelNrLine,
-                    degreeCourseLine,
-                    universityLine);
-
-        }
-        if(current_user.getUserTyp().equals("Unternehmen")){
-            Span titleLine = new Span("Title: "+current_company.getTitle());
-            Span descriptionLine = new Span("Description: "+current_company.getDescription());
-
-            userProfileInformation.add(new H5("Company Profildaten:"),
-                    titleLine,
-                    descriptionLine
-            );
-
-        }
-
-        return userProfileInformation;
     }
     //Füllen der Felder mit den Daten des aktuellen Users
     //Felder vor der Bearbeitung schützen
 
+    private void fillwithdata(){
+        UserDTO userDTO = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
+        first_name.setValue(userDTO.getFirstName());
+        last_name.setValue(userDTO.getLastName());
+    }
+
     private Component createTitle() {
+
         return new H3("Mein Profil");
     }
-    private Component createButtonEditLayout(){
+    //Hinzufügen der Felder auf der Seite
+    private Component createStudentFormLayout() {
+        FormLayout formLayout = new FormLayout();
+//        binder.bindInstanceFields(this);
+        email.setErrorMessage("Bitte geben Sie eine gültige E-Mail ein");
+        formLayout.add(matrikel_nr,university,degree_course);
+        return formLayout;
+    }
+    private Component createCompanyFormLayout() {
+        FormLayout formLayout = new FormLayout();
+//        binder.bindInstanceFields(this);
+        email.setErrorMessage("Bitte geben Sie eine gültige E-Mail ein");
+        formLayout.add(title,role,company,description,branch);
+        return formLayout;
+    }
+
+
+    private Component createButtonLayout() {
         HorizontalLayout buttonLayout = new HorizontalLayout();
         buttonLayout.addClassName("button-layout");
-        buttonLayout.add(edit);
-        edit.addClickListener(buttonClickEvent -> {
-            form_dialog.open();
-        });
+        save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
+
+        buttonLayout.add(save);
+        buttonLayout.add(delete);
+
         return buttonLayout;
     }
+
 
 
 }
