@@ -103,8 +103,12 @@ public class MainView extends VerticalLayout {
 
     private void navigateToMainPage() {
         // Navigation zur Startseite, hier die jeweilige Profilseite, die noch eingebunden werden muss
-        UI.getCurrent().navigate(Globals.Pages.PROFILE_VIEW);
+        UI.getCurrent().navigate(Globals.Pages.APP_VIEW);
+    }
 
+    private void navigateToRegistrationPage() {
+        // Navigation zur Registierungsseite
+        UI.getCurrent().navigate(Globals.Pages.REGISTRATION_VIEW);
     }
 }
 

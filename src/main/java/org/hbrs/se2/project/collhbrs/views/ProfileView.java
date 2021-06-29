@@ -22,7 +22,7 @@ import org.hbrs.se2.project.collhbrs.util.Globals;
 import org.hbrs.se2.project.collhbrs.views.components.CompanyForm;
 import org.hbrs.se2.project.collhbrs.views.components.StudentForm;
 
-@Route(value = "profile" )
+@Route(value = "profile" , layout = AppView.class)
 @PageTitle("Mein Profil")
 
 public class ProfileView extends Div {
