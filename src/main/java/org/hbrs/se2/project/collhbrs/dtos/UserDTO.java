@@ -17,8 +17,4 @@ public interface UserDTO {
     public String geteMail();
 
     public String getUserTyp();
-
-    public byte[] getProfilePicture();
-
-
 }

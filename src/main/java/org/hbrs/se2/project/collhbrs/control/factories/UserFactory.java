@@ -16,8 +16,8 @@ public class UserFactory {
         newUser.seteMail(userDTO.geteMail());
         newUser.setUsername(userDTO.getUsername());
         newUser.setPassword(userDTO.getPassword());
-        newUser.setUserTyp(userDTO.getUserTyp());
-        newUser.setProfilePicture(userDTO.getProfilePicture());
+        newUser.setUserTyp(userDTO.getUserTyp());//TODO: set User Type Id to the appropriate type id ( What is UsertypeId?)
+
         return newUser;
     }
 

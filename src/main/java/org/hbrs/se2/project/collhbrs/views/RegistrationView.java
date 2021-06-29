@@ -41,7 +41,7 @@ import java.io.InputStream;
 import java.util.Iterator;
 
 import org.apache.commons.io.IOUtils;
-import org.hbrs.se2.project.collhbrs.views.components.ImageUpload;
+
 
 
 @Route(value = "register")
@@ -55,8 +55,6 @@ public class RegistrationView extends Div{
     private PasswordField password = new PasswordField("Passwort"); //hidden password
     private RadioButtonGroup<String> user_typ = new RadioButtonGroup<>();
 
-    private Image img = new Image();
-
     private Button signUp = new Button("registrieren");
     private Binder<UserDTOImpl> binder = new Binder(UserDTOImpl.class);
 
@@ -65,6 +63,8 @@ public class RegistrationView extends Div{
 
         add(createTitle());
         add(createFormLayout());
+
+        add(createSimpleUpload());
 
         add(createButtonLayout());
 
@@ -88,7 +88,6 @@ public class RegistrationView extends Div{
 
 
         });
-
 
     }
     private void clearForm() {
@@ -118,5 +117,74 @@ public class RegistrationView extends Div{
     *  Credits : https://github.com/vaadin/vaadin-upload-flow/blob/master/vaadin-upload-flow-demo/src/main/java/com/vaadin/flow/component/upload/demo/UploadView.java
     *
     */
+    private Component createSimpleUpload() {
+        HorizontalLayout uploadLayout = new HorizontalLayout();
 
+        Div output = new Div();
+
+        //@formatter:off
+        // begin-source-example
+        // source-example-heading: Simple in memory receiver for single file upload
+        MemoryBuffer buffer = new MemoryBuffer();
+        Upload upload = new Upload(buffer);
+
+        upload.addSucceededListener(event -> {
+            Component component = createComponent(event.getMIMEType(),
+                    event.getFileName(), buffer.getInputStream());
+            showOutput(event.getFileName(), component, output);
+        });
+        // end-source-example
+        //@formatter:on
+        upload.setMaxFileSize(500 * 1024);
+        upload.setId("test-upload");
+        output.setId("test-output");
+
+        uploadLayout.add(upload ,output);
+        return uploadLayout;
+    }
+
+    private Component createComponent(String mimeType, String fileName,
+                                      InputStream stream) {
+
+        if (mimeType.startsWith("image")) {
+            Image image = new Image();
+            try {
+
+                byte[] bytes = IOUtils.toByteArray(stream);
+                image.getElement().setAttribute("src", new StreamResource(
+                        fileName, () -> new ByteArrayInputStream(bytes)));
+                try (ImageInputStream in = ImageIO.createImageInputStream(
+                        new ByteArrayInputStream(bytes))) {
+                    final Iterator<ImageReader> readers = ImageIO
+                            .getImageReaders(in);
+                    if (readers.hasNext()) {
+                        ImageReader reader = readers.next();
+                        try {
+                            reader.setInput(in);
+                            image.setWidth(reader.getWidth(0) + "px");
+                            image.setHeight(reader.getHeight(0) + "px");
+                        } finally {
+                            reader.dispose();
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return image;
+        }
+        Div content = new Div();
+        String text = String.format("Mime type: '%s'\nSHA-256 hash: '%s'",
+                mimeType, MessageDigestUtil.sha256(stream.toString()));
+        content.setText(text);
+        return content;
+    }
+    private void showOutput(String text, Component content,
+                            HasComponents outputContainer) {
+        HtmlComponent p = new HtmlComponent(Tag.P);
+        p.getElement().setText(text);
+        outputContainer.add(p);
+        outputContainer.add(content);
+    }
 }
