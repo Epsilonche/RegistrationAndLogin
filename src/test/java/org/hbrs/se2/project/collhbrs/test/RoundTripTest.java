@@ -1,14 +1,17 @@
 package org.hbrs.se2.project.collhbrs.test;
 
 import org.hbrs.se2.project.collhbrs.control.RegistrationControl;
+import org.hbrs.se2.project.collhbrs.control.factories.UserFactory;
 import org.hbrs.se2.project.collhbrs.datatypes.RegistrationResult;
 import static org.junit.Assert.*;
 import org.hbrs.se2.project.collhbrs.control.ProfileManager;
 import org.hbrs.se2.project.collhbrs.dtos.CompanyDTO;
 import org.hbrs.se2.project.collhbrs.dtos.StudentDTO;
+import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 import org.hbrs.se2.project.collhbrs.dtos.impl.CompanyDTOImpl;
 import org.hbrs.se2.project.collhbrs.dtos.impl.StudentDTOImpl;
 import org.hbrs.se2.project.collhbrs.dtos.impl.UserDTOImpl;
+import org.hbrs.se2.project.collhbrs.entities.User;
 import org.hbrs.se2.project.collhbrs.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +22,9 @@ public class RoundTripTest {
 
     @Autowired
     private UserRepository userRepository;
+
+
+    private UserFactory userFactory = new UserFactory();
 
     @Autowired
     private RegistrationControl registrationService;
@@ -149,8 +155,35 @@ public class RoundTripTest {
         assertEquals(true,profileManagerservice.checkIfProfileIsCreated());
 
     }
+
+    @Test
+    public void testCreate() {
+        UserDTO testUser = new UserDTOImpl();
+        testUser= createUserDTO("xtest","xtest","gmail.inf","ayoubxUsername","Thepassword12");
+        User newUser = this.userFactory.createUser(testUser);
+        //userRepository.save(newUser);
+        userRepository.delete(newUser);
+        String fname= userRepository.findUserByUsernameAndPassword("ayoubxUsername","Thepassword12").getFirstName();
+        assertEquals(null,fname);
+
+    }
     */
 
+    @Test
+    public void testUpdate() {
+    }
+
+    @Test
+    public void testGet() {
+        String robert= userRepository.findUserByUsernameAndPassword("robdi","Aa1").getFirstName();
+        assertEquals("rob",robert);
+    }
+
+
+    @Test
+    public void testDelete() {
+
+    }
 
 
 
