@@ -5,7 +5,7 @@ import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 public class UserDTOImpl implements UserDTO {
 
 
-
+    private int userId;
     private String firstName;
     private String lastName;
     private String eMail;
@@ -53,5 +53,13 @@ public class UserDTOImpl implements UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

@@ -54,10 +54,6 @@ public class Company {
     }
 
     @Id
-    @GeneratedValue(
-            strategy = SEQUENCE,
-            generator = "collhbrs.company_id_sequence"
-    )
     @Column(name = "company_id")
     public int getCompanyId() {
         return companyId;

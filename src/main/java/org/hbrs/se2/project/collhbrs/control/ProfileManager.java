@@ -39,14 +39,14 @@ public class ProfileManager {
     }
 
     //TODO : needs to be tested
-    public void createStudentProfile(StudentDTO studentDTO){
-        Student newStudent= userFactory.createStudent(studentDTO);
+    public void createStudentProfile(StudentDTO studentDTO,UserDTO currentUser){
+        Student newStudent= userFactory.createStudent(studentDTO,currentUser);
         this.studentRepository.save(newStudent);
         profile_created = true;
     }
     //TODO : needs to be tested
-    public void createCompanyProfile(CompanyDTO companyDTO){
-        Company newCompany = userFactory.createCompany(companyDTO);
+    public void createCompanyProfile(CompanyDTO companyDTO,UserDTO currentUser){
+        Company newCompany = userFactory.createCompany(companyDTO,currentUser);
         companyRepository.save(newCompany);
         profile_created = true;
     }
