@@ -11,6 +11,7 @@ public class UserDTOImpl implements UserDTO {
     private String eMail;
     private String password;
     private String username;
+    private String userTyp;
 
     public String getFirstName() {
         return firstName;
@@ -61,5 +62,13 @@ public class UserDTOImpl implements UserDTO {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getUserTyp() {
+        return userTyp;
+    }
+
+    public void setUserTyp(String userTyp) {
+        this.userTyp = userTyp;
     }
 }

@@ -46,6 +46,7 @@ public class ProfileManager {
     }
     //TODO : needs to be tested
     public void createCompanyProfile(CompanyDTO companyDTO,UserDTO currentUser){
+
         Company newCompany = userFactory.createCompany(companyDTO,currentUser);
         companyRepository.save(newCompany);
         profile_created = true;
