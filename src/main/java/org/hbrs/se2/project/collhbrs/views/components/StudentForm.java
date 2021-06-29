@@ -1,10 +1,17 @@
 package org.hbrs.se2.project.collhbrs.views.components;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
+import org.hbrs.se2.project.collhbrs.control.ProfileManager;
+import org.hbrs.se2.project.collhbrs.dtos.impl.CompanyDTOImpl;
+import org.hbrs.se2.project.collhbrs.dtos.impl.StudentDTOImpl;
 
 public class StudentForm extends FormLayout {
     private TextField first_name = new TextField("Vorname");
@@ -14,18 +21,39 @@ public class StudentForm extends FormLayout {
     private TextField university = new TextField("Universität");
     private TextField degree_course = new TextField("Studiengang");
 
-
     private Button save = new Button("Profil erstellen");
+    private Binder<StudentDTOImpl> studentBinder = new Binder(StudentDTOImpl.class);
 
-    public StudentForm() {
-        //addClassName("student-form");
+    public StudentForm(ProfileManager service) {
 
-        add(    first_name,
+        studentBinder.bindInstanceFields(this);
+        clearForm();
+
+        save.addClickListener( click -> {
+            service.createStudentProfile(studentBinder.getBean());
+        });
+
+        add(first_name,
                 last_name,
                 email,
                 matrikel_nr,
                 university,
-                degree_course
-                );
+                degree_course,
+                createButtonLayout()
+        );
     }
+
+    private Component createButtonLayout() {
+        HorizontalLayout buttonLayout = new HorizontalLayout();
+        buttonLayout.addClassName("button-layout");
+        save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        buttonLayout.add(save);
+        return buttonLayout;
+    }
+
+    private void clearForm() {
+        studentBinder.setBean(new StudentDTOImpl());
+    }
+
+
 }
