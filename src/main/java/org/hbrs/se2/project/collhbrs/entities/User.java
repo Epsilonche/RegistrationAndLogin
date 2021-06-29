@@ -23,6 +23,7 @@ public class User {
             generator = "collhbrs.user_id_sequence"
     )
     @Column(name = "user_id")
+
     public int getUserId() {
         return userId;
     }
