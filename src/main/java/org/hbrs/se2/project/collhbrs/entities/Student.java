@@ -1,11 +1,11 @@
 package org.hbrs.se2.project.collhbrs.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
+@Table(name = "student", schema = "collhbrs")
 public class Student {
     private Integer matrikelNr;
     private String university;

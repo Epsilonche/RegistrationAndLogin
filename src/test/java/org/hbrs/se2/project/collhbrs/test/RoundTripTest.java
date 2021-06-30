@@ -147,6 +147,7 @@ public class RoundTripTest {
         testUser=createUserDTO("Jörgen","Baum","jörgen.baum@gmx.de","jbaum","56456456");
         assertEquals("the password you chose is not secure (weak)",registrationService.createUser(testUser).getResultDescription());
     }
+    /*
     @Test
     public void createStudentProfileTest(){
         StudentDTOImpl testStudent = new StudentDTOImpl();
@@ -163,7 +164,7 @@ public class RoundTripTest {
         assertEquals(true,profileManagerservice.checkIfProfileIsCreated());
 
     }
-
+    */
     @Test
     public void testCRUDUser() {
         UserDTO testUser = new UserDTOImpl();
@@ -177,6 +178,7 @@ public class RoundTripTest {
         assertEquals(result,1);
 
     }
+
 
     @Test
     public void testCRUDStudent() {

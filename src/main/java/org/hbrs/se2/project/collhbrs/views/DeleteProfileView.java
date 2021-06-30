@@ -13,8 +13,8 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
 
 
-@Route(value = "delete")
-@PageTitle("Delete Profile")
+@Route(value = "delete", layout = AppView.class)
+@PageTitle("Profil löschen")
 @CssImport("./styles/views/entercar/enter-car-view.css")
 public class DeleteProfileView extends Div {
 
