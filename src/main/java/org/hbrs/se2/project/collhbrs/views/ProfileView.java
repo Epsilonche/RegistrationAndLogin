@@ -46,10 +46,6 @@ public class ProfileView extends Div {
     private Button save = new Button("Profil erstellen");
     private Button delete = new Button ("Profil löschen");
 
-    private Button create_profile = new Button("Profil erstellen");
-    //private Binder<StudentDTOImpl> studentBinder = new Binder(StudentDTOImpl.class);
-    //private Binder<CompanyDTOImpl> companyBinder = new Binder(CompanyDTOImpl.class);
-
 
     private final CompanyForm companyForm;
     private final StudentForm studentForm;
@@ -92,6 +88,8 @@ public class ProfileView extends Div {
         create_profile.addClickListener(e-> {
             //TODO : routes to page with form to create a profile
         });*/
+        UserDTO current_user = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
+
         companyForm = new CompanyForm(profileManager);
         Div companyDiv = new Div(companyForm);
         companyDiv.addClassName("company-div");
@@ -100,21 +98,29 @@ public class ProfileView extends Div {
         Div studentDiv = new Div(studentForm);
         studentDiv.addClassName("student-div");
 
-        add(companyDiv,studentDiv);
 
+        if(profileManager.checkIfProfileIsCreated(current_user)){
+            add("Profile exists ");
+
+        }else {
+            add(current_user.getUserTyp());
+            add(new H3("Sie müssen erst ein Profil erstellen:"));
+            if(current_user.getUserTyp().equals("Student")){
+                add(studentDiv);
+            }
+            if(current_user.getUserTyp().equals("Unternehmen")){
+                add(companyDiv);
+            }
+
+        }
 
     }
     //Füllen der Felder mit den Daten des aktuellen Users
     //Felder vor der Bearbeitung schützen
 
-    private void fillwithdata(){
-        UserDTO userDTO = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
-        first_name.setValue(userDTO.getFirstName());
-        last_name.setValue(userDTO.getLastName());
-    }
+
 
     private Component createTitle() {
-
         return new H3("Mein Profil");
     }
     //Hinzufügen der Felder auf der Seite

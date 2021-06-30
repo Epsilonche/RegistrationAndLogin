@@ -2,8 +2,6 @@ package org.hbrs.se2.project.collhbrs.entities;
 
 import javax.persistence.*;
 
-import java.util.Arrays;
-
 import static javax.persistence.GenerationType.*;
 
 @Entity
@@ -20,9 +18,6 @@ public class User {
 
 
     private int userId;
-
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
     private byte[] profilePicture;
 
     @Id
@@ -163,21 +158,5 @@ public class User {
 
     public void setProfilePicture(byte[] profilePicture) {
         this.profilePicture = profilePicture;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "securityAnswer='" + securityAnswer + '\'' +
-                ", country='" + country + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", eMail='" + eMail + '\'' +
-                ", password='" + password + '\'' +
-                ", username='" + username + '\'' +
-                ", userTyp='" + userTyp + '\'' +
-                ", userId=" + userId +
-                ", profilePicture=" + Arrays.toString(profilePicture) +
-                '}';
     }
 }

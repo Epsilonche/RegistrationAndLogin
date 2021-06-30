@@ -13,7 +13,4 @@ import java.util.List;
 @Repository
 public interface StudentRepository extends JpaRepository<Student,Integer> {
     Student findByStudentId(int id);
-    StudentDTO findStudentByMatrikelNr(int matrikelNr);
-    int deleteByMatrikelNr(int matrikelNr);
-
 }

@@ -13,6 +13,16 @@ public class UserDTOImpl implements UserDTO {
     private String username;
     private String userTyp;
 
+    private byte[] profilePicture;
+
+    public byte[] getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
     public String getFirstName() {
         return firstName;
     }
