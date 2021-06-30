@@ -1,5 +1,6 @@
 package org.hbrs.se2.project.collhbrs.repository;
 
+import org.hbrs.se2.project.collhbrs.dtos.StudentDTO;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 import org.hbrs.se2.project.collhbrs.entities.Student;
 import org.hbrs.se2.project.collhbrs.entities.User;
@@ -11,5 +12,7 @@ import java.util.List;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student,Integer> {
+ StudentDTO findStudentByMatrikelNr(int matrikelNr);
+ int deleteByMatrikelNr(int matrikelNr);
 
 }
