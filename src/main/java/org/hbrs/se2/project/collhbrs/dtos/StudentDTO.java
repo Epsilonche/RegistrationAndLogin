@@ -14,10 +14,6 @@ public interface StudentDTO {
 
     public void setDegreeCourse(String degreeCourse) ;
 
-    public Integer getApplicationId();
-
-    public void setApplicationId(Integer applicationId) ;
-
     public int getStudentId();
 
     public void setStudentId(int studentId);

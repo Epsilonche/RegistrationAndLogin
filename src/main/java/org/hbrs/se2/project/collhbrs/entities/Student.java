@@ -90,4 +90,15 @@ public class Student {
         result = 31 * result + studentId;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "matrikelNr=" + matrikelNr +
+                ", university='" + university + '\'' +
+                ", degreeCourse='" + degreeCourse + '\'' +
+                ", applicationId=" + applicationId +
+                ", studentId=" + studentId +
+                '}';
+    }
 }

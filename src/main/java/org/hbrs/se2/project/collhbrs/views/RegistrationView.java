@@ -55,6 +55,8 @@ public class RegistrationView extends Div{
     private PasswordField password = new PasswordField("Passwort"); //hidden password
     private RadioButtonGroup<String> user_typ = new RadioButtonGroup<>();
 
+    private Image img = new Image();
+
     private Button signUp = new Button("registrieren");
     private Binder<UserDTOImpl> binder = new Binder(UserDTOImpl.class);
 
@@ -135,7 +137,7 @@ public class RegistrationView extends Div{
         });
         // end-source-example
         //@formatter:on
-        upload.setMaxFileSize(500 * 1024);
+        upload.setMaxFileSize(300 * 300);
         upload.setId("test-upload");
         output.setId("test-output");
 
@@ -185,6 +187,11 @@ public class RegistrationView extends Div{
         HtmlComponent p = new HtmlComponent(Tag.P);
         p.getElement().setText(text);
         outputContainer.add(p);
+
+
         outputContainer.add(content);
+
+
+
     }
 }

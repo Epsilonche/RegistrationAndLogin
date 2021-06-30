@@ -11,6 +11,7 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import org.hbrs.se2.project.collhbrs.control.ProfileManager;
+import org.hbrs.se2.project.collhbrs.dtos.StudentDTO;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 import org.hbrs.se2.project.collhbrs.dtos.impl.StudentDTOImpl;
 import org.hbrs.se2.project.collhbrs.util.Globals;
@@ -36,6 +37,17 @@ public class StudentForm extends FormLayout {
             service.createStudentProfile(studentBinder.getBean(),userDTO);
         });
 
+
+        UserDTO current_user = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
+        service.setUserIntoSession(current_user);
+        service.setStudentIntoSession();
+        if(service.checkIfProfileIsCreated(current_user)){
+            studentBinder.setBean(service.getCurrentStudentDTO());
+            System.out.println("CURRENT STUDENT"+service.getCurrent_student());
+
+        }
+
+
         add(first_name,
                 last_name,
                 email,
@@ -44,6 +56,7 @@ public class StudentForm extends FormLayout {
                 degree_course,
                 createButtonLayout()
         );
+
     }
 
     private Component createButtonLayout() {
@@ -57,6 +70,5 @@ public class StudentForm extends FormLayout {
     private void clearForm() {
         studentBinder.setBean(new StudentDTOImpl());
     }
-
 
 }

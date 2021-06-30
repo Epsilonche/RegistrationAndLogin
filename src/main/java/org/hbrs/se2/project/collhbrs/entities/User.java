@@ -15,7 +15,10 @@ public class User {
     private String password;
     private String username;
     private String userTyp;
+
+
     private int userId;
+    private byte[] profilePicture;
 
     @Id
     @GeneratedValue(
@@ -123,7 +126,6 @@ public class User {
         return true;
     }
 
-
     @Override
     public int hashCode() {
         int result = securityAnswer != null ? securityAnswer.hashCode() : 0;
@@ -146,5 +148,15 @@ public class User {
 
     public void setUserTyp(String userTyp) {
         this.userTyp = userTyp;
+    }
+
+    @Basic
+    @Column(name = "profile_picture")
+    public byte[] getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
     }
 }

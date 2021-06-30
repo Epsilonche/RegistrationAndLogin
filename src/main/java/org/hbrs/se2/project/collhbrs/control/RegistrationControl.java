@@ -16,9 +16,6 @@ public class RegistrationControl {
     public RegistrationControl() {
     }
 
-
-
-
     public RegistrationResult createUser(UserDTO userDTO){
 
         RegistrationResult dataCheck = checkRegistrationData(userDTO);
@@ -51,6 +48,7 @@ public class RegistrationControl {
         result.setResult(true);
         return result;
     }
+
 
 
 }

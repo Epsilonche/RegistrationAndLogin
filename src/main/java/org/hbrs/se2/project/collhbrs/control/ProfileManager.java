@@ -4,6 +4,7 @@ import com.vaadin.flow.component.UI;
 import org.hbrs.se2.project.collhbrs.control.factories.UserFactory;
 import org.hbrs.se2.project.collhbrs.dtos.CompanyDTO;
 import org.hbrs.se2.project.collhbrs.dtos.StudentDTO;
+import org.hbrs.se2.project.collhbrs.dtos.impl.StudentDTOImpl;
 import org.hbrs.se2.project.collhbrs.entities.Student;
 import org.hbrs.se2.project.collhbrs.repository.StudentRepository;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
@@ -26,43 +27,36 @@ public class ProfileManager {
     UserFactory userFactory = new UserFactory();
     private UserRepository userRepository;
 
-    private boolean profile_created = true;//TODO: variable not needed when method checkProfileIsCreated is implemented
-
-    public boolean checkIfProfileIsCreated(){
-        return profile_created;// TODO : must check if database contains a Student or Company profile assigned to a User ID instead of using the variable
-    }
-    public boolean isStudent(){
-        return true;//TODO to be implemented
-    }
-    public boolean isCompany(){
-        return false;//TODO has to be implemented
+    private UserDTO current_user = null;
+    private Student current_student = null;
+    public boolean checkIfProfileIsCreated(UserDTO current_user){
+        int currentUserId = current_user.getUserId();
+        return studentRepository.findByStudentId(currentUserId) != null || companyRepository.findByCompanyId(currentUserId) != null;
     }
 
-    //TODO : needs to be tested
+
+
     public void createStudentProfile(StudentDTO studentDTO,UserDTO currentUser){
         Student newStudent= userFactory.createStudent(studentDTO,currentUser);
         this.studentRepository.save(newStudent);
-        profile_created = true;
     }
-    //TODO : needs to be tested
-    public void createCompanyProfile(CompanyDTO companyDTO,UserDTO currentUser){
 
+    public void createCompanyProfile(CompanyDTO companyDTO,UserDTO currentUser){
         Company newCompany = userFactory.createCompany(companyDTO,currentUser);
         companyRepository.save(newCompany);
-        profile_created = true;
     }
 
     // Methode zum löschen eines Users
     // Achtung mögliche Exception ergänzen
     // Vergleich zwischen currentUser und dem Binder-element
-    public boolean deleteUser(UserDTO userDTO) {
-        User current_user  = (User) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
+    public boolean deleteUser(UserDTO userDTO, UserDTO current_user) {
+
         //Eingabe nicht erfolgreich
         //Eingabe erfolgreich
         // -> Löschen des Users aus der Datenbank
         if(userDTO.getUsername().equals(current_user.getUsername())
                 && userDTO.getPassword().equals(current_user.getPassword())) {
-            userRepository.delete(current_user);
+            userRepository.deleteById(current_user.getUserId());
             // delete in Student/Company tables too ? what about related tables? Skills, Branches, Vacancies...
 
             return true;
@@ -71,5 +65,30 @@ public class ProfileManager {
     }
 
 
+    public void setUserIntoSession(UserDTO current_user) {
+        this.current_user = current_user;
+    }
 
+    public void setStudentIntoSession() {
+        this.current_student = studentRepository.findByStudentId(current_user.getUserId());
+    }
+
+    public UserDTO getCurrent_user() {
+        return current_user;
+    }
+
+    public Student getCurrent_student() {
+        return current_student;
+    }
+
+    public StudentDTOImpl getCurrentStudentDTO(){
+        StudentDTOImpl student = new StudentDTOImpl();
+        //TODO creates a dto to pass to views
+        student.setStudentId(current_student.getStudentId());
+        student.setDegreeCourse(current_student.getDegreeCourse());
+        student.setMatrikelNr(current_student.getMatrikelNr());
+        student.setUniversity(current_student.getUniversity());
+
+        return student;
+    }
 }
