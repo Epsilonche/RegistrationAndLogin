@@ -3,6 +3,7 @@ package org.hbrs.se2.project.collhbrs.dtos.impl;
 import org.hbrs.se2.project.collhbrs.dtos.CompanyDTO;
 
 public class CompanyDTOImpl implements CompanyDTO {
+    private int companyId;
     private String company;
     private String title;
     private String roles;
@@ -10,6 +11,15 @@ public class CompanyDTOImpl implements CompanyDTO {
     private int branch_id;
 
     public CompanyDTOImpl() { }
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    @Override
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
+    }
 
     public String getCompany() {
         return company;
