@@ -52,6 +52,18 @@ public class ProfileView extends Div {
             form_dialog.add(companyDiv);
         }
 
+        Button save = new Button("save");
+        save.addClickListener(buttonClickEvent -> {
+            if(current_user.getUserTyp().equals("Student")){
+                studentForm.save(profileManager);
+            }
+            if(current_user.getUserTyp().equals("Unternehmen")){
+                companyForm.save(profileManager);
+            }
+            form_dialog.close();
+            UI.getCurrent().getPage().reload();
+        });
+        form_dialog.add(save);
 
         if(profileManager.checkIfProfileIsCreated(current_user)){
             if(current_user.getUserTyp().equals("Student")){
@@ -60,6 +72,7 @@ public class ProfileView extends Div {
             if(current_user.getUserTyp().equals("Unternehmen")){
                 current_company = profileManager.getCompanyById(current_user.getUserId());
             }
+            save.setText("update");
             add(createTitle());
             add(showProfileLayout());
             add(createButtonEditLayout());
@@ -68,8 +81,13 @@ public class ProfileView extends Div {
             Button erstellen = new Button("Profil erstellen");
             erstellen.addClickListener(buttonClickEvent -> {form_dialog.open();});
             add(erstellen);
+            save.setText("save");
             form_dialog.open();
         }
+
+
+
+
 
 
     }
