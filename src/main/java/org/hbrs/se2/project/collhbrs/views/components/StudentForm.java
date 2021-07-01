@@ -15,6 +15,7 @@ import org.hbrs.se2.project.collhbrs.dtos.StudentDTO;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 import org.hbrs.se2.project.collhbrs.dtos.impl.StudentDTOImpl;
 import org.hbrs.se2.project.collhbrs.util.Globals;
+import org.hbrs.se2.project.collhbrs.views.ProfileView;
 
 public class StudentForm extends FormLayout {
     private TextField first_name = new TextField("Vorname");
@@ -24,7 +25,7 @@ public class StudentForm extends FormLayout {
     private TextField university = new TextField("Universität");
     private TextField degree_course = new TextField("Studiengang");
 
-    private Button save = new Button("Profil erstellen");
+    private Button save = new Button("Speichern");
     private Binder<StudentDTOImpl> studentBinder = new Binder(StudentDTOImpl.class);
 
     public StudentForm(ProfileManager service) {
@@ -38,13 +39,13 @@ public class StudentForm extends FormLayout {
         });
 
 
+
+
         UserDTO current_user = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
         service.setUserIntoSession(current_user);
         service.setStudentIntoSession();
-        if(service.checkIfProfileIsCreated(current_user)){
+        if(service.checkIfStudentProfileIsCreated(current_user)){
             studentBinder.setBean(service.getCurrentStudentDTO());
-            System.out.println("CURRENT STUDENT"+service.getCurrent_student());
-
         }
 
 
@@ -69,5 +70,6 @@ public class StudentForm extends FormLayout {
     private void clearForm() {
         studentBinder.setBean(new StudentDTOImpl());
     }
+
 
 }
