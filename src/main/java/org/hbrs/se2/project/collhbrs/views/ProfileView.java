@@ -35,6 +35,7 @@ public class ProfileView extends Div {
     private Company current_company;
 
     private Button edit = new Button("edit");
+    private Dialog form_dialog = new Dialog();
 
     public ProfileView(ProfileManager profileManager) {
         companyForm = new CompanyForm(profileManager);
@@ -44,10 +45,15 @@ public class ProfileView extends Div {
         studentForm = new StudentForm(profileManager);
         Div studentDiv = new Div(studentForm);
         studentDiv.addClassName("student-div");
+        if(current_user.getUserTyp().equals("Student")){
+            form_dialog.add(studentDiv);
+        }
+        if(current_user.getUserTyp().equals("Unternehmen")){
+            form_dialog.add(companyDiv);
+        }
 
 
         if(profileManager.checkIfProfileIsCreated(current_user)){
-
             if(current_user.getUserTyp().equals("Student")){
                 current_student = profileManager.getStudentById(current_user.getUserId());
             }
@@ -56,18 +62,16 @@ public class ProfileView extends Div {
             }
             add(createTitle());
             add(showProfileLayout());
-
+            add(createButtonEditLayout());
         }else {
             add(new H3("Sie müssen erst ein Profil erstellen:"));
-            if(current_user.getUserTyp().equals("Student")){
-                add(studentDiv);
-            }
-            if(current_user.getUserTyp().equals("Unternehmen")){
-                add(companyDiv);
-            }
+            Button erstellen = new Button("Profil erstellen");
+            erstellen.addClickListener(buttonClickEvent -> {form_dialog.open();});
+            add(erstellen);
+            form_dialog.open();
         }
 
-        add(createButtonEditLayout());
+
     }
 
     private Component showProfileLayout() {
@@ -97,9 +101,8 @@ public class ProfileView extends Div {
 
         }
         if(current_user.getUserTyp().equals("Unternehmen")){
-
-            Span titleLine = new Span("Matrikel Nr: "+current_student.getMatrikelNr());
-            Span descriptionLine = new Span("Studiengang: "+current_student.getDegreeCourse());
+            Span titleLine = new Span("Title: "+current_company.getTitle());
+            Span descriptionLine = new Span("Description: "+current_company.getDescription());
 
             userProfileInformation.add(new H5("Company Profildaten:"),
                     titleLine,
@@ -120,6 +123,9 @@ public class ProfileView extends Div {
         HorizontalLayout buttonLayout = new HorizontalLayout();
         buttonLayout.addClassName("button-layout");
         buttonLayout.add(edit);
+        edit.addClickListener(buttonClickEvent -> {
+            form_dialog.open();
+        });
         return buttonLayout;
     }
 

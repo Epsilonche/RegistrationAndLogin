@@ -20,7 +20,7 @@ public class CompanyForm extends FormLayout {
     private TextField company = new TextField("company");
     private TextField description= new TextField("description");
 
-    private Button save = new Button("Profil erstellen");
+    private Button save = new Button("Speichern");
     private Binder<CompanyDTOImpl> companyBinder = new Binder(CompanyDTOImpl.class);
 
     public CompanyForm(ProfileManager service) {
