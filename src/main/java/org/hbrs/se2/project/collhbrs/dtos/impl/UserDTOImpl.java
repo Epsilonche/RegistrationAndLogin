@@ -2,6 +2,8 @@ package org.hbrs.se2.project.collhbrs.dtos.impl;
 
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 
+import java.util.Arrays;
+
 public class UserDTOImpl implements UserDTO {
 
 
@@ -80,5 +82,19 @@ public class UserDTOImpl implements UserDTO {
 
     public void setUserTyp(String userTyp) {
         this.userTyp = userTyp;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTOImpl{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", eMail='" + eMail + '\'' +
+                ", password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                ", userTyp='" + userTyp + '\'' +
+                ", profilePicture=" + Arrays.toString(profilePicture) +
+                '}';
     }
 }

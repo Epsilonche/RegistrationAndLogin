@@ -29,12 +29,15 @@ public class ProfileManager {
 
     private UserDTO current_user = null;
     private Student current_student = null;
+
     public boolean checkIfProfileIsCreated(UserDTO current_user){
         int currentUserId = current_user.getUserId();
         return studentRepository.findByStudentId(currentUserId) != null || companyRepository.findByCompanyId(currentUserId) != null;
     }
 
-
+    public User getUserById(int id){
+        return userRepository.getUserByUserId(id);
+    }
 
     public void createStudentProfile(StudentDTO studentDTO,UserDTO currentUser){
         Student newStudent= userFactory.createStudent(studentDTO,currentUser);

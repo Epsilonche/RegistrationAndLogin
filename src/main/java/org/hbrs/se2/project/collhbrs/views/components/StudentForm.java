@@ -56,7 +56,6 @@ public class StudentForm extends FormLayout {
                 degree_course,
                 createButtonLayout()
         );
-
     }
 
     private Component createButtonLayout() {
