@@ -37,6 +37,8 @@ public class ProfileView extends Div {
     private Button edit = new Button("edit");
     private Dialog form_dialog = new Dialog();
 
+    private Button delete = new Button("Profil löschen");
+
     public ProfileView(ProfileManager profileManager) {
         companyForm = new CompanyForm(profileManager);
         Div companyDiv = new Div(companyForm);
@@ -52,7 +54,7 @@ public class ProfileView extends Div {
             form_dialog.add(companyDiv);
         }
 
-        Button save = new Button("save");
+        Button save = new Button("Speichern");
         save.addClickListener(buttonClickEvent -> {
             if(current_user.getUserTyp().equals("Student")){
                 studentForm.save(profileManager);
@@ -72,23 +74,27 @@ public class ProfileView extends Div {
             if(current_user.getUserTyp().equals("Unternehmen")){
                 current_company = profileManager.getCompanyById(current_user.getUserId());
             }
-            save.setText("update");
             add(createTitle());
             add(showProfileLayout());
             add(createButtonEditLayout());
         }else {
             add(new H3("Sie müssen erst ein Profil erstellen:"));
+            form_dialog.add(new H3("Sie müssen erst ein Profil erstellen:"));
             Button erstellen = new Button("Profil erstellen");
             erstellen.addClickListener(buttonClickEvent -> {form_dialog.open();});
             add(erstellen);
-            save.setText("save");
             form_dialog.open();
         }
 
 
-
-
-
+        delete.addClickListener(e-> {
+            Dialog delete_dialog = new Dialog();
+            delete_dialog.add(new DeleteProfileView(profileManager));
+            delete_dialog.open();
+            //UI.getCurrent().navigate(Globals.Pages.PROFILE_DELETE);
+        });
+        delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
+        add(delete);
 
     }
 
