@@ -27,7 +27,6 @@ import org.hbrs.se2.project.collhbrs.views.components.StudentForm;
 @PageTitle("Mein Profil")
 
 public class ProfileView extends Div {
-
     private final CompanyForm companyForm;
     private final StudentForm studentForm;
     private UserDTO current_user = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
@@ -40,6 +39,9 @@ public class ProfileView extends Div {
     private Button delete = new Button("Profil löschen");
 
     public ProfileView(ProfileManager profileManager) {
+
+        //TODO Edit user data
+
         companyForm = new CompanyForm(profileManager);
         Div companyDiv = new Div(companyForm);
         companyDiv.addClassName("company-div");
@@ -47,6 +49,8 @@ public class ProfileView extends Div {
         studentForm = new StudentForm(profileManager);
         Div studentDiv = new Div(studentForm);
         studentDiv.addClassName("student-div");
+
+
         if(current_user.getUserTyp().equals("Student")){
             form_dialog.add(studentDiv);
         }
