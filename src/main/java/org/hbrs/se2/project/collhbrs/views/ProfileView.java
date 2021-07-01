@@ -20,7 +20,9 @@ import org.hbrs.se2.project.collhbrs.dtos.impl.CompanyDTOImpl;
 import org.hbrs.se2.project.collhbrs.dtos.impl.StudentDTOImpl;
 import org.hbrs.se2.project.collhbrs.util.Globals;
 import org.hbrs.se2.project.collhbrs.views.components.CompanyForm;
+import org.hbrs.se2.project.collhbrs.views.components.ImageUpload;
 import org.hbrs.se2.project.collhbrs.views.components.StudentForm;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Route(value = "profile" , layout = AppView.class)
 @PageTitle("Mein Profil")
@@ -102,6 +104,10 @@ public class ProfileView extends Div {
         if(profileManager.checkIfProfileIsCreated(current_user)){
             add("Profile exists ");
 
+            System.out.println("current user dto in profileview : "+current_user.getUsername());
+
+            ImageUpload image_upload = new ImageUpload(current_user);
+            add(image_upload);
         }else {
             add(current_user.getUserTyp());
             add(new H3("Sie müssen erst ein Profil erstellen:"));
