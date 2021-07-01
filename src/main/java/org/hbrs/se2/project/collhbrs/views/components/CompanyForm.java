@@ -47,6 +47,7 @@ public class CompanyForm extends FormLayout {
             description,
                 createButtonLayout()
         );
+        remove(createButtonLayout());
     }
 
     private Component createButtonLayout() {
@@ -61,5 +62,8 @@ public class CompanyForm extends FormLayout {
         companyBinder.setBean(new CompanyDTOImpl());
     }
 
-
+    public void save(ProfileManager service){
+        UserDTO userDTO = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
+        service.createCompanyProfile(companyBinder.getBean(),userDTO);
+    }
 }

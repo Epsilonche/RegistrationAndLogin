@@ -57,6 +57,7 @@ public class StudentForm extends FormLayout {
                 degree_course,
                 createButtonLayout()
         );
+        remove(createButtonLayout());
     }
 
     private Component createButtonLayout() {
@@ -71,5 +72,11 @@ public class StudentForm extends FormLayout {
         studentBinder.setBean(new StudentDTOImpl());
     }
 
-
+    public void save(ProfileManager service){
+        UserDTO userDTO = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
+        service.createStudentProfile(studentBinder.getBean(),userDTO);
+    }
+    public void removeButton(){
+        this.remove(save);
+    }
 }
