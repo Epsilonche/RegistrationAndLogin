@@ -38,6 +38,7 @@ public class ProfileView extends Div {
 
     private Button delete = new Button("Profil löschen");
 
+
     public ProfileView(ProfileManager profileManager) {
 
         //TODO Edit user data
@@ -81,9 +82,13 @@ public class ProfileView extends Div {
             add(createTitle());
             add(showProfileLayout());
             add(createButtonEditLayout());
+
+            delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
+            add(delete);
+
         }else {
             add(new H3("Sie müssen erst ein Profil erstellen:"));
-            form_dialog.add(new H3("Sie müssen erst ein Profil erstellen:"));
+            form_dialog.addComponentAtIndex(0,new H3("Sie müssen erst ein Profil erstellen:"));
             Button erstellen = new Button("Profil erstellen");
             erstellen.addClickListener(buttonClickEvent -> {form_dialog.open();});
             add(erstellen);
@@ -95,10 +100,9 @@ public class ProfileView extends Div {
             Dialog delete_dialog = new Dialog();
             delete_dialog.add(new DeleteProfileView(profileManager));
             delete_dialog.open();
-            //UI.getCurrent().navigate(Globals.Pages.PROFILE_DELETE);
         });
-        delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
-        add(delete);
+
+
 
     }
 
