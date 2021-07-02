@@ -15,13 +15,12 @@ import org.hbrs.se2.project.collhbrs.util.Globals;
 
 
 public class CompanyForm extends FormLayout {
-    private TextField branch = new TextField("branch");
     private TextField title = new TextField("title");
     private TextField role = new TextField("role");
     private TextField company = new TextField("company");
     private TextField description= new TextField("description");
 
-    private Button save = new Button("Profil erstellen");
+    private Button save = new Button("Speichern");
     private Binder<CompanyDTOImpl> companyBinder = new Binder(CompanyDTOImpl.class);
 
     public CompanyForm(ProfileManager service) {
@@ -34,13 +33,21 @@ public class CompanyForm extends FormLayout {
             service.createCompanyProfile(companyBinder.getBean(),userDTO);
         });
 
-        add(branch,
+        UserDTO current_user = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
+        service.setUserIntoSession(current_user);
+        service.setCompanyIntoSession();
+        if(service.checkIfCompanyProfileIsCreated(current_user)){
+            companyBinder.setBean(service.getCurrentCompanyDTO());
+        }
+
+        add(
             title,
             role,
             company,
             description,
                 createButtonLayout()
         );
+        remove(createButtonLayout());
     }
 
     private Component createButtonLayout() {
@@ -51,13 +58,12 @@ public class CompanyForm extends FormLayout {
         return buttonLayout;
     }
 
-    public CompanyDTOImpl getCompanyForm(){
-        return companyBinder.getBean();
-    }
-
     private void clearForm() {
         companyBinder.setBean(new CompanyDTOImpl());
     }
 
-
+    public void save(ProfileManager service){
+        UserDTO userDTO = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
+        service.createCompanyProfile(companyBinder.getBean(),userDTO);
+    }
 }

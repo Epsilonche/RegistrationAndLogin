@@ -15,4 +15,10 @@ public interface UserDTO {
     public String getLastName();
 
     public String geteMail();
+
+    public String getUserTyp();
+
+    public byte[] getProfilePicture();
+
+
 }

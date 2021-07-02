@@ -1,14 +1,21 @@
 package org.hbrs.se2.project.collhbrs.test;
 
 import org.hbrs.se2.project.collhbrs.control.RegistrationControl;
+import org.hbrs.se2.project.collhbrs.control.factories.UserFactory;
 import org.hbrs.se2.project.collhbrs.datatypes.RegistrationResult;
 import static org.junit.Assert.*;
 import org.hbrs.se2.project.collhbrs.control.ProfileManager;
 import org.hbrs.se2.project.collhbrs.dtos.CompanyDTO;
 import org.hbrs.se2.project.collhbrs.dtos.StudentDTO;
+import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 import org.hbrs.se2.project.collhbrs.dtos.impl.CompanyDTOImpl;
 import org.hbrs.se2.project.collhbrs.dtos.impl.StudentDTOImpl;
 import org.hbrs.se2.project.collhbrs.dtos.impl.UserDTOImpl;
+import org.hbrs.se2.project.collhbrs.entities.Company;
+import org.hbrs.se2.project.collhbrs.entities.Student;
+import org.hbrs.se2.project.collhbrs.entities.User;
+import org.hbrs.se2.project.collhbrs.repository.CompanyRepository;
+import org.hbrs.se2.project.collhbrs.repository.StudentRepository;
 import org.hbrs.se2.project.collhbrs.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +26,14 @@ public class RoundTripTest {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private StudentRepository studentRepository;
+
+    @Autowired
+    private CompanyRepository companyRepository;
+
+    private UserFactory userFactory = new UserFactory();
 
     @Autowired
     private RegistrationControl registrationService;
@@ -150,6 +165,60 @@ public class RoundTripTest {
 
     }
     */
+    @Test
+    public void testCRUDUser() {
+        UserDTO testUser = new UserDTOImpl();
+        testUser= createUserDTO("xtest","xtest","gmail.inf","ayoubxUsername","Thepassword12");
+        User newUser = this.userFactory.createUser(testUser);
+        //create
+        userRepository.save(newUser);
+        //READ
+        String ayoub= userRepository.findUserByUsernameAndPassword("ayoubxUsername","Thepassword12").getUsername();
+        int result= userRepository.deleteByUsername(ayoub);
+        assertEquals(result,1);
+
+    }
+
+
+    @Test
+    public void testCRUDStudent() {
+        StudentDTO testStudent= new StudentDTOImpl();
+        testStudent.setMatrikelNr(123456);
+        testStudent.setDegreeCourse("IT");
+        testStudent.setUniversity("H-BRS");
+        testStudent.setStudentId(1);
+        Student newStudent= this.userFactory.createStudent(testStudent);
+        //CREATE
+        studentRepository.save(newStudent);
+        //READ
+        int mtrNr = studentRepository.findStudentByMatrikelNr(123456).getMatrikelNr();
+        //DELETE
+        int deletedStudent = studentRepository.deleteByMatrikelNr(mtrNr);
+        assertEquals(deletedStudent,1);
+
+
+    }
+
+    @Test
+    public void testCRUDCompany() {
+        CompanyDTO testComapny= new CompanyDTOImpl();
+        testComapny.setCompany("comapny");
+        testComapny.setDescription("description");
+        testComapny.setTitle("title");
+        testComapny.setRoles("roles");
+        Company newCompany = this.userFactory.createCompany(testComapny);
+
+
+        //CREATE
+        companyRepository.save(newCompany);
+        //READ
+        String companyName = companyRepository.findCompaniesByCompany("company").getCompany();
+        //DELETE
+        int deletedStudent = companyRepository.deleteByCompany(companyName);
+        assertEquals(deletedStudent,1);
+    }
+
+
 
 
 

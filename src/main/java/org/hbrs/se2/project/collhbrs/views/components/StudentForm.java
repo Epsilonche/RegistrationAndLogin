@@ -11,9 +11,11 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import org.hbrs.se2.project.collhbrs.control.ProfileManager;
+import org.hbrs.se2.project.collhbrs.dtos.StudentDTO;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 import org.hbrs.se2.project.collhbrs.dtos.impl.StudentDTOImpl;
 import org.hbrs.se2.project.collhbrs.util.Globals;
+import org.hbrs.se2.project.collhbrs.views.ProfileView;
 
 public class StudentForm extends FormLayout {
     private TextField first_name = new TextField("Vorname");
@@ -23,7 +25,7 @@ public class StudentForm extends FormLayout {
     private TextField university = new TextField("Universität");
     private TextField degree_course = new TextField("Studiengang");
 
-    private Button save = new Button("Profil erstellen");
+    private Button save = new Button("Speichern");
     private Binder<StudentDTOImpl> studentBinder = new Binder(StudentDTOImpl.class);
 
     public StudentForm(ProfileManager service) {
@@ -36,6 +38,17 @@ public class StudentForm extends FormLayout {
             service.createStudentProfile(studentBinder.getBean(),userDTO);
         });
 
+
+
+
+        UserDTO current_user = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
+        service.setUserIntoSession(current_user);
+        service.setStudentIntoSession();
+        if(service.checkIfStudentProfileIsCreated(current_user)){
+            studentBinder.setBean(service.getCurrentStudentDTO());
+        }
+
+
         add(first_name,
                 last_name,
                 email,
@@ -44,6 +57,7 @@ public class StudentForm extends FormLayout {
                 degree_course,
                 createButtonLayout()
         );
+        remove(createButtonLayout());
     }
 
     private Component createButtonLayout() {
@@ -58,5 +72,11 @@ public class StudentForm extends FormLayout {
         studentBinder.setBean(new StudentDTOImpl());
     }
 
-
+    public void save(ProfileManager service){
+        UserDTO userDTO = (UserDTO) UI.getCurrent().getSession().getAttribute(Globals.CURRENT_USER);
+        service.createStudentProfile(studentBinder.getBean(),userDTO);
+    }
+    public void removeButton(){
+        this.remove(save);
+    }
 }

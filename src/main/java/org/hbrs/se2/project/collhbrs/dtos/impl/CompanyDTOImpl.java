@@ -3,17 +3,24 @@ package org.hbrs.se2.project.collhbrs.dtos.impl;
 import org.hbrs.se2.project.collhbrs.dtos.CompanyDTO;
 
 public class CompanyDTOImpl implements CompanyDTO {
+    private int companyId;
     private String company;
     private String title;
     private String roles;
     private String description;
     private int branch_id;
 
-    /*
-    Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.
-    unused, because of that commet out
     public CompanyDTOImpl() { }
-    */
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    @Override
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
+    }
+
     public String getCompany() {
         return company;
     }

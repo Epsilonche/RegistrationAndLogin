@@ -1,6 +1,9 @@
 package org.hbrs.se2.project.collhbrs.dtos;
 
 public interface CompanyDTO {
+    public void setCompanyId(int id);
+    public int getCompanyId();
+
     public String getCompany() ;
 
     public void setCompany(String company) ;

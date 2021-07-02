@@ -2,6 +2,8 @@ package org.hbrs.se2.project.collhbrs.dtos.impl;
 
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
 
+import java.util.Arrays;
+
 public class UserDTOImpl implements UserDTO {
 
 
@@ -11,13 +13,17 @@ public class UserDTOImpl implements UserDTO {
     private String eMail;
     private String password;
     private String username;
+    private String userTyp;
 
+    private byte[] profilePicture;
 
-    /*
-    Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.
-    unused, because of that commet out
-    public UserDTOImpl() { }
-    */
+    public byte[] getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -43,7 +49,8 @@ public class UserDTOImpl implements UserDTO {
         this.eMail = eMail;
     }
 
-
+    public UserDTOImpl() {
+    }
 
     public String getUsername() {
         return username;
@@ -67,5 +74,27 @@ public class UserDTOImpl implements UserDTO {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getUserTyp() {
+        return userTyp;
+    }
+
+    public void setUserTyp(String userTyp) {
+        this.userTyp = userTyp;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTOImpl{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", eMail='" + eMail + '\'' +
+                ", password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                ", userTyp='" + userTyp + '\'' +
+                ", profilePicture=" + Arrays.toString(profilePicture) +
+                '}';
     }
 }

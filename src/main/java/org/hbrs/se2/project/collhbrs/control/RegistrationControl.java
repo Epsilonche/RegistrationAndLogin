@@ -1,5 +1,4 @@
 package org.hbrs.se2.project.collhbrs.control;
-
 import org.hbrs.se2.project.collhbrs.control.factories.UserFactory;
 import org.hbrs.se2.project.collhbrs.datatypes.RegistrationResult;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
@@ -14,6 +13,8 @@ public class RegistrationControl {
     @Autowired
     private UserRepository repository;
     private UserFactory userFactory = new UserFactory();
+    public RegistrationControl() {
+    }
 
     public RegistrationResult createUser(UserDTO userDTO){
 
@@ -47,6 +48,7 @@ public class RegistrationControl {
         result.setResult(true);
         return result;
     }
+
 
 
 }

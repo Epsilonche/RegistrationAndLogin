@@ -9,12 +9,7 @@ public class StudentDTOImpl implements StudentDTO {
     private Integer applicationId;
     private int studentId;
 
-    /*
-    Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.
-    unused, because of that commet out
     public StudentDTOImpl() { }
-    */
-
 
     public Integer getMatrikelNr() {
         return matrikelNr;

@@ -2,6 +2,7 @@ package org.hbrs.se2.project.collhbrs.repository;
 
 import org.hbrs.se2.project.collhbrs.entities.User;
 
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.hbrs.se2.project.collhbrs.dtos.UserDTO;
@@ -26,17 +27,15 @@ public interface UserRepository extends JpaRepository<User,Integer> {
 
     UserDTO findUserByUsernameAndPassword(String username,String password);
 
+    User findByUserId(int id);
+    User getUserByUserId(int id);
+    int deleteByUsername(String username);
 
     List<UserDTO> findAllByUsername(String username);
 
     List<UserDTO> findUsersByUserIdIsNotNull();
 
-
-
-
-
-
-
-
+    @EntityGraph(attributePaths={"profilePicture"})
+    User findWithPropertyPictureAttachedByUserId(int id);
 
 }
