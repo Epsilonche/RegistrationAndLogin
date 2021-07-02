@@ -21,11 +21,7 @@ public class RegistrationControl {
         RegistrationResult dataCheck = checkRegistrationData(userDTO);
         if(dataCheck.isResult()){
             User newUser = userFactory.createUser(userDTO);
-            try{
-                this.repository.save(newUser);
-            }catch(Exception e){
-                e.printStackTrace();
-            }
+            this.repository.save(newUser);
             dataCheck.setSaved(true);
         }
         return dataCheck;
