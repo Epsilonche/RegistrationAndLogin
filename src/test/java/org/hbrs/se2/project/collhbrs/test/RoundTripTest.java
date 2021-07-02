@@ -50,6 +50,7 @@ public class RoundTripTest {
         return newCompany;
     }
     // SUCCESSFUL User Registration
+    /*
     @Test
     public void registerUser(){
         UserDTOImpl testUser = new UserDTOImpl();
@@ -58,6 +59,8 @@ public class RoundTripTest {
         assertEquals(true,result.isResult());
 
     }
+    */
+
     /*
     public void registerUserWithoutUsername(){
         UserDTOImpl testuser = new UserDTOImpl();
