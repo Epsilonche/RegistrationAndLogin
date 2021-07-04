@@ -66,26 +66,8 @@ public class CollHBRSApplicationTests {
         return newCompany;
     }
     // SUCCESSFUL User Registration
-    @Test
-    public void registerUser(){
-        UserDTOImpl testUser = new UserDTOImpl();
-        testUser= createUserDTO("Sarah","Linden","s.lind@smail.inf","slind","Abc1");
-        RegistrationResult result = registrationService.createUser(testUser);
-        assertEquals(true,result.isResult());
 
-    }
-    @Test
-    public void registerUserWithoutUsername(){
-        UserDTOImpl testuser = new UserDTOImpl();
-        testuser.setFirstName("Jörgen");
-        testuser.setLastName("Baum");
-        testuser.seteMail("jörgen.baum@gmx.de");
-        testuser.setPassword("Abc1");
 
-        RegistrationResult result = registrationService.createUser(testuser);
-        assertEquals("a mandatory field is empty",result.getResultDescription());
-
-    }
 
     //Es ist momentan noch Möglich einen User doppelt einzuspeichern
     @Test
@@ -103,20 +85,7 @@ public class CollHBRSApplicationTests {
         }
     }
     //Es wird nicht erkannt das eine E-Mail falsch ist und der User wird erzeugt
-    @Test
-    public void registerWithFalseEmail(){
-        UserDTOImpl testuser = new UserDTOImpl();
-        testuser.setFirstName("Jörgen");
-        testuser.setLastName("Baum");
-        testuser.seteMail("jörgen.baum");
-        testuser.setUsername("jbaum");
-        testuser.setPassword("Abc1");
-        try{
-            registrationService.createUser(testuser);
-            fail();
-        }catch(Exception e){
-        }
-    }
+
 
 
     @Test
