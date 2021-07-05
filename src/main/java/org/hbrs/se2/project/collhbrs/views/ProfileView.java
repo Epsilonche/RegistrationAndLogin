@@ -19,7 +19,6 @@ import org.hbrs.se2.project.collhbrs.entities.Company;
 import org.hbrs.se2.project.collhbrs.entities.Student;
 import org.hbrs.se2.project.collhbrs.entities.User;
 import org.hbrs.se2.project.collhbrs.repository.UserRepository;
-import org.hbrs.se2.project.collhbrs.services.ImageService;
 import org.hbrs.se2.project.collhbrs.util.Globals;
 import org.hbrs.se2.project.collhbrs.views.components.CompanyForm;
 import org.hbrs.se2.project.collhbrs.views.components.StudentForm;
