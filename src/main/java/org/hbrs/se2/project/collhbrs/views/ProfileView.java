@@ -42,8 +42,7 @@ public class ProfileView extends Div {
     private HorizontalLayout imageContainer;
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private ImageService imageService;
+
 
     private final CompanyForm companyForm;
     private final StudentForm studentForm;
@@ -217,13 +216,6 @@ public class ProfileView extends Div {
         user = userRepository.findByUserId(current_user.getUserId());
         user.setProfilePicture(imageBytes);
         user = userRepository.save(user);
-    }
-
-    private void showImage(UserDTO user) {
-        Image image = imageService.generateImage(user);
-        image.setHeight("100%");
-        imageContainer.removeAll();
-        imageContainer.add(image);
     }
 
     private void initImageContainer(){
