@@ -12,7 +12,8 @@ public interface VacancyRepository extends JpaRepository<Vacancy,Integer> {
     VacDTO findVacancyByVacId(int vac_id);
 
     List<VacDTO> findVacancyByVacIdIsNotNull();
-
+    VacDTO findVacancyByTitleAndDescription(String title, String description);
+    void deleteVacancyByDescriptionAndTitle(String description, String title);
 
 }
 
