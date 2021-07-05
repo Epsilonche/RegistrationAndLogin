@@ -13,8 +13,6 @@ public class RegistrationControl {
     @Autowired
     private UserRepository repository;
     private UserFactory userFactory = new UserFactory();
-    public RegistrationControl() {
-    }
 
     public RegistrationResult createUser(UserDTO userDTO){
 
