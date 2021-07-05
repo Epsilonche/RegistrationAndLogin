@@ -117,7 +117,7 @@ public class AppView extends AppLayout implements BeforeEnterObserver {
     private void logoutUser() {
         UI ui = this.getUI().get();
         ui.getSession().close();
-        ui.getPage().setLocation("/");
+        ui.getPage().setLocation("/programming-0.0.1-SNAPSHOT/profile");
     }
 
     /**
