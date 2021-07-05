@@ -174,7 +174,7 @@ public class AppView extends AppLayout implements BeforeEnterObserver {
         // Key: der sichtbare String des Menu-Items
         // Value: Die UI-Component, die nach dem Klick auf das Menuitem angezeigt wird.
 
-        Tab[] tabs = new Tab[]{ createTab( "User anzeigen", ShowUsersView.class) };
+        Tab[] tabs = new Tab[]{ };
         tabs = Utils.append( tabs , createTab( "Stellenanzeigen anzeigen", ShowVacancyView.class)  );
         tabs = Utils.append( tabs , createTab( "Profil anzeigen", ProfileView.class)  );
         tabs = Utils.append( tabs , createTab( "Stellenanzeige hinzufügen", EnterVacView.class)  );

@@ -21,4 +21,5 @@ public interface UserDTO {
     public byte[] getProfilePicture();
 
 
+    void setProfilePicture(byte[] imageBytes);
 }
