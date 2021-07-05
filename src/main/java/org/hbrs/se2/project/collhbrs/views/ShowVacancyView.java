@@ -12,7 +12,7 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.apache.commons.lang3.StringUtils;
-import org.hbrs.se2.project.collhbrs.control.ShowVacancyControl;
+import org.hbrs.se2.project.collhbrs.control.VacancyManager;
 import org.hbrs.se2.project.collhbrs.dtos.VacDTO;
 import org.hbrs.se2.project.collhbrs.util.Globals;
 
@@ -33,7 +33,7 @@ public class ShowVacancyView extends Div  {
 
     private List<VacDTO> personList;
 
-    public ShowVacancyView( ShowVacancyControl vacancyControl ) {
+    public ShowVacancyView( VacancyManager vacancyControl ) {
         addClassName("show-vac-view");
 
         // Auslesen alle abgespeicherten Vacancies aus der DB (über das Control)

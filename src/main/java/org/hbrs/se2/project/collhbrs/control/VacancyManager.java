@@ -7,6 +7,8 @@ import org.hbrs.se2.project.collhbrs.entities.Vacancy;
 import org.hbrs.se2.project.collhbrs.repository.VacancyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import java.util.List;
+
 
 @Component
 public class VacancyManager {
@@ -24,5 +26,10 @@ public class VacancyManager {
     public VacDTO readVacByVacId(int jid){
         return repository.findVacancyByVacId(jid);
     }
+
+    public List<VacDTO> readAllVacancys() {
+        return this.repository.findVacancyByVacIdIsNotNull();
+    }
+
 
 }
