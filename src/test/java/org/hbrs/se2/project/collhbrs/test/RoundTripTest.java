@@ -50,6 +50,7 @@ public class RoundTripTest {
         new_user.setFirstName("testfirstName");
         new_user.setPassword("testPassworD123");
         new_user.setLastName("testlastName");
+        new_user.setUserTyp("Student");
 
         //CREATE
         userRepository.save(new_user);
@@ -74,6 +75,7 @@ public class RoundTripTest {
         new_user.setFirstName("testfirstName");
         new_user.setPassword("testPassworD123");
         new_user.setLastName("testlastName");
+        new_user.setUserTyp("Student");
         userRepository.save(new_user);
         //student is a user
         UserDTO fetchedUserDTO = userRepository.findUserByUsernameAndPassword(new_user.getUsername(),new_user.getPassword());
@@ -106,6 +108,7 @@ public class RoundTripTest {
         new_user.setFirstName("testfirstName");
         new_user.setPassword("testPassworD123");
         new_user.setLastName("testlastName");
+        new_user.setUserTyp("Unternehmen");
         userRepository.save(new_user);
         //company is a user
         UserDTO fetchedUserDTO = userRepository.findUserByUsernameAndPassword(new_user.getUsername(),new_user.getPassword());
